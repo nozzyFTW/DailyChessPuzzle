@@ -20,3 +20,29 @@ F:\School\DailyChessPuzzle\Project\DailyChessPuzzle\obj\Debug\DailyChessPuzzle.c
 F:\School\DailyChessPuzzle\Project\DailyChessPuzzle\obj\Debug\DailyChessPuzzle.exe
 F:\School\DailyChessPuzzle\Project\DailyChessPuzzle\obj\Debug\DailyChessPuzzle.pdb
 F:\School\DailyChessPuzzle\Project\DailyChessPuzzle\obj\Debug\DailyChessPuzzle.Main.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\DailyChessPuzzle.exe.config
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\DailyChessPuzzle.exe
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\DailyChessPuzzle.pdb
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\ExCSS.dll
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\Fizzler.dll
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\Svg.dll
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Buffers.dll
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Memory.dll
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\Fizzler.pdb
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\Svg.xml
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Buffers.xml
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Memory.xml
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.AssemblyReference.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.SuggestedBindingRedirects.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Main.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Properties.Resources.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.GenerateResource.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.CoreCompileInputs.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.CopyComplete
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.exe
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.pdb
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Settings.resources

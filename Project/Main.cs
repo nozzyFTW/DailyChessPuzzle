@@ -23,7 +23,17 @@ namespace DailyChessPuzzle
         int RANK_SIZE = 8;
         int FILE_SIZE = 8;
 
-        string[,] board = new string[8, 8];
+        string[] board = new string[64]
+        {
+            "r", "n", "b", "q", "k", "b", "n", "r",
+            "p", "p", "p", "p", "p", "p", "p", "p",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            "P", "P", "P", "P", "P", "P", "P", "P",
+            "R", "N", "B", "Q", "K", "B", "N", "R"
+        };
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -45,13 +55,13 @@ namespace DailyChessPuzzle
                             square.Name = $"h{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
                                 square.Top = 0;
-                                square.Left = 120 * file;
+                                square.Left = 75 * file;
                             }
                             else
                             {
@@ -73,17 +83,17 @@ namespace DailyChessPuzzle
                             square.Name = $"g{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
-                                square.Top = 120;
-                                square.Left = 120 * file;
+                                square.Top = 75;
+                                square.Left = 75 * file;
                             }
                             else
                             {
-                                square.Top = 120;
+                                square.Top = 75;
                                 square.Left = 0;
                             }
 
@@ -101,17 +111,17 @@ namespace DailyChessPuzzle
                             square.Name = $"f{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
-                                square.Top = 240;
-                                square.Left = 120 * file;
+                                square.Top = 150;
+                                square.Left = 75 * file;
                             }
                             else
                             {
-                                square.Top = 240;
+                                square.Top = 150;
                                 square.Left = 0;
                             }
 
@@ -129,17 +139,17 @@ namespace DailyChessPuzzle
                             square.Name = $"e{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
-                                square.Top = 360;
-                                square.Left = 120 * file;
+                                square.Top = 225;
+                                square.Left = 75 * file;
                             }
                             else
                             {
-                                square.Top = 360;
+                                square.Top = 225;
                                 square.Left = 0;
                             }
 
@@ -157,17 +167,17 @@ namespace DailyChessPuzzle
                             square.Name = $"d{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
-                                square.Top = 480;
-                                square.Left = 120 * file;
+                                square.Top = 300;
+                                square.Left = 75 * file;
                             }
                             else
                             {
-                                square.Top = 480;
+                                square.Top = 300;
                                 square.Left = 0;
                             }
 
@@ -185,17 +195,17 @@ namespace DailyChessPuzzle
                             square.Name = $"c{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
-                                square.Top = 600;
-                                square.Left = 120 * file;
+                                square.Top = 375;
+                                square.Left = 75 * file;
                             }
                             else
                             {
-                                square.Top = 600;
+                                square.Top = 375;
                                 square.Left = 0;
                             }
 
@@ -213,17 +223,17 @@ namespace DailyChessPuzzle
                             square.Name = $"b{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
-                                square.Top = 720;
-                                square.Left = 120 * file;
+                                square.Top = 450;
+                                square.Left = 75 * file;
                             }
                             else
                             {
-                                square.Top = 720;
+                                square.Top = 450;
                                 square.Left = 0;
                             }
 
@@ -241,17 +251,17 @@ namespace DailyChessPuzzle
                             square.Name = $"a{file + 1}";
                             label.Text = square.Name;
 
-                            square.Width = 120;
-                            square.Height = 120;
+                            square.Width = 75;
+                            square.Height = 75;
 
                             if (file != 0)
                             {
-                                square.Top = 840;
-                                square.Left = 120 * file;
+                                square.Top = 525;
+                                square.Left = 75 * file;
                             }
                             else
                             {
-                                square.Top = 840;
+                                square.Top = 525;
                                 square.Left = 0;
                             }
 
@@ -273,6 +283,13 @@ namespace DailyChessPuzzle
         }
 
         private void GeneratePieces()
+        {
+            // ReadFEN();
+
+
+        }
+
+        private void ReadFEN()
         {
             
         }
