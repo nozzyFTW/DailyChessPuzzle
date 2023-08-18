@@ -286,7 +286,66 @@ namespace DailyChessPuzzle
         {
             // ReadFEN();
 
+            foreach (string square in board)
+            {
+                bool isWhite = (Char.IsUpper(square, 0));
+                bool isBlack = !(Char.IsUpper(square, 0));
 
+                if (isWhite)
+                {
+                    if (square == "P") // White Pawn
+                    {
+                        
+                    }
+                    if (square == "R") // White Rook
+                    {
+
+                    }
+                    if (square == "N") // White Knight
+                    {
+
+                    }
+                    if (square == "B") // White Bishop
+                    {
+
+                    }
+                    if (square == "Q") // White Queen
+                    {
+
+                    }
+                    if (square == "K") // White King
+                    {
+
+                    }
+                }
+                if (isBlack)
+                {
+                    if (square == "p") // White Pawn
+                    {
+
+                    }
+                    if (square == "r") // White Rook
+                    {
+
+                    }
+                    if (square == "n") // White Knight
+                    {
+
+                    }
+                    if (square == "b") // White Bishop
+                    {
+
+                    }
+                    if (square == "q") // White Queen
+                    {
+
+                    }
+                    if (square == "k") // White King
+                    {
+
+                    }
+                }
+            }
         }
 
         private void ReadFEN()
