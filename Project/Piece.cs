@@ -25,11 +25,11 @@ namespace DailyChessPuzzle
         public int Col { get; set; }
         private void setPieceImage()
         {
-            Image pieceImage = (Image)Resources.ResourceManager.GetObject(fPiece);
+            Image pieceImage = (Image)Resources.ResourceManager.GetObject(piece);
         }
-        public bool isLegalMove()
+        /*public bool isLegalMove()
         {
             
-        }
+        }*/
     }
 }
