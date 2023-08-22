@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
@@ -23,6 +25,8 @@ namespace DailyChessPuzzle
         // RANK - row, FILE - col
         int RANK_SIZE = 8;
         int FILE_SIZE = 8;
+
+        string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
         string[] board = new string[64]
         {
@@ -311,7 +315,60 @@ namespace DailyChessPuzzle
 
         private void GeneratePieces()
         {
-            // ReadFEN();
+            // FEN = <Piece Placement> <Side to Move> <Castling Ability> <En Passsant Target Square> <Halfmove Clock> <Fullmove Counter>
+            string[] fenSections = fen.Split('/', ' ');
+            ReadFEN readFEN = new ReadFEN(fenSections);
+
+            // Rank 8
+            int count = 8;
+            
+            while (count > 0)
+            {
+                List<string> fenRank = new List<string>();
+                switch (count)
+                {
+                    case 8:
+                        fenRank = readFEN.Rank8.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+
+                    case 7:
+                        fenRank = readFEN.Rank7.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+
+                    case 6:
+                        fenRank = readFEN.Rank6.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+
+                    case 5:
+                        fenRank = readFEN.Rank5.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+
+                    case 4:
+                        fenRank = readFEN.Rank4.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+
+                    case 3:
+                        fenRank = readFEN.Rank3.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+
+                    case 2:
+                        fenRank = readFEN.Rank2.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+
+                    case 1:
+                        fenRank = readFEN.Rank1.ToCharArray().Select(x => x.ToString()).ToList();
+
+                        break;
+                }
+                count++;
+            }
 
             foreach (var square in board_panels)
             {
@@ -344,11 +401,6 @@ namespace DailyChessPuzzle
                 
                 pnlBoard.Controls.Add(square);
             }
-        }
-
-        private void ReadFEN()
-        {
-            
         }
     }
 }
