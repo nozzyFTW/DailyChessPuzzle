@@ -39,6 +39,7 @@
             // pnlBoard
             // 
             this.pnlBoard.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlBoard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pnlBoard.Location = new System.Drawing.Point(57, 26);
             this.pnlBoard.Name = "pnlBoard";
             this.pnlBoard.Size = new System.Drawing.Size(600, 600);

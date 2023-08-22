@@ -33,11 +33,23 @@ namespace DailyChessPuzzle
             " ", " ", " ", " ", " ", " ", " ", " ",
             " ", " ", " ", " ", " ", " ", " ", " ",
             "P", "P", "P", "P", "P", "P", "P", "P",
-            "R", "N", "B", "Q", "K", "B", "N", "R"
+            "R", "N", "B", "Q", "K", "B", "N", "R",
         };
 
-        /*string[] board_coords = new string[64]
+        string[] piece_board = new string[128]
         {
+            "r", "n", "b", "q", "k", "b", "n", "r", "x", "x", "x", "x", "x", "x", "x", "x",
+            "p", "p", "p", "p", "p", "p", "p", "p", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            "P", "P", "P", "P", "P", "P", "P", "P", "x", "x", "x", "x", "x", "x", "x", "x",
+            "R", "N", "B", "Q", "K", "B", "N", "R", "x", "x", "x", "x", "x", "x", "x", "x"
+        };
+
+        Panel[] board_panels = new Panel[64];
+      /*{
             "A8", "B8", "C8", "D8", "E8", "F8", "G8", "H8",
             "A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7",
             "A6", "B6", "C6", "D6", "E6", "F6", "G6", "H6",
@@ -47,8 +59,6 @@ namespace DailyChessPuzzle
             "A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2",
             "A1", "B1", "C1", "D1", "E1", "F1", "G1", "H1"
         };*/
-
-        Panel[] board_panels = new Panel[64];
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -64,12 +74,12 @@ namespace DailyChessPuzzle
                 for (int file = 0; file < FILE_SIZE; file++)
                 {
                     Panel square = new Panel();
-                    Label label = new Label();
+                    //Label label = new Label();
                     switch (rank)
                     {
                         case 0:
                             square.Name = $"h{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -97,7 +107,7 @@ namespace DailyChessPuzzle
 
                         case 1:
                             square.Name = $"g{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -125,7 +135,7 @@ namespace DailyChessPuzzle
 
                         case 2:
                             square.Name = $"f{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -153,7 +163,7 @@ namespace DailyChessPuzzle
 
                         case 3:
                             square.Name = $"e{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -181,7 +191,7 @@ namespace DailyChessPuzzle
 
                         case 4:
                             square.Name = $"d{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -209,7 +219,7 @@ namespace DailyChessPuzzle
 
                         case 5:
                             square.Name = $"c{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -237,7 +247,7 @@ namespace DailyChessPuzzle
 
                         case 6:
                             square.Name = $"b{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -265,7 +275,7 @@ namespace DailyChessPuzzle
 
                         case 7:
                             square.Name = $"a{file + 1}";
-                            label.Text = square.Name;
+                            // label.Text = square.Name;
 
                             square.Width = 75;
                             square.Height = 75;
@@ -294,7 +304,7 @@ namespace DailyChessPuzzle
 
                     board_panels[count] = square;
                     count++;
-                    square.Controls.Add(label);
+                    //square.Controls.Add(label);
                 }
             }
         }
@@ -307,10 +317,12 @@ namespace DailyChessPuzzle
             {
                 int index = Array.IndexOf(board_panels, square);
 
-                bool isWhite = (Char.IsUpper(board[index], 0));
-                bool isBlack = !(Char.IsUpper(board[index], 0));
+                bool isWhitePiece = (Char.IsUpper(board[index], 0));
+                bool isBlackPiece = !(Char.IsUpper(board[index], 0));
 
-                if (isWhite)
+                square.BackgroundImageLayout = ImageLayout.Zoom;
+
+                if (isWhitePiece)
                 {
                     if (board[index] == "P") square.BackgroundImage = Resources.wp;     // White Pawn
                     if (board[index] == "R") square.BackgroundImage = Resources.wr;     // White Rook
@@ -319,7 +331,7 @@ namespace DailyChessPuzzle
                     if (board[index] == "Q") square.BackgroundImage = Resources.wq;     // White Queen
                     if (board[index] == "K") square.BackgroundImage = Resources.wk;     // White King
                 }
-                if (isBlack)
+                if (isBlackPiece)
                 {
                     if (board[index] == "p") square.BackgroundImage = Resources.bp;     // Black Pawn
                     if (board[index] == "r") square.BackgroundImage = Resources.br;     // Black Rook
