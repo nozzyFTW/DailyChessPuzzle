@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace DailyChessPuzzle
 {
     internal class ReadFEN
     {
+
         string rank1, rank2, rank3, rank4, rank5, rank6, rank7, rank8, sideToMove, castlingAbility, enPassantAbility;
         int halfmoveClock, fullmoveCounter;
         public ReadFEN(string[] fenSection)
@@ -36,6 +38,5 @@ namespace DailyChessPuzzle
         public string Rank3 { get { return rank3; } }
         public string Rank2 { get { return rank2; } }
         public string Rank1 { get { return rank1; } }
-
     }
 }

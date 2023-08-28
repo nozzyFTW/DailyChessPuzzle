@@ -26,9 +26,7 @@ namespace DailyChessPuzzle
         int RANK_SIZE = 8;
         int FILE_SIZE = 8;
 
-        //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-        //string fen = "rnbqkbnr/ppppp1pp/8/5pN1/8/8/PPPPPPPP/RNBQKB1R b KQkq - 0 1";
-        string fen = "q3k1nr/1pp1nQpp/3p4/1P2p3/4P3/B1PP1b2/B5PP/5K2 b k - 0 17";
+        string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
         string[] board = new string[64]
         {
@@ -54,7 +52,7 @@ namespace DailyChessPuzzle
             "R", "N", "B", "Q", "K", "B", "N", "R", "x", "x", "x", "x", "x", "x", "x", "x"
         };*/
 
-        public static Panel[] board_panels = new Panel[64];
+        Panel[] board_panels = new Panel[64];
       /*{
             "A8", "B8", "C8", "D8", "E8", "F8", "G8", "H8",
             "A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7",
@@ -431,7 +429,7 @@ namespace DailyChessPuzzle
         private void GenerateMoves()
         {
             // Pawn
-
+            
 
             // Rook
 
