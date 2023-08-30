@@ -26,9 +26,11 @@ namespace DailyChessPuzzle
         int RANK_SIZE = 8;
         int FILE_SIZE = 8;
 
-        string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+        //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
+        string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
 
-        string[] board = new string[64]
+        string[] board = new string[64];
+        /*
         {
             "r", "n", "b", "q", "k", "b", "n", "r",
             "p", "p", "p", "p", "p", "p", "p", "p",
@@ -38,7 +40,7 @@ namespace DailyChessPuzzle
             " ", " ", " ", " ", " ", " ", " ", " ",
             "P", "P", "P", "P", "P", "P", "P", "P",
             "R", "N", "B", "Q", "K", "B", "N", "R",
-        };
+        };*/
 
        /*string[] piece_board = new string[128]
         {
@@ -393,36 +395,103 @@ namespace DailyChessPuzzle
             {
                 // As the pieces are determined Black (lowercase) and White (uppercase) Char.IsUpper() can be used to determine which type piece is being added.
                 bool isWhitePiece = (Char.IsUpper(item, 0));
-                bool isBlackPiece = !(Char.IsUpper(item, 0));
+                bool isBlackPiece = (!(Char.IsUpper(item, 0)) && !(Char.IsNumber(item, 0)));
                 bool isBlankSquare = (Char.IsNumber(item, 0));
 
                 board_panels[pos].BackgroundImageLayout = ImageLayout.Zoom;
     
                 if (isBlankSquare)
                 {
-                    pos += Convert.ToInt32(item);
-                    continue;
+                    for (int i = 0; i < Convert.ToInt32(item); i++)
+                    {
+                        board[pos] = " ";
+                        pos++;
+                    }
                 }
 
                 if (isWhitePiece)
                 {
-                    if (item == "P") board_panels[pos].BackgroundImage = Resources.wp;     // White Pawn
+                    if (item == "P") // White Pawn
+                    {
+                        board[pos] = "P";
+                        board_panels[pos].BackgroundImage = Resources.wp;     
+                    }
+                    if (item == "R") // White Rook
+                    {
+                        board[pos] = "R";
+                        board_panels[pos].BackgroundImage = Resources.wr;     
+                    }
+                    if (item == "N") // White Knight
+                    {
+                        board[pos] = "N";
+                        board_panels[pos].BackgroundImage = Resources.wn;     
+                    }
+                    if (item == "B") // White Bishop
+                    {
+                        board[pos] = "B";
+                        board_panels[pos].BackgroundImage = Resources.wb;     
+                    }
+                    if (item == "Q") // White Queen
+                    {
+                        board[pos] = "Q";
+                        board_panels[pos].BackgroundImage = Resources.wq;
+                    }
+                    if (item == "K") // White King
+                    {
+                        board[pos] = "K";
+                        board_panels[pos].BackgroundImage = Resources.wk;
+                    }
+                    /*
                     if (item == "R") board_panels[pos].BackgroundImage = Resources.wr;     // White Rook
                     if (item == "N") board_panels[pos].BackgroundImage = Resources.wn;     // White Knight
                     if (item == "B") board_panels[pos].BackgroundImage = Resources.wb;     // White Bishop
                     if (item == "Q") board_panels[pos].BackgroundImage = Resources.wq;     // White Queen
                     if (item == "K") board_panels[pos].BackgroundImage = Resources.wk;     // White King
+                    */
+                    pos++;
                 }
                 if (isBlackPiece)
                 {
+                    if (item == "p") // White Pawn
+                    {
+                        board[pos] = "p";
+                        board_panels[pos].BackgroundImage = Resources.bp;
+                    }
+                    if (item == "r") // White Rook
+                    {
+                        board[pos] = "r";
+                        board_panels[pos].BackgroundImage = Resources.br;
+                    }
+                    if (item == "n") // White Knight
+                    {
+                        board[pos] = "n";
+                        board_panels[pos].BackgroundImage = Resources.bn;
+                    }
+                    if (item == "b") // White Bishop
+                    {
+                        board[pos] = "b";
+                        board_panels[pos].BackgroundImage = Resources.bb;
+                    }
+                    if (item == "q") // White Queen
+                    {
+                        board[pos] = "q";
+                        board_panels[pos].BackgroundImage = Resources.bq;
+                    }
+                    if (item == "k") // White King
+                    {
+                        board[pos] = "k";
+                        board_panels[pos].BackgroundImage = Resources.bk;
+                    }
+                    /*
                     if (item == "p") board_panels[pos].BackgroundImage = Resources.bp;     // Black Pawn
                     if (item == "r") board_panels[pos].BackgroundImage = Resources.br;     // Black Rook
                     if (item == "n") board_panels[pos].BackgroundImage = Resources.bn;     // Black Knight
                     if (item == "b") board_panels[pos].BackgroundImage = Resources.bb;     // Black Bishop
                     if (item == "q") board_panels[pos].BackgroundImage = Resources.bq;     // Black Queen
                     if (item == "k") board_panels[pos].BackgroundImage = Resources.bk;     // Black King
+                    */
+                    pos++;
                 }
-                pos++;
             }
         }
 
