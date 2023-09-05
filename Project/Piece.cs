@@ -10,17 +10,23 @@ namespace DailyChessPuzzle
     internal class Piece
     {
         string piece;
+        string[] board;
         Panel[] board_panels;
-        public Piece(string fPiece, string[] board, Panel[] fBoard)
+        public Piece(string fPiece, string[] fBoard, Panel[] fBoardPanels)
         {
             piece = fPiece;
-            board_panels = fBoard;
+            board = fBoard;
+            board_panels = fBoardPanels;
         }
+
+        // Clear All Previous Legal Moves
+        // Find All Legal Moves
 
         public void PawnMovement()
         {
             bool isFirstMove;
 
+            
         }
     }
 }

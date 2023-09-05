@@ -65,6 +65,8 @@ namespace DailyChessPuzzle
             "A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2",
             "A1", "B1", "C1", "D1", "E1", "F1", "G1", "H1"
         };*/
+        
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -501,10 +503,10 @@ namespace DailyChessPuzzle
             
 
             // Rook
-
+            // N E S W
 
             // Knight
-
+            // NNE NNW EEN EES SSE SSW WWN WWS
 
             // Bishop
 
