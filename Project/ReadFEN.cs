@@ -10,18 +10,18 @@ namespace DailyChessPuzzle
     internal class ReadFEN
     {
 
-        string rank1, rank2, rank3, rank4, rank5, rank6, rank7, rank8, sideToMove, castlingAbility, enPassantAbility;
+        string Rank1, Rank2, Rank3, Rank4, Rank5, Rank6, Rank7, Rank8, sideToMove, castlingAbility, enPassantAbility;
         int halfmoveClock, fullmoveCounter;
         public ReadFEN(string[] fenSection)
         {
-            rank8 = fenSection[0];
-            rank7 = fenSection[1];
-            rank6 = fenSection[2];
-            rank5 = fenSection[3];
-            rank4 = fenSection[4];
-            rank3 = fenSection[5];
-            rank2 = fenSection[6];
-            rank1 = fenSection[7];
+            Rank8 = fenSection[0];
+            Rank7 = fenSection[1];
+            Rank6 = fenSection[2];
+            Rank5 = fenSection[3];
+            Rank4 = fenSection[4];
+            Rank3 = fenSection[5];
+            Rank2 = fenSection[6];
+            Rank1 = fenSection[7];
 
             sideToMove = fenSection[8];
             castlingAbility = fenSection[9];
@@ -30,13 +30,71 @@ namespace DailyChessPuzzle
             fullmoveCounter = Convert.ToInt32(fenSection[12]);
         }
 
-        public string Rank8 { get { return rank8; } }
-        public string Rank7 { get { return rank7; } }
-        public string Rank6 { get { return rank6; } }
-        public string Rank5 { get { return rank5; } }
-        public string Rank4 { get { return rank4; } }
-        public string Rank3 { get { return rank3; } }
-        public string Rank2 { get { return rank2; } }
-        public string Rank1 { get { return rank1; } }
+        public void Read()
+        {
+            // FEN = <Piece Placement> <Side to Move> <Castling Ability> <En Passsant Target Square> <Halfmove Clock> <Fullmove Counter>
+            string[] fenSections = Main.fen.Split('/', ' ');
+            ReadFEN readFEN = new ReadFEN(fenSections);
+
+            int count = 8;
+            List<string> fenRank = new List<string>();
+
+            while (count > 0)
+            {
+                fenRank.Clear();
+                switch (count)
+                {
+
+                    case 8:
+                        fenRank = readFEN.Rank8.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+
+                    case 7:
+                        fenRank = readFEN.Rank7.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+
+                    case 6:
+                        fenRank = readFEN.Rank6.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+
+                    case 5:
+                        fenRank = readFEN.Rank5.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+
+                    case 4:
+                        fenRank = readFEN.Rank4.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+
+                    case 3:
+                        fenRank = readFEN.Rank3.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+
+                    case 2:
+                        fenRank = readFEN.Rank2.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+
+                    case 1:
+                        fenRank = readFEN.Rank1.ToCharArray().Select(x => x.ToString()).ToList();
+                        GeneratePieces(fenRank, count);
+
+                        break;
+                }
+                count--;
+            }
+        }
     }
 }

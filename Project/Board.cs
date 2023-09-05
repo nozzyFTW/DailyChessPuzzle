@@ -27,17 +27,6 @@ namespace DailyChessPuzzle
         public Square[,] BoardArray { get; set; }
         public Panel[] board_panels { get; set; }
 
-        public void GenerateBoard()
-        {
-            for (int rank = 0; rank < 8; rank++)
-            {
-                for (int file = 0; file < 8; file++)
-                {
-                    
-                }
-            }
-        }
-
         public void NextLegalMoves(Square currentSquare, string currentPiece)
         {
             // Clear Previous Legal Moves 
