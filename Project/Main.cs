@@ -516,5 +516,10 @@ namespace DailyChessPuzzle
 
             // King
         }
+
+        private void panel25_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
