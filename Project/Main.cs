@@ -10,8 +10,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.UI;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using DailyChessPuzzle.Properties;
+using Control = System.Windows.Forms.Control;
 
 namespace DailyChessPuzzle
 {
@@ -22,39 +25,12 @@ namespace DailyChessPuzzle
             InitializeComponent();
         }
 
-        // RANK - row, FILE - col
-        int RANK_SIZE = 8;
-        int FILE_SIZE = 8;
-
         //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
         public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
 
-        string[] board = new string[64];
-        /*
-        {
-            "r", "n", "b", "q", "k", "b", "n", "r",
-            "p", "p", "p", "p", "p", "p", "p", "p",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            "P", "P", "P", "P", "P", "P", "P", "P",
-            "R", "N", "B", "Q", "K", "B", "N", "R",
-        };*/
+        public static string[] board = new string[64];
 
-       /*string[] piece_board = new string[128]
-        {
-            "r", "n", "b", "q", "k", "b", "n", "r", "x", "x", "x", "x", "x", "x", "x", "x",
-            "p", "p", "p", "p", "p", "p", "p", "p", "x", "x", "x", "x", "x", "x", "x", "x",
-            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-            "P", "P", "P", "P", "P", "P", "P", "P", "x", "x", "x", "x", "x", "x", "x", "x",
-            "R", "N", "B", "Q", "K", "B", "N", "R", "x", "x", "x", "x", "x", "x", "x", "x"
-        };*/
-
-        Panel[] board_panels = new Panel[64];
+        public static Panel[] board_panels = new Panel[64];
 
         public static string[] square_codes = new string[64]
         {
@@ -68,15 +44,34 @@ namespace DailyChessPuzzle
             "A1", "B1", "C1", "D1", "E1", "F1", "G1", "H1"
         };
         
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            GenerateBoard();
-            ReadFEN();
+            /*Board clsBoard = new Board();
+            ReadFEN clsReadFEN = new ReadFEN();*/
+
+            GenerateBoardPanels();
         }
 
-        private void GenerateBoard()
+        private void GenerateBoardPanels()
+        {
+            var panels = GetAll(this, typeof(Panel));
+
+            foreach (var panel in panels)
+            {
+                Board.panels.Add((Panel)panel);
+            }
+        }
+        public IEnumerable<Control> GetAll(Control control, Type type)
+        {
+            // Code sourced from PsychoCoder (Stack Overflow)
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
+        }
+
+        /*private void GenerateBoard()
         {
             int count = 0;
             for (int rank = 0; rank < RANK_SIZE; rank++)
@@ -451,7 +446,7 @@ namespace DailyChessPuzzle
                     if (item == "B") board_panels[pos].BackgroundImage = Resources.wb;     // White Bishop
                     if (item == "Q") board_panels[pos].BackgroundImage = Resources.wq;     // White Queen
                     if (item == "K") board_panels[pos].BackgroundImage = Resources.wk;     // White King
-                    */
+                    *//*
                     pos++;
                 }
                 if (isBlackPiece)
@@ -493,7 +488,7 @@ namespace DailyChessPuzzle
                     if (item == "b") board_panels[pos].BackgroundImage = Resources.bb;     // Black Bishop
                     if (item == "q") board_panels[pos].BackgroundImage = Resources.bq;     // Black Queen
                     if (item == "k") board_panels[pos].BackgroundImage = Resources.bk;     // Black King
-                    */
+                    *//*
                     pos++;
                 }
             }
@@ -517,6 +512,6 @@ namespace DailyChessPuzzle
 
 
             // King
-        }
+        }*/
     }
 }

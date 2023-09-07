@@ -11,19 +11,15 @@ namespace DailyChessPuzzle
     internal class Piece
     {
         string piece;
-        string[] board;
-        Panel[] board_panels;
-        public Piece(string fPiece, string[] fBoard, Panel[] fBoardPanels)
+        public Piece(string fPiece)
         {
             piece = fPiece;
-            board = fBoard;
-            board_panels = fBoardPanels;
         }
 
         // Clear All Previous Legal Moves
         // Find All Legal Moves
 
-        public void Generate(List<string> section, int rankNum)
+        public static void Generate(List<string> section, int rankNum)
         {
             int pos = 0;
 
@@ -41,7 +37,7 @@ namespace DailyChessPuzzle
                 {
                     for (int i = 0; i < Convert.ToInt32(item); i++)
                     {
-                        board[pos] = " ";
+                        Main.board[pos] = " ";
                         pos++;
                     }
                 }
@@ -50,33 +46,33 @@ namespace DailyChessPuzzle
                 {
                     if (item == "P") // White Pawn
                     {
-                        board[pos] = "P";
-                        board_panels[pos].BackgroundImage = Resources.wp;
+                        Main.board[pos] = "P";
+                        Board.board_panels[pos].BackgroundImage = Resources.wp;
                     }
                     if (item == "R") // White Rook
                     {
-                        board[pos] = "R";
-                        board_panels[pos].BackgroundImage = Resources.wr;
+                        Main.board[pos] = "R";
+                        Board.board_panels[pos].BackgroundImage = Resources.wr;
                     }
                     if (item == "N") // White Knight
                     {
-                        board[pos] = "N";
-                        board_panels[pos].BackgroundImage = Resources.wn;
+                        Main.board[pos] = "N";
+                        Board.board_panels[pos].BackgroundImage = Resources.wn;
                     }
                     if (item == "B") // White Bishop
                     {
-                        board[pos] = "B";
-                        board_panels[pos].BackgroundImage = Resources.wb;
+                        Main.board[pos] = "B";
+                        Board.board_panels[pos].BackgroundImage = Resources.wb;
                     }
                     if (item == "Q") // White Queen
                     {
-                        board[pos] = "Q";
-                        board_panels[pos].BackgroundImage = Resources.wq;
+                        Main.board[pos] = "Q";
+                        Board.board_panels[pos].BackgroundImage = Resources.wq;
                     }
                     if (item == "K") // White King
                     {
-                        board[pos] = "K";
-                        board_panels[pos].BackgroundImage = Resources.wk;
+                        Main.board[pos] = "K";
+                        Board.board_panels[pos].BackgroundImage = Resources.wk;
                     }
                 }
 
