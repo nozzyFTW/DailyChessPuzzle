@@ -10,7 +10,7 @@ namespace DailyChessPuzzle
     internal class ReadFEN
     {
 
-        string Rank1, Rank2, Rank3, Rank4, Rank5, Rank6, Rank7, Rank8, sideToMove, castlingAbility, enPassantAbility;
+        public static string Rank1, Rank2, Rank3, Rank4, Rank5, Rank6, Rank7, Rank8, sideToMove, castlingAbility, enPassantAbility;
         int halfmoveClock, fullmoveCounter;
         public ReadFEN()
         {
@@ -33,7 +33,7 @@ namespace DailyChessPuzzle
             fullmoveCounter = Convert.ToInt32(fenSections[12]);
         }
 
-        public void Read()
+        public static void Read()
         {
             int count = 8;
             List<string> fenRank = new List<string>();

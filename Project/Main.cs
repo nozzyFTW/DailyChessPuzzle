@@ -49,26 +49,58 @@ namespace DailyChessPuzzle
             /*Board clsBoard = new Board();
             ReadFEN clsReadFEN = new ReadFEN();*/
 
+
+
+            /*
+           */
+            Board clsBoard = new Board();
+            ReadFEN readFEN = new ReadFEN();
+
             GenerateBoardPanels();
+            ReadFEN.Read();
         }
 
         private void GenerateBoardPanels()
         {
-            var panels = GetAll(this, typeof(Panel));
+            //Panel[] pnlArr = new Panel[64];
+
+            foreach (Panel pnl in pnlBoard.Controls)
+            {
+                if (pnl.Tag != null)
+                {
+                    int tag = Convert.ToInt32(pnl.Tag.ToString());
+                    pnl.BackgroundImageLayout = ImageLayout.Zoom;
+                    Board.board_panels[tag] = pnl;
+                }
+
+            }
+
+            /*var panels = GetAll(pnlBoard, typeof(Panel));
 
             foreach (var panel in panels)
             {
-                Board.panels.Add((Panel)panel);
-            }
+                if (square_codes.Contains(panel.Name))
+                {
+                    panel.BackgroundImageLayout = ImageLayout.Zoom;
+                    Board.panels.Add((Panel)panel);
+                }
+            }*/
         }
         public IEnumerable<Control> GetAll(Control control, Type type)
         {
             // Code sourced from PsychoCoder (Stack Overflow)
+            
+            
             var controls = control.Controls.Cast<Control>();
 
-            return controls.SelectMany(ctrl => GetAll(ctrl, type))
-                                      .Concat(controls)
-                                      .Where(c => c.GetType() == type);
+            var x = controls.SelectMany(ctrl => GetAll(ctrl, type));
+            x = controls.Concat(controls);
+            x = controls.Where(c => c.GetType() == type);
+
+            return x;
+            /*return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                           .Concat(controls)
+                           .Where(c => c.GetType() == type);*/
         }
 
         /*private void GenerateBoard()

@@ -47,32 +47,32 @@ namespace DailyChessPuzzle
                     if (item == "P") // White Pawn
                     {
                         Main.board[pos] = "P";
-                        Board.board_panels[pos].BackgroundImage = Resources.wp;
+                        Board.panels[pos].BackgroundImage = Resources.wp;
                     }
                     if (item == "R") // White Rook
                     {
                         Main.board[pos] = "R";
-                        Board.board_panels[pos].BackgroundImage = Resources.wr;
+                        Board.panels[pos].BackgroundImage = Resources.wr;
                     }
                     if (item == "N") // White Knight
                     {
                         Main.board[pos] = "N";
-                        Board.board_panels[pos].BackgroundImage = Resources.wn;
+                        Board.panels[pos].BackgroundImage = Resources.wn;
                     }
                     if (item == "B") // White Bishop
                     {
                         Main.board[pos] = "B";
-                        Board.board_panels[pos].BackgroundImage = Resources.wb;
+                        Board.panels[pos].BackgroundImage = Resources.wb;
                     }
                     if (item == "Q") // White Queen
                     {
                         Main.board[pos] = "Q";
-                        Board.board_panels[pos].BackgroundImage = Resources.wq;
+                        Board.panels[pos].BackgroundImage = Resources.wq;
                     }
                     if (item == "K") // White King
                     {
                         Main.board[pos] = "K";
-                        Board.board_panels[pos].BackgroundImage = Resources.wk;
+                        Board.panels[pos].BackgroundImage = Resources.wk;
                     }
                 }
 
