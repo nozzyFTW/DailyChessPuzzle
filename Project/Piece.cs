@@ -116,6 +116,7 @@ namespace DailyChessPuzzle
 
         public static void Move(string square, int currentPos)
         {
+            int newPos;
             bool isPawnFirstMove = false;
             if (piece == "P")
             {
@@ -125,9 +126,23 @@ namespace DailyChessPuzzle
                 }
 
                 // If first move for pawn, is pawn blocked from moving forward 2? No, allow piece to move forward 2 squares. Yes, Can piece be moved 1 square?
+                if (Main.board[currentPos - 8] == " ")
+                {
+                    newPos = currentPos - 8;
+                    Board.board_panels[newPos].
+                    if (isPawnFirstMove && Main.board[currentPos - 16] == " ")
+                    {
+                        newPos = currentPos - 16;
+
+                    }
+                    
+                }
                 if (isPawnFirstMove)
                 {
-                    
+                    if (Main.board[currentPos - 8] == " " && Main.board[currentPos - 16] == " ")
+                    {
+
+                    }
                 }
             }
 
