@@ -10,7 +10,7 @@ namespace DailyChessPuzzle
 {
     internal class Piece
     {
-        string piece;
+        public static string piece;
         public Piece(string fPiece)
         {
             piece = fPiece;
@@ -47,40 +47,124 @@ namespace DailyChessPuzzle
                     if (item == "P") // White Pawn
                     {
                         Main.board[pos] = "P";
-                        Board.panels[pos].BackgroundImage = Resources.wp;
+                        Board.board_panels[pos].BackgroundImage = Resources.wp;
                     }
                     if (item == "R") // White Rook
                     {
                         Main.board[pos] = "R";
-                        Board.panels[pos].BackgroundImage = Resources.wr;
+                        Board.board_panels[pos].BackgroundImage = Resources.wr;
                     }
                     if (item == "N") // White Knight
                     {
                         Main.board[pos] = "N";
-                        Board.panels[pos].BackgroundImage = Resources.wn;
+                        Board.board_panels[pos].BackgroundImage = Resources.wn;
                     }
                     if (item == "B") // White Bishop
                     {
                         Main.board[pos] = "B";
-                        Board.panels[pos].BackgroundImage = Resources.wb;
+                        Board.board_panels[pos].BackgroundImage = Resources.wb;
                     }
                     if (item == "Q") // White Queen
                     {
                         Main.board[pos] = "Q";
-                        Board.panels[pos].BackgroundImage = Resources.wq;
+                        Board.board_panels[pos].BackgroundImage = Resources.wq;
                     }
                     if (item == "K") // White King
                     {
                         Main.board[pos] = "K";
-                        Board.panels[pos].BackgroundImage = Resources.wk;
+                        Board.board_panels[pos].BackgroundImage = Resources.wk;
                     }
+                    pos++;
                 }
 
                 if (isBlack)
                 {
-
+                    if (item == "p") // Black Pawn
+                    {
+                        Main.board[pos] = "p";
+                        Board.board_panels[pos].BackgroundImage = Resources.bp;
+                    }
+                    if (item == "r") // Black Rook
+                    {
+                        Main.board[pos] = "r";
+                        Board.board_panels[pos].BackgroundImage = Resources.br;
+                    }
+                    if (item == "n") // Black Knight
+                    {
+                        Main.board[pos] = "n";
+                        Board.board_panels[pos].BackgroundImage = Resources.bn;
+                    }
+                    if (item == "b") // Black Bishop
+                    {
+                        Main.board[pos] = "b";
+                        Board.board_panels[pos].BackgroundImage = Resources.bb;
+                    }
+                    if (item == "q") // Black Queen
+                    {
+                        Main.board[pos] = "q";
+                        Board.board_panels[pos].BackgroundImage = Resources.bq;
+                    }
+                    if (item == "k") // Black King
+                    {
+                        Main.board[pos] = "k";
+                        Board.board_panels[pos].BackgroundImage = Resources.bk;
+                    }
+                    pos++;
                 }
             }
+        }
+
+        public static void Move(string square, int currentPos)
+        {
+            bool isPawnFirstMove = false;
+            if (piece == "P")
+            {
+                if (Board.startingPos[currentPos] == piece)
+                {
+                    isPawnFirstMove = true;
+                }
+
+                // If first move for pawn, is pawn blocked from moving forward 2? No, allow piece to move forward 2 squares. Yes, Can piece be moved 1 square?
+                if (isPawnFirstMove)
+                {
+                    
+                }
+            }
+
+            if (piece == "p")
+            {
+
+            }
+
+            if (piece == "R" || piece == "r")
+            {
+                // N
+
+                // E
+
+                // S
+
+                // W
+            }
+
+            if (piece == "N" || piece == "n")
+            {
+                // NNE
+
+                // NNW
+
+                // EEN
+
+                // EES
+
+                // SSE
+
+                // SSW
+
+                // WWN
+
+                // WWS
+        }
         }
     }
 }

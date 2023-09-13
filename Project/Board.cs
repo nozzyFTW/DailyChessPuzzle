@@ -13,6 +13,18 @@ namespace DailyChessPuzzle
     internal class Board
     {
         public static List<Panel> panels = new List<Panel>();
+
+        public static string[] startingPos = new string[64]
+        {
+            "r", "n", "b", "q", "k", "b", "n", "r",
+            "p", "p", "p", "p", "p", "p", "p", "p",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            " ", " ", " ", " ", " ", " ", " ", " ",
+            "P", "P", "P", "P", "P", "P", "P", "P",
+            "R", "N", "B", "Q", "K", "B", "N", "R"
+        };
         public Board()
         {
             // Creates a 2D array of squares on the board 
@@ -26,12 +38,6 @@ namespace DailyChessPuzzle
                 {
                     BoardArray[rank, file] = new Square(rank, file);
                 }
-            }
-
-            // Initiate Board Panels
-            foreach (string square in Main.square_codes)
-            {
-                
             }
         }
 
