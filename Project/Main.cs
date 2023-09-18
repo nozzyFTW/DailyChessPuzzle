@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -13,6 +14,9 @@ namespace DailyChessPuzzle
 
         //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
         public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
+
+        private static bool pastPieceClicked = false;
+        private static bool isNewMove = true;
 
         public static string[] board = new string[64];
 
@@ -57,11 +61,13 @@ namespace DailyChessPuzzle
 
         private void Square_Click(object sender, EventArgs e)
         {
+            if (isNewMove) isNewMove = false;
+
             Control control = (Control)sender;
             string name = control.Name;
             int currentPos = Convert.ToInt32(control.Tag.ToString());
 
-            string piece = control.BackgroundImage.ToString();
+            string piece = control.BackgroundImage.Tag.ToString();
             Piece clsPiece = new Piece(piece);
 
             Piece.Move(name, currentPos);
