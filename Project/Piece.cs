@@ -11,10 +11,14 @@ namespace DailyChessPuzzle
     internal class Piece
     {
         public static string piece;
+        public static bool isLegalMove;
 
         public Piece(string fPiece)
         {
-            piece = fPiece;
+            if (fPiece != null)
+            {
+                piece = fPiece;
+            }
         }
 
         // Clear All Previous Legal Moves
@@ -127,72 +131,147 @@ namespace DailyChessPuzzle
             }
         }
 
-        public static void Move(string square, int currentPos)
+        public static void Move(string prevPiece, int currentPos, int prevPos, bool isMoved)
         {
             int newPos;
             bool isPawnFirstMove = false;
-            if (piece == "P")
-            {
-                if (Board.startingPos[currentPos] == piece)
-                {
-                    isPawnFirstMove = true;
-                }
 
-                // If first move for pawn, is pawn blocked from moving forward 2? No, allow piece to move forward 2 squares. Yes, Can piece be moved 1 square?
-                if (Main.board[currentPos - 8] == " ")
+            if (isMoved)
+            {
+                if (Board.board_panels[currentPos].BackgroundImage.Tag.ToString() == "legal")
                 {
-                    newPos = currentPos - 8;
-                    Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                    if (isPawnFirstMove && Main.board[currentPos - 16] == " ")
+                    if (prevPiece == "P")
                     {
-                        newPos = currentPos - 16;
+                        Board.board_panels[prevPos].BackgroundImage = null;
+                        if (Main.board[prevPos - 8] == " ")
+                        {
+                            Board.board_panels[prevPos - 8].BackgroundImage = null;
+                            if (Main.board[prevPos - 16] == " ")
+                            {
+                                Board.board_panels[prevPos - 16].BackgroundImage = null;
+                            }
+                        }
+
+                        Board.board_panels[currentPos].BackgroundImage = Resources.wp;
+                        Main.board[prevPos] = " ";
+                        Main.board[currentPos] = "P";
+                    }
+
+                    if (prevPiece == "N")
+                    {
+                        Board.board_panels[prevPos].BackgroundImage = null;
+                        if (Main.board[prevPos - 15] == " ") Board.board_panels[prevPos - 15].BackgroundImage = null;
+                        if (Main.board[prevPos - 17] == " ") Board.board_panels[prevPos - 17].BackgroundImage = null;
+                        if (Main.board[prevPos - 6] == " ") Board.board_panels[prevPos - 6].BackgroundImage = null;
+                        if (Main.board[prevPos + 10] == " ") Board.board_panels[prevPos + 10].BackgroundImage = null;
+                        if (Main.board[prevPos + 17] == " ") Board.board_panels[prevPos + 17].BackgroundImage = null;
+                        if (Main.board[prevPos + 15] == " ") Board.board_panels[prevPos + 15].BackgroundImage = null;
+                        if (Main.board[prevPos - 10] == " ") Board.board_panels[prevPos - 10].BackgroundImage = null;
+                        if (Main.board[prevPos + 6] == " ") Board.board_panels[prevPos + 6].BackgroundImage = null;
+
+                        Board.board_panels[currentPos].BackgroundImage = Resources.wn;
+                        Main.board[prevPos] = " ";
+                        Main.board[currentPos] = "R";
+                    }
+                }
+            }
+            else
+            {
+                if (piece == "P")
+                {
+                    if (Board.startingPos[currentPos] == piece)
+                    {
+                        isPawnFirstMove = true;
+                    }
+
+                    // If first move for pawn, is pawn blocked from moving forward 2? No, allow piece to move forward 2 squares. Yes, Can piece be moved 1 square?
+                    if (Main.board[currentPos - 8] == " ")
+                    {
+                        newPos = currentPos - 8;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                        if (isPawnFirstMove && Main.board[currentPos - 16] == " ")
+                        {
+                            newPos = currentPos - 16;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                        }
+
                     }
-                    
                 }
-                if (isPawnFirstMove)
+
+                if (piece == "N")
                 {
-                    if (Main.board[currentPos - 8] == " " && Main.board[currentPos - 16] == " ")
+                    // NNE - 2 UP, 1 RIGHT
+                    if (Main.board[currentPos - 15] == " ")
                     {
+                        newPos = currentPos - 15;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                    }
 
+                    // NNW - 2 UP, 1 LEFT
+                    if (Main.board[currentPos - 17] == " ")
+                    {
+                        newPos = currentPos - 17;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                    }
+
+                    // EEN - 2 RIGHT, 1 UP
+                    if (Main.board[currentPos - 6] == " ")
+                    {
+                        newPos = currentPos - 6;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                    }
+
+                    // EES - 2 RIGHT, 1 DOWN
+                    if (Main.board[currentPos + 10] == " ")
+                    {
+                        newPos = currentPos + 10;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                    }
+
+                    // SSE - 2 DOWN, 1 RIGHT
+                    if (Main.board[currentPos + 17] == " ")
+                    {
+                        newPos = currentPos + 17;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                    }
+
+                    // SSW - 2 DOWN, 1 LEFT
+                    if (Main.board[currentPos + 15] == " ")
+                    {
+                        newPos = currentPos + 15;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                    }
+
+                    // WWN - 2 LEFT, 1 UP
+                    if (Main.board[currentPos - 10] == " ")
+                    {
+                        newPos = currentPos - 10;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                    }
+
+                    // WWS - 2 LEFT, 1 DOWN 
+                    if (Main.board[currentPos + 6] == " ")
+                    {
+                        newPos = currentPos + 6;
+                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                     }
                 }
+
+                if (piece == "K")
+                {
+
+                }
             }
-
-            if (piece == "p")
-            {
-
-            }
-
-            if (piece == "R" || piece == "r")
-            {
-                // N
-
-                // E
-
-                // S
-
-                // W
-            }
-
-            if (piece == "N" || piece == "n")
-            {
-                // NNE
-
-                // NNW
-
-                // EEN
-
-                // EES
-
-                // SSE
-
-                // SSW
-
-                // WWN
-
-                // WWS
-        }
         }
     }
 }

@@ -16,7 +16,10 @@ namespace DailyChessPuzzle
         public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
 
         private static bool pastPieceClicked = false;
-        private static bool isNewMove = true;
+        private static bool isNewPiece = true;
+        private static bool isPieceMoved = false;
+        public static int prevPos;
+        public static string prevPiece;
 
         public static string[] board = new string[64];
 
@@ -61,16 +64,43 @@ namespace DailyChessPuzzle
 
         private void Square_Click(object sender, EventArgs e)
         {
-            if (isNewMove) isNewMove = false;
+            string piece;
 
             Control control = (Control)sender;
-            string name = control.Name;
             int currentPos = Convert.ToInt32(control.Tag.ToString());
 
-            string piece = control.BackgroundImage.Tag.ToString();
+            try
+            {
+                piece = control.BackgroundImage.Tag.ToString();
+                
+            }
+            catch (NullReferenceException)
+            {
+                piece = null;
+            }
+
             Piece clsPiece = new Piece(piece);
 
-            Piece.Move(name, currentPos);
+            switch (isNewPiece)
+            {
+                case true:
+                    isPieceMoved = false;
+                    prevPos = currentPos;
+                    prevPiece = piece;
+                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    isNewPiece = false;
+
+                    break;
+
+                case false:
+                    isPieceMoved = true;
+                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    isNewPiece = true;
+                    
+                    break;
+            }
+
+            
         }
     }
 }

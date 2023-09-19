@@ -224,7 +224,6 @@
             // G2
             // 
             this.G2.BackColor = System.Drawing.Color.PeachPuff;
-            this.G2.BackgroundImage = global::DailyChessPuzzle.Properties.Resources.bb;
             this.G2.Location = new System.Drawing.Point(453, 456);
             this.G2.Name = "G2";
             this.G2.Size = new System.Drawing.Size(75, 75);
