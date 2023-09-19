@@ -146,11 +146,9 @@ namespace DailyChessPuzzle
                         if (Main.board[prevPos - 8] == " ")
                         {
                             Board.board_panels[prevPos - 8].BackgroundImage = null;
-                            Board.board_panels[prevPos - 8].BackgroundImage.Tag = null;
                             if (Main.board[prevPos - 16] == " ")
                             {
                                 Board.board_panels[prevPos - 16].BackgroundImage = null;
-                                Board.board_panels[prevPos - 16].BackgroundImage.Tag = null;
                             }
                         }
 
@@ -165,47 +163,115 @@ namespace DailyChessPuzzle
                         if (Main.board[prevPos - 15] == " ")
                         {
                             Board.board_panels[prevPos - 15].BackgroundImage = null;
-                            Board.board_panels[prevPos - 15].BackgroundImage.Tag = null;
                         }
                         if (Main.board[prevPos - 17] == " ")
                         {
                             Board.board_panels[prevPos - 17].BackgroundImage = null;
-                            Board.board_panels[prevPos - 17].BackgroundImage.Tag = null;
                         }
                         if (Main.board[prevPos - 6] == " ")
                         {
                             Board.board_panels[prevPos - 6].BackgroundImage = null;
-                            Board.board_panels[prevPos - 6].BackgroundImage.Tag = null;
                         }
                         if (Main.board[prevPos + 10] == " ")
                         {
                             Board.board_panels[prevPos + 10].BackgroundImage = null;
-                            Board.board_panels[prevPos + 10].BackgroundImage.Tag = null;
                         }
                         if (Main.board[prevPos + 17] == " ")
                         {
                             Board.board_panels[prevPos + 17].BackgroundImage = null;
-                            Board.board_panels[prevPos + 17].BackgroundImage.Tag = null;
                         }
                         if (Main.board[prevPos + 15] == " ")
                         {
                             Board.board_panels[prevPos + 15].BackgroundImage = null;
-                            Board.board_panels[prevPos + 15].BackgroundImage.Tag = null;
                         }
                         if (Main.board[prevPos - 10] == " ")
                         {
                             Board.board_panels[prevPos - 10].BackgroundImage = null;
-                            Board.board_panels[prevPos - 10].BackgroundImage.Tag = null;
                         }
                         if (Main.board[prevPos + 6] == " ")
                         {
                             Board.board_panels[prevPos + 6].BackgroundImage = null;
-                            Board.board_panels[prevPos + 6].BackgroundImage.Tag = null;
                         }
 
                         Board.board_panels[currentPos].BackgroundImage = Resources.wn;
                         Main.board[prevPos] = " ";
-                        Main.board[currentPos] = "R";
+                        Main.board[currentPos] = "N";
+                    }
+
+                    if (prevPiece == "K")
+                    {
+                        Board.board_panels[prevPos].BackgroundImage = null;
+                        try
+                        {
+                            if (Main.board[currentPos - 9] == " ")
+                            {
+                                Board.board_panels[prevPos - 9].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                        try
+                        {
+                            if (Main.board[currentPos - 8] == " ")
+                            {
+                                Board.board_panels[prevPos - 8].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                        try
+                        {
+                            if (Main.board[currentPos - 7] == " ")
+                            {
+                                Board.board_panels[prevPos - 7].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                        try
+                        {
+                            if (Main.board[currentPos - 1] == " ")
+                            {
+                                Board.board_panels[prevPos - 1].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                        try
+                        {
+                            if (Main.board[currentPos + 1] == " ")
+                            {
+                                Board.board_panels[prevPos + 1].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                        try
+                        {
+                            if (Main.board[currentPos + 9] == " ")
+                            {
+                                Board.board_panels[prevPos + 9].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                        try
+                        {
+                            if (Main.board[currentPos + 8] == " ")
+                            {
+                                Board.board_panels[prevPos + 8].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                        try
+                        {
+                            if (Main.board[currentPos + 7] == " ")
+                            {
+                                Board.board_panels[prevPos + 7].BackgroundImage = null;
+                            }
+                        }
+                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
                     }
                 }
             }
