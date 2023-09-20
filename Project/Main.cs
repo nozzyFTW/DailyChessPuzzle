@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace DailyChessPuzzle
@@ -15,9 +13,9 @@ namespace DailyChessPuzzle
         //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
         public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
 
-        private static bool pastPieceClicked = false;
         private static bool isNewPiece = true;
         private static bool isPieceMoved = false;
+        private static Control prevControl;
         public static int prevPos;
         public static string prevPiece;
 
@@ -81,12 +79,45 @@ namespace DailyChessPuzzle
 
             Piece clsPiece = new Piece(piece);
 
-            switch (isNewPiece)
+            //bool notPrevControl = (prevControl != null) || (prevControl.Tag != control.Tag);
+            bool notLegalMove = (control.BackgroundImage.Tag.ToString() != null) && (control.BackgroundImage.Tag.ToString() != "legal");
+
+            if (prevControl != null)
+            {
+                if (prevControl.Tag != control.Tag && notLegalMove)
+                {
+                    
+                    isPieceMoved = false;
+                    prevPos = currentPos;
+                    prevPiece = piece;
+                    prevControl = control;
+                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    isNewPiece = false;
+                }
+                else
+                {
+                    isPieceMoved = true;
+                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    isNewPiece = true;
+                }
+            }
+            else
+            {
+                isPieceMoved = false;
+                prevPos = currentPos;
+                prevPiece = piece;
+                prevControl = control;
+                Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                isNewPiece = false;
+            }
+
+            /*switch (isNewPiece)
             {
                 case true:
                     isPieceMoved = false;
                     prevPos = currentPos;
                     prevPiece = piece;
+                    prevControl = control;
                     Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
                     isNewPiece = false;
 
@@ -98,9 +129,11 @@ namespace DailyChessPuzzle
                     isNewPiece = true;
                     
                     break;
-            }
+            }*/
 
             
         }
+
+        private void 
     }
 }
