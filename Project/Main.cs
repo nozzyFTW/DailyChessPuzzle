@@ -34,6 +34,8 @@ namespace DailyChessPuzzle
             "A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2",
             "A1", "B1", "C1", "D1", "E1", "F1", "G1", "H1"
         };
+
+        public static string[] legal_board = new string[64];
         
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -84,21 +86,21 @@ namespace DailyChessPuzzle
 
             if (prevControl != null)
             {
-                if (prevControl.Tag != control.Tag && notLegalMove)
+                if (control.BackgroundImage != null)
                 {
-                    
-                    isPieceMoved = false;
-                    prevPos = currentPos;
-                    prevPiece = piece;
-                    prevControl = control;
-                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
-                    isNewPiece = false;
-                }
-                else
-                {
-                    isPieceMoved = true;
-                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
-                    isNewPiece = true;
+                    if (prevControl.Tag != control.Tag && notLegalMove)
+                    {
+                        isPieceMoved = false;
+                        prevPos = currentPos;
+                        prevPiece = piece;
+                        prevControl = control;
+                        Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    }
+                    else
+                    {
+                        isPieceMoved = true;
+                        Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    }
                 }
             }
             else
@@ -108,7 +110,6 @@ namespace DailyChessPuzzle
                 prevPiece = piece;
                 prevControl = control;
                 Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
-                isNewPiece = false;
             }
 
             /*switch (isNewPiece)
@@ -133,7 +134,5 @@ namespace DailyChessPuzzle
 
             
         }
-
-        private void 
     }
 }
