@@ -116,7 +116,6 @@ namespace DailyChessPuzzle
                     isPieceMoved = false;
                     prevPiece = piece;
                     prevPos = currentPos;
-                    prevControl = control;
                     Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
                 }
                 else

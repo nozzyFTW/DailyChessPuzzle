@@ -248,7 +248,7 @@
             this.H6.Name = "H6";
             this.H6.Size = new System.Drawing.Size(75, 75);
             this.H6.TabIndex = 24;
-            this.H6.Tag = "23";
+            this.H6.Tag = "39";
             this.H6.Click += new System.EventHandler(this.Square_Click);
             // 
             // F6
@@ -258,7 +258,7 @@
             this.F6.Name = "F6";
             this.F6.Size = new System.Drawing.Size(75, 75);
             this.F6.TabIndex = 22;
-            this.F6.Tag = "21";
+            this.F6.Tag = "37";
             this.F6.Click += new System.EventHandler(this.Square_Click);
             // 
             // D6
@@ -268,7 +268,7 @@
             this.D6.Name = "D6";
             this.D6.Size = new System.Drawing.Size(75, 75);
             this.D6.TabIndex = 20;
-            this.D6.Tag = "19";
+            this.D6.Tag = "35";
             this.D6.Click += new System.EventHandler(this.Square_Click);
             // 
             // B6
@@ -278,7 +278,7 @@
             this.B6.Name = "B6";
             this.B6.Size = new System.Drawing.Size(75, 75);
             this.B6.TabIndex = 18;
-            this.B6.Tag = "17";
+            this.B6.Tag = "33";
             this.B6.Click += new System.EventHandler(this.Square_Click);
             // 
             // A6
@@ -288,7 +288,7 @@
             this.A6.Name = "A6";
             this.A6.Size = new System.Drawing.Size(75, 75);
             this.A6.TabIndex = 17;
-            this.A6.Tag = "16";
+            this.A6.Tag = "32";
             this.A6.Click += new System.EventHandler(this.Square_Click);
             // 
             // C6
@@ -298,7 +298,7 @@
             this.C6.Name = "C6";
             this.C6.Size = new System.Drawing.Size(75, 75);
             this.C6.TabIndex = 19;
-            this.C6.Tag = "18";
+            this.C6.Tag = "34";
             this.C6.Click += new System.EventHandler(this.Square_Click);
             // 
             // G6
@@ -308,7 +308,7 @@
             this.G6.Name = "G6";
             this.G6.Size = new System.Drawing.Size(75, 75);
             this.G6.TabIndex = 23;
-            this.G6.Tag = "22";
+            this.G6.Tag = "38";
             this.G6.Click += new System.EventHandler(this.Square_Click);
             // 
             // E6
@@ -318,7 +318,7 @@
             this.E6.Name = "E6";
             this.E6.Size = new System.Drawing.Size(75, 75);
             this.E6.TabIndex = 21;
-            this.E6.Tag = "20";
+            this.E6.Tag = "36";
             this.E6.Click += new System.EventHandler(this.Square_Click);
             // 
             // G8
@@ -458,7 +458,7 @@
             this.G4.Name = "G4";
             this.G4.Size = new System.Drawing.Size(75, 75);
             this.G4.TabIndex = 39;
-            this.G4.Tag = "38";
+            this.G4.Tag = "70";
             this.G4.Click += new System.EventHandler(this.Square_Click);
             // 
             // H1
@@ -468,7 +468,7 @@
             this.H1.Name = "H1";
             this.H1.Size = new System.Drawing.Size(75, 75);
             this.H1.TabIndex = 64;
-            this.H1.Tag = "63";
+            this.H1.Tag = "119";
             this.H1.Click += new System.EventHandler(this.Square_Click);
             // 
             // H3
@@ -488,7 +488,7 @@
             this.G5.Name = "G5";
             this.G5.Size = new System.Drawing.Size(75, 75);
             this.G5.TabIndex = 31;
-            this.G5.Tag = "30";
+            this.G5.Tag = "54";
             this.G5.Click += new System.EventHandler(this.Square_Click);
             // 
             // F1
@@ -518,7 +518,7 @@
             this.A3.Name = "A3";
             this.A3.Size = new System.Drawing.Size(75, 75);
             this.A3.TabIndex = 41;
-            this.A3.Tag = "40";
+            this.A3.Tag = "90";
             this.A3.Click += new System.EventHandler(this.Square_Click);
             // 
             // A2
@@ -548,7 +548,7 @@
             this.H4.Name = "H4";
             this.H4.Size = new System.Drawing.Size(75, 75);
             this.H4.TabIndex = 40;
-            this.H4.Tag = "39";
+            this.H4.Tag = "71";
             this.H4.Click += new System.EventHandler(this.Square_Click);
             // 
             // B3
@@ -568,7 +568,7 @@
             this.G7.Name = "G7";
             this.G7.Size = new System.Drawing.Size(75, 75);
             this.G7.TabIndex = 15;
-            this.G7.Tag = "14";
+            this.G7.Tag = "22";
             this.G7.Click += new System.EventHandler(this.Square_Click);
             // 
             // C1
@@ -598,7 +598,7 @@
             this.F4.Name = "F4";
             this.F4.Size = new System.Drawing.Size(75, 75);
             this.F4.TabIndex = 38;
-            this.F4.Tag = "37";
+            this.F4.Tag = "69";
             this.F4.Click += new System.EventHandler(this.Square_Click);
             // 
             // D1
@@ -628,7 +628,7 @@
             this.H5.Name = "H5";
             this.H5.Size = new System.Drawing.Size(75, 75);
             this.H5.TabIndex = 32;
-            this.H5.Tag = "31";
+            this.H5.Tag = "55";
             this.H5.Click += new System.EventHandler(this.Square_Click);
             // 
             // D3
@@ -648,7 +648,7 @@
             this.A4.Name = "A4";
             this.A4.Size = new System.Drawing.Size(75, 75);
             this.A4.TabIndex = 33;
-            this.A4.Tag = "32";
+            this.A4.Tag = "64";
             this.A4.Click += new System.EventHandler(this.Square_Click);
             // 
             // H8
@@ -668,7 +668,7 @@
             this.B4.Name = "B4";
             this.B4.Size = new System.Drawing.Size(75, 75);
             this.B4.TabIndex = 34;
-            this.B4.Tag = "33";
+            this.B4.Tag = "65";
             this.B4.Click += new System.EventHandler(this.Square_Click);
             // 
             // F5
@@ -678,7 +678,7 @@
             this.F5.Name = "F5";
             this.F5.Size = new System.Drawing.Size(75, 75);
             this.F5.TabIndex = 30;
-            this.F5.Tag = "29";
+            this.F5.Tag = "53";
             this.F5.Click += new System.EventHandler(this.Square_Click);
             // 
             // E4
@@ -688,7 +688,7 @@
             this.E4.Name = "E4";
             this.E4.Size = new System.Drawing.Size(75, 75);
             this.E4.TabIndex = 37;
-            this.E4.Tag = "36";
+            this.E4.Tag = "68";
             this.E4.Click += new System.EventHandler(this.Square_Click);
             // 
             // H7
@@ -698,7 +698,7 @@
             this.H7.Name = "H7";
             this.H7.Size = new System.Drawing.Size(75, 75);
             this.H7.TabIndex = 16;
-            this.H7.Tag = "15";
+            this.H7.Tag = "23";
             this.H7.Click += new System.EventHandler(this.Square_Click);
             // 
             // C4
@@ -708,7 +708,7 @@
             this.C4.Name = "C4";
             this.C4.Size = new System.Drawing.Size(75, 75);
             this.C4.TabIndex = 35;
-            this.C4.Tag = "34";
+            this.C4.Tag = "66";
             this.C4.Click += new System.EventHandler(this.Square_Click);
             // 
             // A5
@@ -718,7 +718,7 @@
             this.A5.Name = "A5";
             this.A5.Size = new System.Drawing.Size(75, 75);
             this.A5.TabIndex = 25;
-            this.A5.Tag = "24";
+            this.A5.Tag = "48";
             this.A5.Click += new System.EventHandler(this.Square_Click);
             // 
             // D4
@@ -728,7 +728,7 @@
             this.D4.Name = "D4";
             this.D4.Size = new System.Drawing.Size(75, 75);
             this.D4.TabIndex = 36;
-            this.D4.Tag = "35";
+            this.D4.Tag = "67";
             this.D4.Click += new System.EventHandler(this.Square_Click);
             // 
             // F7
@@ -738,7 +738,7 @@
             this.F7.Name = "F7";
             this.F7.Size = new System.Drawing.Size(75, 75);
             this.F7.TabIndex = 14;
-            this.F7.Tag = "13";
+            this.F7.Tag = "21";
             this.F7.Click += new System.EventHandler(this.Square_Click);
             // 
             // B5
@@ -748,7 +748,7 @@
             this.B5.Name = "B5";
             this.B5.Size = new System.Drawing.Size(75, 75);
             this.B5.TabIndex = 26;
-            this.B5.Tag = "25";
+            this.B5.Tag = "49";
             this.B5.Click += new System.EventHandler(this.Square_Click);
             // 
             // A7
@@ -758,7 +758,7 @@
             this.A7.Name = "A7";
             this.A7.Size = new System.Drawing.Size(75, 75);
             this.A7.TabIndex = 9;
-            this.A7.Tag = "8";
+            this.A7.Tag = "16";
             this.A7.Click += new System.EventHandler(this.Square_Click);
             // 
             // E5
@@ -768,7 +768,7 @@
             this.E5.Name = "E5";
             this.E5.Size = new System.Drawing.Size(75, 75);
             this.E5.TabIndex = 29;
-            this.E5.Tag = "28";
+            this.E5.Tag = "52";
             this.E5.Click += new System.EventHandler(this.Square_Click);
             // 
             // B7
@@ -778,7 +778,7 @@
             this.B7.Name = "B7";
             this.B7.Size = new System.Drawing.Size(75, 75);
             this.B7.TabIndex = 10;
-            this.B7.Tag = "9";
+            this.B7.Tag = "17";
             this.B7.Click += new System.EventHandler(this.Square_Click);
             // 
             // C5
@@ -788,7 +788,7 @@
             this.C5.Name = "C5";
             this.C5.Size = new System.Drawing.Size(75, 75);
             this.C5.TabIndex = 27;
-            this.C5.Tag = "26";
+            this.C5.Tag = "50";
             this.C5.Click += new System.EventHandler(this.Square_Click);
             // 
             // E7
@@ -798,7 +798,7 @@
             this.E7.Name = "E7";
             this.E7.Size = new System.Drawing.Size(75, 75);
             this.E7.TabIndex = 13;
-            this.E7.Tag = "12";
+            this.E7.Tag = "20";
             this.E7.Click += new System.EventHandler(this.Square_Click);
             // 
             // D5
@@ -808,7 +808,7 @@
             this.D5.Name = "D5";
             this.D5.Size = new System.Drawing.Size(75, 75);
             this.D5.TabIndex = 28;
-            this.D5.Tag = "27";
+            this.D5.Tag = "51";
             this.D5.Click += new System.EventHandler(this.Square_Click);
             // 
             // C7
@@ -818,7 +818,7 @@
             this.C7.Name = "C7";
             this.C7.Size = new System.Drawing.Size(75, 75);
             this.C7.TabIndex = 11;
-            this.C7.Tag = "10";
+            this.C7.Tag = "18";
             this.C7.Click += new System.EventHandler(this.Square_Click);
             // 
             // D7
@@ -828,7 +828,7 @@
             this.D7.Name = "D7";
             this.D7.Size = new System.Drawing.Size(75, 75);
             this.D7.TabIndex = 12;
-            this.D7.Tag = "11";
+            this.D7.Tag = "19";
             this.D7.Click += new System.EventHandler(this.Square_Click);
             // 
             // pictureBox1
