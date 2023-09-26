@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Web;
 using System.Windows.Forms;
 
 namespace DailyChessPuzzle
@@ -13,13 +15,23 @@ namespace DailyChessPuzzle
         //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
         public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
 
-        private static bool isNewPiece = true;
         private static bool isPieceMoved = false;
-        private static Control prevControl;
         public static int prevPos;
         public static string prevPiece;
 
         public static string[] board = new string[64];
+
+        public static string[] _board = new string[128]
+        {
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
+        };
 
         public static Panel[] board_panels = new Panel[64];
 
@@ -81,58 +93,38 @@ namespace DailyChessPuzzle
 
             Piece clsPiece = new Piece(piece);
 
-            //bool notPrevControl = (prevControl != null) || (prevControl.Tag != control.Tag);
-            bool notLegalMove = (control.BackgroundImage.Tag.ToString() != null) && (control.BackgroundImage.Tag.ToString() != "legal");
 
-            if (prevControl != null)
+            // Square clicked, check if piece or tile clicked, if tile - check if tag = legal, if piece - check if new piece - deactivate previous legal moves and generate new legal move markers
+            if (control.BackgroundImage != null)
             {
-                if (control.BackgroundImage != null)
+                if (control.BackgroundImage.Tag.ToString() != "legal")
                 {
-                    if (prevControl.Tag != control.Tag && notLegalMove)
+                    // Clear Previous Legal Move Flags
+                    foreach (var c in pnlBoard.Controls.OfType<Panel>())
                     {
-                        isPieceMoved = false;
-                        prevPos = currentPos;
-                        prevPiece = piece;
-                        prevControl = control;
-                        Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                        if (c.BackgroundImage != null)
+                        {
+                            if (c.BackgroundImage.Tag.ToString() == "legal")
+                            {
+                                c.BackgroundImage = null;
+                            }
+                        }
                     }
-                    else
-                    {
-                        isPieceMoved = true;
-                        Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
-                    }
-                }
-            }
-            else
-            {
-                isPieceMoved = false;
-                prevPos = currentPos;
-                prevPiece = piece;
-                prevControl = control;
-                Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
-            }
+                    Array.Clear(legal_board, 0, legal_board.Length);
 
-            /*switch (isNewPiece)
-            {
-                case true:
+                    // Piece Clicked
                     isPieceMoved = false;
-                    prevPos = currentPos;
                     prevPiece = piece;
+                    prevPos = currentPos;
                     prevControl = control;
                     Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
-                    isNewPiece = false;
-
-                    break;
-
-                case false:
+                }
+                else
+                {
                     isPieceMoved = true;
                     Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
-                    isNewPiece = true;
-                    
-                    break;
-            }*/
-
-            
+                }
+            }            
         }
     }
 }
