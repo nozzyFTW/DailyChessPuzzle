@@ -40,36 +40,14 @@ namespace DailyChessPuzzle
 
         public Board()
         {
-            // Creates a 2D array of squares on the board 
-            BoardArray = new Square[8, 8];
-            board_panels = new Panel[64];
-
-            // Fills 2D array with 64 squares
-            for (int rank = 0; rank < 8; rank++)
-            {
-                for (int file = 0; file < 8; file++)
-                {
-                    BoardArray[rank, file] = new Square(rank, file);
-                }
-            }
+            board_panels = new Panel[128];
         }
-
-        public static Square[,] BoardArray { get; set; }
         public static Panel[] board_panels { get; set; }
 
-        public void NextLegalMoves(Square currentSquare, string currentPiece)
+        public static bool isOnBoard(int destination)
         {
-            // Clear Previous Legal Moves 
-            for (int rank = 0; rank < 8; rank++)
-            {
-                for (int file = 0; file < 8; file++)
-                {
-
-                }
-            }
-
-            // Find All Current Legal Moves
-
+            // Uses Bitwise AND Operation
+            return !(Convert.ToBoolean(destination & 0x88));
         }
     }
 }

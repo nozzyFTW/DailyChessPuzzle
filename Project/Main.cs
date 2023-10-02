@@ -13,7 +13,9 @@ namespace DailyChessPuzzle
         }
 
         //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-        public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
+        //public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
+        public static string fen = "r6r/p2b1pp1/3k4/2bp4/2P5/6q1/P2Q3P/1R2R2K w - - 2 28";
+        public static string moves = "d2d5 d6c7 b1b7 c7c8 d5d7";
 
         private static bool isPieceMoved = false;
         public static int prevPos;
@@ -47,7 +49,17 @@ namespace DailyChessPuzzle
             "A1", "B1", "C1", "D1", "E1", "F1", "G1", "H1"
         };
 
-        public static string[] legal_board = new string[64];
+        public static string[] legal_board = new string[128]
+        {
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
+        };
         
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -66,9 +78,13 @@ namespace DailyChessPuzzle
             {
                 if (pnl.Tag != null)
                 {
-                    int tag = Convert.ToInt32(pnl.Tag.ToString());
-                    pnl.BackgroundImageLayout = ImageLayout.Zoom;
-                    Board.board_panels[tag] = pnl;
+                    Console.WriteLine(Board.isOnBoard(Convert.ToInt32(pnl.Tag.ToString())));
+                    if (Board.isOnBoard(Convert.ToInt32(pnl.Tag)))
+                    {
+                        int tag = Convert.ToInt32(pnl.Tag.ToString());
+                        pnl.BackgroundImageLayout = ImageLayout.Zoom;
+                        Board.board_panels[tag] = pnl;
+                    }
                 }
 
             }
@@ -116,12 +132,12 @@ namespace DailyChessPuzzle
                     isPieceMoved = false;
                     prevPiece = piece;
                     prevPos = currentPos;
-                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved);
                 }
                 else
                 {
                     isPieceMoved = true;
-                    Piece.Move(prevPiece, currentPos, prevPos, isPieceMoved);
+                    Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved);
                 }
             }            
         }
