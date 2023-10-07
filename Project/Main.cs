@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DailyChessPuzzle.Properties;
+using System;
 using System.Linq;
 using System.Web;
 using System.Windows.Forms;
@@ -12,12 +13,8 @@ namespace DailyChessPuzzle
             InitializeComponent();
         }
 
-        //string fen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
-        //public static string fen = "2k5/p1p2Q1p/3bN3/1q1pp3/4b1P1/1PB1P2P/P2P1P2/2KR3R b - - 2 20";
-        public static string fen = "r6r/p2b1pp1/3k4/2bp4/2P5/6q1/P2Q3P/1R2R2K w - - 2 28";
-        public static string moves = "d2d5 d6c7 b1b7 c7c8 d5d7";
-
         private static bool isPieceMoved = false;
+        private static bool isPiecedCapture = false;
         public static int prevPos;
         public static string prevPiece;
 
@@ -60,14 +57,13 @@ namespace DailyChessPuzzle
             " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
             " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
         };
-        
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Board clsBoard = new Board();
-            ReadFEN readFEN = new ReadFEN();
 
             GenerateBoardPanels();
-            ReadFEN.Read();
+            Puzzle.ReadFEN();
         }
 
         private void GenerateBoardPanels()
@@ -100,7 +96,7 @@ namespace DailyChessPuzzle
             try
             {
                 piece = control.BackgroundImage.Tag.ToString();
-                
+
             }
             catch (NullReferenceException)
             {
@@ -113,7 +109,7 @@ namespace DailyChessPuzzle
             // Square clicked, check if piece or tile clicked, if tile - check if tag = legal, if piece - check if new piece - deactivate previous legal moves and generate new legal move markers
             if (control.BackgroundImage != null)
             {
-                if (control.BackgroundImage.Tag.ToString() != "legal")
+                if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
                 {
                     // Clear Previous Legal Move Flags
                     foreach (var c in pnlBoard.Controls.OfType<Panel>())
@@ -123,23 +119,45 @@ namespace DailyChessPuzzle
                             if (c.BackgroundImage.Tag.ToString() == "legal")
                             {
                                 c.BackgroundImage = null;
+                                isPiecedCapture = false;
+                            }
+                            else if (c.BackgroundImage.Tag.ToString().Contains("capture"))
+                            {
+                                isPiecedCapture = true;
+                                Piece.Captured(c, prevPiece, currentPos, prevPos);
                             }
                         }
                     }
-                    Array.Clear(legal_board, 0, legal_board.Length);
+
+                    legal_board = new string[128]
+                    {
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
+                    };
 
                     // Piece Clicked
                     isPieceMoved = false;
                     prevPiece = piece;
                     prevPos = currentPos;
-                    Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved);
+
+                    if (!isPiecedCapture)
+                    {
+                        Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved);
+                    }
                 }
                 else
                 {
                     isPieceMoved = true;
+                    isPiecedCapture = false;
                     Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved);
                 }
-            }            
+            }
         }
     }
 }

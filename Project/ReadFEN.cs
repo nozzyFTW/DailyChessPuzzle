@@ -15,7 +15,7 @@ namespace DailyChessPuzzle
         public ReadFEN()
         {
             // FEN = <Piece Placement> <Side to Move> <Castling Ability> <En Passsant Target Square> <Halfmove Clock> <Fullmove Counter>
-            string[] fenSections = Main.fen.Split('/', ' ');
+            /*string[] fenSections = Main.fen.Split('/', ' ');
 
             Rank8 = fenSections[0];
             Rank7 = fenSections[1];
@@ -93,7 +93,7 @@ namespace DailyChessPuzzle
                         break;
                 }
                 count--;
-            }
+            }*/
         }
     }
 }

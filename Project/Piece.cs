@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -160,8 +161,8 @@ namespace DailyChessPuzzle
         public static void Move(Control control, string prevPiece, int currentPos, int prevPos, bool isMoved)
         {
             int pos, newPos;
+            string targetedPiece;
             bool isPawnFirstMove = false;
-
             if (isMoved)
             {
                 if (Board.board_panels[currentPos].BackgroundImage.Tag.ToString() == "legal")
@@ -178,7 +179,33 @@ namespace DailyChessPuzzle
                             }
                         }
 
+                        if (Main._board[prevPos - 17] != " " && !Char.IsUpper(Main._board[prevPos - 17], 0))
+                        {
+                            if (prevPos != currentPos)
+                            {
+                                Board.board_panels[prevPos - 17].BackgroundImage = null;
+                            }
+                            else
+                            {
+                                targetedPiece = Main._board[currentPos - 17];
+                                ResetPiece((prevPos - 17), targetedPiece);
+                            }
+                        }
+                        if (Main._board[prevPos - 15] != " " && !Char.IsUpper(Main._board[prevPos - 15], 0))
+                        {
+                            if (prevPos != currentPos)
+                            {
+                                Board.board_panels[prevPos - 15].BackgroundImage = null;
+                            }
+                            else
+                            {
+                                targetedPiece = Main._board[currentPos - 17];
+                                ResetPiece((prevPos - 17), targetedPiece);
+                            }
+                        }
+
                         Board.board_panels[currentPos].BackgroundImage = Resources.wp;
+                        Board.board_panels[currentPos].BackgroundImage.Tag = "P";
                         Main._board[prevPos] = " ";
                         Main._board[currentPos] = "P";
                     }
@@ -220,6 +247,7 @@ namespace DailyChessPuzzle
                         }
 
                         Board.board_panels[currentPos].BackgroundImage = Resources.wn;
+                        Board.board_panels[currentPos].BackgroundImage.Tag = "N";
                         Main._board[prevPos] = " ";
                         Main._board[currentPos] = "N";
                     }
@@ -300,6 +328,7 @@ namespace DailyChessPuzzle
                         catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
                         Board.board_panels[currentPos].BackgroundImage = Resources.wk;
+                        Board.board_panels[currentPos].BackgroundImage.Tag = "K";
                         Main._board[prevPos] = " ";
                         Main._board[currentPos] = "K";
                     }
@@ -358,6 +387,7 @@ namespace DailyChessPuzzle
                     }
 
                     Board.board_panels[currentPos].BackgroundImage = Resources.wb;
+                    Board.board_panels[currentPos].BackgroundImage.Tag = "B";
                     Main._board[prevPos] = " ";
                     Main._board[currentPos] = "B";
                 }
@@ -415,6 +445,7 @@ namespace DailyChessPuzzle
                     }
 
                     Board.board_panels[currentPos].BackgroundImage = Resources.wr;
+                    Board.board_panels[currentPos].BackgroundImage.Tag = "R";
                     Main._board[prevPos] = " ";
                     Main._board[currentPos] = "R";
                 }
@@ -519,6 +550,7 @@ namespace DailyChessPuzzle
                     }
 
                     Board.board_panels[currentPos].BackgroundImage = Resources.wq;
+                    Board.board_panels[currentPos].BackgroundImage.Tag = "Q";
                     Main._board[prevPos] = " ";
                     Main._board[currentPos] = "Q";
                 }
@@ -547,6 +579,19 @@ namespace DailyChessPuzzle
                         }
 
                     }
+                    // Capture L
+                    if (Main._board[currentPos - 17] != " " && !Char.IsUpper(Main._board[currentPos - 17], 0))
+                    {
+                        newPos = currentPos - 17;
+                        CanCapture(newPos);
+                    }
+                    
+                    // Capture R
+                    if (Main._board[currentPos - 15] != " " && !Char.IsUpper(Main._board[currentPos - 15], 0))
+                    {
+                        newPos = currentPos - 15;
+                        CanCapture(newPos);
+                    }
                 }
 
                 if (piece == "N")
@@ -559,6 +604,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 31])))
+                    {
+                        newPos = currentPos - 31;
+                        CanCapture(newPos);
+                    }
 
                     // NNW - 2 UP, 1 LEFT
                     if (Main._board[currentPos - 33] == " ")
@@ -567,6 +617,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
+                    }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 33])))
+                    {
+                        newPos = currentPos - 33;
+                        CanCapture(newPos);
                     }
 
                     // EEN - 2 RIGHT, 1 UP
@@ -577,6 +632,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 14])))
+                    {
+                        newPos = currentPos - 14;
+                        CanCapture(newPos);
+                    }
 
                     // EES - 2 RIGHT, 1 DOWN
                     if (Main._board[currentPos + 18] == " ")
@@ -585,6 +645,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
+                    }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 18])))
+                    {
+                        newPos = currentPos + 18;
+                        CanCapture(newPos);
                     }
 
                     // SSE - 2 DOWN, 1 RIGHT
@@ -595,6 +660,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 31])))
+                    {
+                        newPos = currentPos + 31;
+                        CanCapture(newPos);
+                    }
 
                     // SSW - 2 DOWN, 1 LEFT
                     if (Main._board[currentPos + 33] == " ")
@@ -603,6 +673,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
+                    }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 33])))
+                    {
+                        newPos = currentPos + 33;
+                        CanCapture(newPos);
                     }
 
                     // WWN - 2 LEFT, 1 UP
@@ -613,6 +688,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 18])))
+                    {
+                        newPos = currentPos - 18;
+                        CanCapture(newPos);
+                    }
 
                     // WWS - 2 LEFT, 1 DOWN 
                     if (Main._board[currentPos + 14] == " ")
@@ -621,6 +701,11 @@ namespace DailyChessPuzzle
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
+                    }
+                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 14])))
+                    {
+                        newPos = currentPos + 14;
+                        CanCapture(newPos);
                     }
                 }
 
@@ -636,6 +721,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 17])))
+                        {
+                            newPos = currentPos - 17;
+                            CanCapture(newPos);
+                        }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
@@ -648,6 +738,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 16])))
+                        {
+                            newPos = currentPos - 16;
+                            CanCapture(newPos);
                         }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
@@ -662,6 +757,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 15])))
+                        {
+                            newPos = currentPos - 15;
+                            CanCapture(newPos);
+                        }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
@@ -674,6 +774,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 1])))
+                        {
+                            newPos = currentPos - 1;
+                            CanCapture(newPos);
                         }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
@@ -688,6 +793,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 1])))
+                        {
+                            newPos = currentPos + 1;
+                            CanCapture(newPos);
+                        }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
                     
@@ -700,6 +810,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 17])))
+                        {
+                            newPos = currentPos + 17;
+                            CanCapture(newPos);
                         }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
@@ -714,6 +829,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 16])))
+                        {
+                            newPos = currentPos + 16;
+                            CanCapture(newPos);
+                        }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
                     
@@ -726,6 +846,11 @@ namespace DailyChessPuzzle
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 15])))
+                        {
+                            newPos = currentPos + 15;
+                            CanCapture(newPos);
                         }
                     }
                     catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
@@ -743,6 +868,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 15])))
+                        {
+                            pos += 15;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -756,6 +887,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 17])))
+                        {
+                            pos += 17;
+                            CanCapture(pos);
+                            break;
                         }
                         else break;
                     }
@@ -771,6 +908,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 17])))
+                        {
+                            pos += 17;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -784,6 +927,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 15])))
+                        {
+                            pos += 15;
+                            CanCapture(pos);
+                            break;
                         }
                         else break;
                     }
@@ -802,6 +951,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 16])))
+                        {
+                            pos -= 16;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -815,6 +970,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 1])))
+                        {
+                            pos += 1;
+                            CanCapture(pos);
+                            break;
                         }
                         else break;
                     }
@@ -830,6 +991,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 16])))
+                        {
+                            pos += 16;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -843,6 +1010,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 1])))
+                        {
+                            pos -= 1;
+                            CanCapture(pos);
+                            break;
                         }
                         else break;
                     }
@@ -861,6 +1034,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 17])))
+                        {
+                            pos -= 17;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -874,6 +1053,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 16])))
+                        {
+                            pos -= 16;
+                            CanCapture(pos);
+                            break;
                         }
                         else break;
                     }
@@ -889,6 +1074,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 15])))
+                        {
+                            pos -= 15;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -902,6 +1093,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 1])))
+                        {
+                            pos -= 1;
+                            CanCapture(pos);
+                            break;
                         }
                         else break;
                     }
@@ -917,6 +1114,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 1])))
+                        {
+                            pos += 1;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -930,6 +1133,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 15])))
+                        {
+                            pos += 15;
+                            CanCapture(pos);
+                            break;
                         }
                         else break;
                     }
@@ -945,6 +1154,12 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 16])))
+                        {
+                            pos += 16;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
 
@@ -959,9 +1174,120 @@ namespace DailyChessPuzzle
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
+                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 17])))
+                        {
+                            pos += 17;
+                            CanCapture(pos);
+                            break;
+                        }
                         else break;
                     }
                 }
+            }
+        }
+
+        private static void CanCapture(int pos)
+        {
+            string piece = Main._board[pos];
+            if (piece == "p")
+            {
+                Board.board_panels[pos].BackgroundImage = Resources.bp_c;
+                Board.board_panels[pos].BackgroundImage.Tag = "capture p";
+                Main.legal_board[pos] = "capture p";
+            }
+            if (piece == "n")
+            {
+                Board.board_panels[pos].BackgroundImage = Resources.bn_c;
+                Board.board_panels[pos].BackgroundImage.Tag = "capture n";
+                Main.legal_board[pos] = "capture n";
+            }
+            if (piece == "b")
+            {
+                Board.board_panels[pos].BackgroundImage = Resources.bb_c;
+                Board.board_panels[pos].BackgroundImage.Tag = "capture b";
+                Main.legal_board[pos] = "capture b";
+            }
+            if (piece == "r")
+            {
+                Board.board_panels[pos].BackgroundImage = Resources.br_c;
+                Board.board_panels[pos].BackgroundImage.Tag = "capture r";
+                Main.legal_board[pos] = "capture r";
+            }
+            if (piece == "q")
+            {
+                Board.board_panels[pos].BackgroundImage = Resources.bq_c;
+                Board.board_panels[pos].BackgroundImage.Tag = "capture q";
+                Main.legal_board[pos] = "capture q";
+            }
+            if (piece == "k")
+            {
+                
+            }
+        }
+
+        public static void Captured(Control c, string piece, int currentPos, int prevPos)
+        {
+            if (piece == "P")
+            {
+                Board.board_panels[currentPos].BackgroundImage = Resources.wp;
+                Board.board_panels[currentPos].BackgroundImage.Tag = "P";
+                Board.board_panels[prevPos].BackgroundImage = null;
+                Main.legal_board[currentPos] = " ";
+                Main._board[currentPos] = "P";
+                Main._board[prevPos] = " ";
+            }
+            if (piece == "N")
+            {
+                Board.board_panels[currentPos].BackgroundImage = Resources.wn;
+                Board.board_panels[currentPos].BackgroundImage.Tag = "N";
+                Board.board_panels[prevPos].BackgroundImage = null;
+                Main.legal_board[currentPos] = " ";
+                Main._board[currentPos] = "N";
+                Main._board[prevPos] = " ";
+            }
+            if (piece == "B")
+            {
+                Board.board_panels[currentPos].BackgroundImage = Resources.wb;
+                Board.board_panels[currentPos].BackgroundImage.Tag = "B";
+                Board.board_panels[prevPos].BackgroundImage = null;
+                Main.legal_board[currentPos] = " ";
+                Main._board[currentPos] = "B";
+                Main._board[prevPos] = " ";
+            }
+            if (piece == "R")
+            {
+                Board.board_panels[currentPos].BackgroundImage = Resources.wr;
+                Board.board_panels[currentPos].BackgroundImage.Tag = "R";
+                Board.board_panels[prevPos].BackgroundImage = null;
+                Main.legal_board[currentPos] = " ";
+                Main._board[currentPos] = "R";
+                Main._board[prevPos] = " ";
+            }
+            if (piece == "Q")
+            {
+                Board.board_panels[currentPos].BackgroundImage = Resources.wq;
+                Board.board_panels[currentPos].BackgroundImage.Tag = "Q";
+                Board.board_panels[prevPos].BackgroundImage = null;
+                Main.legal_board[currentPos] = " ";
+                Main._board[currentPos] = "Q";
+                Main._board[prevPos] = " ";
+            }
+            if (piece == "K")
+            {
+                Board.board_panels[currentPos].BackgroundImage = Resources.wk;
+                Board.board_panels[currentPos].BackgroundImage.Tag = "K";
+                Board.board_panels[prevPos].BackgroundImage = null;
+                Main.legal_board[currentPos] = " ";
+                Main._board[currentPos] = "K";
+                Main._board[prevPos] = " ";
+            }
+        }
+
+        private static void ResetPiece(int pos, string piece)
+        {
+            if (piece == "p")
+            {
+                Board.board_panels[pos].BackgroundImage = null;
             }
         }
     }

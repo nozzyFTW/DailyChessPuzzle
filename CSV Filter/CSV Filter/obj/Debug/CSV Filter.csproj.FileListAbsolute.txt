@@ -1,0 +1,11 @@
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\bin\Debug\CSV Filter.exe.config
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\bin\Debug\CSV Filter.exe
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\bin\Debug\CSV Filter.pdb
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.AssemblyReference.cache
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.SuggestedBindingRedirects.cache
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV_Filter.Form1.resources
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV_Filter.Properties.Resources.resources
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.GenerateResource.cache
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.CoreCompileInputs.cache
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.exe
+F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.pdb
