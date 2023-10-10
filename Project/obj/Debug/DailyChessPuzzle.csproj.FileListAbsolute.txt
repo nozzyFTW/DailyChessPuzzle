@@ -72,3 +72,5 @@ F:\School\DailyChessPuzzle\Project\bin\Debug\System.Memory.xml
 F:\School\DailyChessPuzzle\Project\bin\Debug\System.Numerics.Vectors.xml
 F:\School\DailyChessPuzzle\Project\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.CopyComplete
+F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.GameOver.resources
+F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Win.resources

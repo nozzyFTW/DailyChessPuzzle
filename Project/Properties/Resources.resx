@@ -178,4 +178,10 @@
   <data name="br_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\br_c.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="active_x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\active_x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="inactive_x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inactive_x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

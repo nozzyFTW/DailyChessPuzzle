@@ -1,6 +1,8 @@
 ﻿using DailyChessPuzzle.Properties;
 using System;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Windows.Forms;
 
@@ -13,10 +15,16 @@ namespace DailyChessPuzzle
             InitializeComponent();
         }
 
+        public static int points;
+
         private static bool isPieceMoved = false;
         private static bool isPiecedCapture = false;
         public static int prevPos;
         public static string prevPiece;
+        public static string prevSquareName;
+
+        public static PictureBox imgStrike1, imgStrike2, imgStrike3;
+        private static Main form = new Main();
 
         public static string[] board = new string[64];
 
@@ -31,8 +39,6 @@ namespace DailyChessPuzzle
             " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
             " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
         };
-
-        public static Panel[] board_panels = new Panel[64];
 
         public static string[] square_codes = new string[64]
         {
@@ -63,7 +69,47 @@ namespace DailyChessPuzzle
             Board clsBoard = new Board();
 
             GenerateBoardPanels();
+            SetupStrikes();
+            Puzzle clsPuzzle = new Puzzle(txtTask);
+
             Puzzle.ReadFEN();
+            ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
+        }
+
+        private static Control GetControl(Form form, string control)
+        {
+            // Code from Stack Overflow
+            Control[] rtnControl = form.Controls.Find(control, true);
+            return rtnControl[0];
+        }
+
+        private void SetupStrikes()
+        {
+            // imgStrike1
+            imgStrike1 = new PictureBox();
+            imgStrike1.Width = 75;
+            imgStrike1.Height = 75;
+            imgStrike1.Location = new Point(96, 4);
+            imgStrike1.Image = Resources.inactive_x;
+
+            // imgStrike2
+            imgStrike2 = new PictureBox();
+            imgStrike2.Width = 75;
+            imgStrike2.Height = 75;
+            imgStrike2.Location = new Point(196, 4);
+            imgStrike2.Image = Resources.inactive_x;
+
+            // imgStrike3
+            imgStrike3 = new PictureBox();
+            imgStrike3.Width = 75;
+            imgStrike3.Height = 75;
+            imgStrike3.Location = new Point(296, 4);
+            imgStrike3.Image = Resources.inactive_x;
+
+            panel2.Controls.Add(imgStrike1);
+            panel2.Controls.Add(imgStrike2);
+            panel2.Controls.Add(imgStrike3);
+
         }
 
         private void GenerateBoardPanels()
@@ -91,46 +137,53 @@ namespace DailyChessPuzzle
             string piece;
 
             Control control = (Control)sender;
+            string squareName = control.Name;
             int currentPos = Convert.ToInt32(control.Tag.ToString());
 
-            try
+            if (!Puzzle.isFinished)
             {
-                piece = control.BackgroundImage.Tag.ToString();
-
-            }
-            catch (NullReferenceException)
-            {
-                piece = null;
-            }
-
-            Piece clsPiece = new Piece(piece);
-
-
-            // Square clicked, check if piece or tile clicked, if tile - check if tag = legal, if piece - check if new piece - deactivate previous legal moves and generate new legal move markers
-            if (control.BackgroundImage != null)
-            {
-                if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
+                try
                 {
-                    // Clear Previous Legal Move Flags
-                    foreach (var c in pnlBoard.Controls.OfType<Panel>())
+                    piece = control.BackgroundImage.Tag.ToString();
+
+                }
+                catch (NullReferenceException)
+                {
+                    piece = null;
+                }
+
+                Piece clsPiece = new Piece(piece);
+
+
+                // Square clicked, check if piece or tile clicked, if tile - check if tag = legal, if piece - check if new piece - deactivate previous legal moves and generate new legal move markers
+                if (control.BackgroundImage != null)
+                {
+                    if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
                     {
-                        if (c.BackgroundImage != null)
+                        // Clear Previous Legal Move Flags
+                        foreach (var c in pnlBoard.Controls.OfType<Panel>())
                         {
-                            if (c.BackgroundImage.Tag.ToString() == "legal")
+                            if (c.BackgroundImage != null)
                             {
-                                c.BackgroundImage = null;
-                                isPiecedCapture = false;
-                            }
-                            else if (c.BackgroundImage.Tag.ToString().Contains("capture"))
-                            {
-                                isPiecedCapture = true;
-                                Piece.Captured(c, prevPiece, currentPos, prevPos);
+                                if (c.BackgroundImage.Tag.ToString() == "legal")
+                                {
+                                    c.BackgroundImage = null;
+                                    isPiecedCapture = false;
+                                }
+                                else if (c.BackgroundImage.Tag.ToString().Contains("capture"))
+                                {
+                                    isPiecedCapture = true;
+                                    Console.WriteLine("Capture");
+                                    if (Puzzle.IsMove(prevSquareName, prevPos, squareName, currentPos, prevPiece))
+                                    {
+                                        Piece.Captured(prevPiece, currentPos, prevPos);
+                                    }
+                                }
                             }
                         }
-                    }
 
-                    legal_board = new string[128]
-                    {
+                        legal_board = new string[128]
+                        {
                         " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
                         " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
                         " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
@@ -139,25 +192,129 @@ namespace DailyChessPuzzle
                         " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
                         " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
                         " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
-                    };
+                        };
 
-                    // Piece Clicked
-                    isPieceMoved = false;
-                    prevPiece = piece;
-                    prevPos = currentPos;
+                        // Piece Clicked
+                        isPieceMoved = false;
+                        prevPiece = piece;
+                        prevPos = currentPos;
+                        prevSquareName = squareName;
 
-                    if (!isPiecedCapture)
+                        if (!isPiecedCapture)
+                        {
+                            Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved, prevSquareName, squareName);
+                        }
+                        else isPiecedCapture = false;
+                    }
+                    else
                     {
-                        Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved);
+                        isPieceMoved = true;
+                        isPiecedCapture = false;
+
+                        Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved, prevSquareName, squareName);
                     }
                 }
-                else
+            }
+        }
+
+        public static void ComputerMove(string move)
+        {
+            string piece = String.Empty;
+            int originalPos = 0;
+            int newPos = 0;
+
+            string originalSquare = move.Substring(0, 2);
+            string newSquare = move.Substring(2);
+
+            Console.WriteLine(originalSquare + " " + newSquare);
+
+            foreach (Panel pnl in form.pnlBoard.Controls)
+            {
+                if (pnl.Tag != null)
                 {
-                    isPieceMoved = true;
-                    isPiecedCapture = false;
-                    Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved);
+                    if (pnl.Name == originalSquare.ToUpper())
+                    {
+                        originalPos = Convert.ToInt32(pnl.Tag.ToString());
+                        piece = _board[originalPos];
+                    }
+                    if (pnl.Name == newSquare.ToUpper())
+                    {
+                        newPos = Convert.ToInt32(pnl.Tag.ToString());
+                    }
                 }
             }
+
+            Board.board_panels[originalPos].BackgroundImage = null;
+            if (piece == "p")
+            {
+                Board.board_panels[newPos].BackgroundImage = Resources.bp;
+                Board.board_panels[newPos].BackgroundImage.Tag = "p";
+                _board[originalPos] = " ";
+                _board[newPos] = "p";
+            }
+            if (piece == "n")
+            {
+                Board.board_panels[newPos].BackgroundImage = Resources.bn;
+                Board.board_panels[newPos].BackgroundImage.Tag = "n";
+                _board[originalPos] = " ";
+                _board[newPos] = "n";
+            }
+            if (piece == "b")
+            {
+                Board.board_panels[newPos].BackgroundImage = Resources.bb;
+                Board.board_panels[newPos].BackgroundImage.Tag = "b";
+                _board[originalPos] = " ";
+                _board[newPos] = "b";
+            }
+            if (piece == "r")
+            {
+                Board.board_panels[newPos].BackgroundImage = Resources.br;
+                Board.board_panels[newPos].BackgroundImage.Tag = "r";
+                _board[originalPos] = " ";
+                _board[newPos] = "r";
+            }
+            if (piece == "q")
+            {
+                Board.board_panels[newPos].BackgroundImage = Resources.bq;
+                Board.board_panels[newPos].BackgroundImage.Tag = "q";
+                _board[originalPos] = " ";
+                _board[newPos] = "q";
+            }
+            if (piece == "k")
+            {
+                Board.board_panels[newPos].BackgroundImage = Resources.bk;
+                Board.board_panels[newPos].BackgroundImage.Tag = "k";
+                _board[originalPos] = " ";
+                _board[newPos] = "k";
+            }
+            Puzzle.moveCount++;
+        }
+
+        public static bool Strike()
+        {
+            Puzzle.strike++;
+            if (Puzzle.strike <= 4)
+            {
+                switch (Puzzle.strike)
+                {
+                    case 1:
+                        imgStrike1.Image = Resources.active_x;
+                        break;
+
+                    case 2:
+                        imgStrike2.Image = Resources.active_x;
+                        break;
+
+                    case 3:
+                        imgStrike3.Image = Resources.active_x;
+                        Puzzle.isGameOver = true;
+                        Puzzle.IsFinished();
+                        return false;
+                        
+                }
+                return Puzzle.isGameOver = false;
+            }
+            else return Puzzle.isGameOver = true;
         }
     }
 }

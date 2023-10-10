@@ -158,401 +158,405 @@ namespace DailyChessPuzzle
             }
         }
 
-        public static void Move(Control control, string prevPiece, int currentPos, int prevPos, bool isMoved)
+        public static void Move(Control control, string prevPiece, int currentPos, int prevPos, bool isMoved, string prevSquareName, string currentSquareName)
         {
             int pos, newPos;
             string targetedPiece;
             bool isPawnFirstMove = false;
+
             if (isMoved)
             {
-                if (Board.board_panels[currentPos].BackgroundImage.Tag.ToString() == "legal")
+                if (Puzzle.IsMove(prevSquareName, prevPos, currentSquareName, currentPos, prevPiece))
                 {
-                    if (prevPiece == "P")
+                    if (Board.board_panels[currentPos].BackgroundImage.Tag.ToString() == "legal")
                     {
-                        Board.board_panels[prevPos].BackgroundImage = null;
-                        if (Main._board[prevPos - 16] == " " && Board.isOnBoard(prevPos - 16))
+                        if (prevPiece == "P")
                         {
-                            Board.board_panels[prevPos - 16].BackgroundImage = null;
-                            if (Main._board[prevPos - 32] == " " && Board.isOnBoard(prevPos - 32))
+                            Board.board_panels[prevPos].BackgroundImage = null;
+                            if (Main._board[prevPos - 16] == " " && Board.isOnBoard(prevPos - 16))
                             {
-                                Board.board_panels[prevPos - 32].BackgroundImage = null;
+                                Board.board_panels[prevPos - 16].BackgroundImage = null;
+                                if (Main._board[prevPos - 32] == " " && Board.isOnBoard(prevPos - 32))
+                                {
+                                    Board.board_panels[prevPos - 32].BackgroundImage = null;
+                                }
                             }
+
+                            if (Main._board[prevPos - 17] != " " && !Char.IsUpper(Main._board[prevPos - 17], 0))
+                            {
+                                if (prevPos != currentPos)
+                                {
+                                    Board.board_panels[prevPos - 17].BackgroundImage = null;
+                                }
+                                else
+                                {
+                                    targetedPiece = Main._board[currentPos - 17];
+                                    ResetPiece((prevPos - 17), targetedPiece);
+                                }
+                            }
+                            if (Main._board[prevPos - 15] != " " && !Char.IsUpper(Main._board[prevPos - 15], 0))
+                            {
+                                if (prevPos != currentPos)
+                                {
+                                    Board.board_panels[prevPos - 15].BackgroundImage = null;
+                                }
+                                else
+                                {
+                                    targetedPiece = Main._board[currentPos - 17];
+                                    ResetPiece((prevPos - 17), targetedPiece);
+                                }
+                            }
+
+                            Board.board_panels[currentPos].BackgroundImage = Resources.wp;
+                            Board.board_panels[currentPos].BackgroundImage.Tag = "P";
+                            Main._board[prevPos] = " ";
+                            Main._board[currentPos] = "P";
                         }
 
-                        if (Main._board[prevPos - 17] != " " && !Char.IsUpper(Main._board[prevPos - 17], 0))
+                        if (prevPiece == "N")
                         {
-                            if (prevPos != currentPos)
-                            {
-                                Board.board_panels[prevPos - 17].BackgroundImage = null;
-                            }
-                            else
-                            {
-                                targetedPiece = Main._board[currentPos - 17];
-                                ResetPiece((prevPos - 17), targetedPiece);
-                            }
-                        }
-                        if (Main._board[prevPos - 15] != " " && !Char.IsUpper(Main._board[prevPos - 15], 0))
-                        {
-                            if (prevPos != currentPos)
+                            Board.board_panels[prevPos].BackgroundImage = null;
+                            if (Main._board[prevPos - 15] == " ")
                             {
                                 Board.board_panels[prevPos - 15].BackgroundImage = null;
                             }
-                            else
+                            if (Main._board[prevPos - 17] == " ")
                             {
-                                targetedPiece = Main._board[currentPos - 17];
-                                ResetPiece((prevPos - 17), targetedPiece);
+                                Board.board_panels[prevPos - 17].BackgroundImage = null;
                             }
+                            if (Main._board[prevPos - 6] == " ")
+                            {
+                                Board.board_panels[prevPos - 6].BackgroundImage = null;
+                            }
+                            if (Main._board[prevPos + 10] == " ")
+                            {
+                                Board.board_panels[prevPos + 10].BackgroundImage = null;
+                            }
+                            if (Main._board[prevPos + 17] == " ")
+                            {
+                                Board.board_panels[prevPos + 17].BackgroundImage = null;
+                            }
+                            if (Main._board[prevPos + 15] == " ")
+                            {
+                                Board.board_panels[prevPos + 15].BackgroundImage = null;
+                            }
+                            if (Main._board[prevPos - 10] == " ")
+                            {
+                                Board.board_panels[prevPos - 10].BackgroundImage = null;
+                            }
+                            if (Main._board[prevPos + 6] == " ")
+                            {
+                                Board.board_panels[prevPos + 6].BackgroundImage = null;
+                            }
+
+                            Board.board_panels[currentPos].BackgroundImage = Resources.wn;
+                            Board.board_panels[currentPos].BackgroundImage.Tag = "N";
+                            Main._board[prevPos] = " ";
+                            Main._board[currentPos] = "N";
                         }
 
-                        Board.board_panels[currentPos].BackgroundImage = Resources.wp;
-                        Board.board_panels[currentPos].BackgroundImage.Tag = "P";
-                        Main._board[prevPos] = " ";
-                        Main._board[currentPos] = "P";
+                        if (prevPiece == "K")
+                        {
+                            Board.board_panels[prevPos].BackgroundImage = null;
+                            try
+                            {
+                                if (Main._board[currentPos - 9] == " ")
+                                {
+                                    Board.board_panels[prevPos - 9].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            try
+                            {
+                                if (Main._board[currentPos - 8] == " ")
+                                {
+                                    Board.board_panels[prevPos - 8].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            try
+                            {
+                                if (Main._board[currentPos - 7] == " ")
+                                {
+                                    Board.board_panels[prevPos - 7].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            try
+                            {
+                                if (Main._board[currentPos - 1] == " ")
+                                {
+                                    Board.board_panels[prevPos - 1].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            try
+                            {
+                                if (Main._board[currentPos + 1] == " ")
+                                {
+                                    Board.board_panels[prevPos + 1].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            try
+                            {
+                                if (Main._board[currentPos + 9] == " ")
+                                {
+                                    Board.board_panels[prevPos + 9].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            try
+                            {
+                                if (Main._board[currentPos + 8] == " ")
+                                {
+                                    Board.board_panels[prevPos + 8].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            try
+                            {
+                                if (Main._board[currentPos + 7] == " ")
+                                {
+                                    Board.board_panels[prevPos + 7].BackgroundImage = null;
+                                }
+                            }
+                            catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
+
+                            Board.board_panels[currentPos].BackgroundImage = Resources.wk;
+                            Board.board_panels[currentPos].BackgroundImage.Tag = "K";
+                            Main._board[prevPos] = " ";
+                            Main._board[currentPos] = "K";
+                        }
                     }
 
-                    if (prevPiece == "N")
+                    if (prevPiece == "B")
                     {
                         Board.board_panels[prevPos].BackgroundImage = null;
-                        if (Main._board[prevPos - 15] == " ")
+
+                        // NE
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 15))
                         {
-                            Board.board_panels[prevPos - 15].BackgroundImage = null;
-                        }
-                        if (Main._board[prevPos - 17] == " ")
-                        {
-                            Board.board_panels[prevPos - 17].BackgroundImage = null;
-                        }
-                        if (Main._board[prevPos - 6] == " ")
-                        {
-                            Board.board_panels[prevPos - 6].BackgroundImage = null;
-                        }
-                        if (Main._board[prevPos + 10] == " ")
-                        {
-                            Board.board_panels[prevPos + 10].BackgroundImage = null;
-                        }
-                        if (Main._board[prevPos + 17] == " ")
-                        {
-                            Board.board_panels[prevPos + 17].BackgroundImage = null;
-                        }
-                        if (Main._board[prevPos + 15] == " ")
-                        {
-                            Board.board_panels[prevPos + 15].BackgroundImage = null;
-                        }
-                        if (Main._board[prevPos - 10] == " ")
-                        {
-                            Board.board_panels[prevPos - 10].BackgroundImage = null;
-                        }
-                        if (Main._board[prevPos + 6] == " ")
-                        {
-                            Board.board_panels[prevPos + 6].BackgroundImage = null;
+                            if (Main._board[pos - 15] == " ")
+                            {
+                                pos -= 15;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
 
-                        Board.board_panels[currentPos].BackgroundImage = Resources.wn;
-                        Board.board_panels[currentPos].BackgroundImage.Tag = "N";
+                        // NW
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 17))
+                        {
+                            if (Main._board[pos - 17] == " ")
+                            {
+                                pos -= 17;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
+                        }
+
+                        // SE
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 17))
+                        {
+                            if (Main._board[pos + 17] == " ")
+                            {
+                                pos += 17;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
+                        }
+
+                        // SW
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 15))
+                        {
+                            if (Main._board[pos + 15] == " ")
+                            {
+                                pos += 15;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
+                        }
+
+                        Board.board_panels[currentPos].BackgroundImage = Resources.wb;
+                        Board.board_panels[currentPos].BackgroundImage.Tag = "B";
                         Main._board[prevPos] = " ";
-                        Main._board[currentPos] = "N";
+                        Main._board[currentPos] = "B";
                     }
 
-                    if (prevPiece == "K")
+                    if (prevPiece == "R")
                     {
                         Board.board_panels[prevPos].BackgroundImage = null;
-                        try
-                        {
-                            if (Main._board[currentPos - 9] == " ")
-                            {
-                                Board.board_panels[prevPos - 9].BackgroundImage = null;
-                            }
-                        }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
-                        try
+                        // N
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 16))
                         {
-                            if (Main._board[currentPos - 8] == " ")
+                            if (Main._board[pos - 16] == " ")
                             {
-                                Board.board_panels[prevPos - 8].BackgroundImage = null;
+                                pos -= 16;
+                                Board.board_panels[pos].BackgroundImage = null;
                             }
+                            else break;
                         }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
-                        try
+                        // E
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 1))
                         {
-                            if (Main._board[currentPos - 7] == " ")
+                            if (Main._board[pos + 1] == " ")
                             {
-                                Board.board_panels[prevPos - 7].BackgroundImage = null;
+                                pos += 1;
+                                Board.board_panels[pos].BackgroundImage = null;
                             }
+                            else break;
                         }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
-                        try
+                        // S
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 16))
                         {
-                            if (Main._board[currentPos - 1] == " ")
+                            if (Main._board[pos + 16] == " ")
                             {
-                                Board.board_panels[prevPos - 1].BackgroundImage = null;
+                                pos += 16;
+                                Board.board_panels[pos].BackgroundImage = null;
                             }
+                            else break;
                         }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
-                        try
+                        // W
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 1))
                         {
-                            if (Main._board[currentPos + 1] == " ")
+                            if (Main._board[pos - 1] == " ")
                             {
-                                Board.board_panels[prevPos + 1].BackgroundImage = null;
+                                pos -= 1;
+                                Board.board_panels[pos].BackgroundImage = null;
                             }
+                            else break;
                         }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
 
-                        try
-                        {
-                            if (Main._board[currentPos + 9] == " ")
-                            {
-                                Board.board_panels[prevPos + 9].BackgroundImage = null;
-                            }
-                        }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
-
-                        try
-                        {
-                            if (Main._board[currentPos + 8] == " ")
-                            {
-                                Board.board_panels[prevPos + 8].BackgroundImage = null;
-                            }
-                        }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
-
-                        try
-                        {
-                            if (Main._board[currentPos + 7] == " ")
-                            {
-                                Board.board_panels[prevPos + 7].BackgroundImage = null;
-                            }
-                        }
-                        catch (IndexOutOfRangeException ex) { Console.WriteLine(ex); }
-
-                        Board.board_panels[currentPos].BackgroundImage = Resources.wk;
-                        Board.board_panels[currentPos].BackgroundImage.Tag = "K";
+                        Board.board_panels[currentPos].BackgroundImage = Resources.wr;
+                        Board.board_panels[currentPos].BackgroundImage.Tag = "R";
                         Main._board[prevPos] = " ";
-                        Main._board[currentPos] = "K";
+                        Main._board[currentPos] = "R";
                     }
-                }
 
-                if (prevPiece == "B")
-                {
-                    Board.board_panels[prevPos].BackgroundImage = null;
-
-                    // NE
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 15))
+                    if (prevPiece == "Q")
                     {
-                        if (Main._board[pos - 15] == " ")
+                        Board.board_panels[prevPos].BackgroundImage = null;
+                        // NW
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 17))
                         {
-                            pos -= 15;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos - 17] == " ")
+                            {
+                                pos -= 17;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
-                    }
 
-                    // NW
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 17))
-                    {
-                        if (Main._board[pos - 17] == " ")
+                        // N
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 16))
                         {
-                            pos -= 17;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos - 16] == " ")
+                            {
+                                pos -= 16;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
-                    }
 
-                    // SE
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 17))
-                    {
-                        if (Main._board[pos + 17] == " ")
+                        // NE
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 15))
                         {
-                            pos += 17;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos - 15] == " ")
+                            {
+                                pos -= 15;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
-                    }
 
-                    // SW
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 15))
-                    {
-                        if (Main._board[pos + 15] == " ")
+                        // W
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos - 1))
                         {
-                            pos += 15;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos - 1] == " ")
+                            {
+                                pos -= 1;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
-                    }
 
-                    Board.board_panels[currentPos].BackgroundImage = Resources.wb;
-                    Board.board_panels[currentPos].BackgroundImage.Tag = "B";
-                    Main._board[prevPos] = " ";
-                    Main._board[currentPos] = "B";
-                }
-
-                if (prevPiece == "R")
-                {
-                    Board.board_panels[prevPos].BackgroundImage = null;
-
-                    // N
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 16))
-                    {
-                        if (Main._board[pos - 16] == " ")
+                        // E
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 1))
                         {
-                            pos -= 16;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos + 1] == " ")
+                            {
+                                pos += 1;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
-                    }
 
-                    // E
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 1))
-                    {
-                        if (Main._board[pos + 1] == " ")
+                        // SW
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 15))
                         {
-                            pos += 1;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos + 15] == " ")
+                            {
+                                pos += 15;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
-                    }
 
-                    // S
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 16))
-                    {
-                        if (Main._board[pos + 16] == " ")
+                        // S
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 16))
                         {
-                            pos += 16;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos + 16] == " ")
+                            {
+                                pos += 16;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
-                    }
 
-                    // W
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 1))
-                    {
-                        if (Main._board[pos - 1] == " ")
+                        // SE
+                        pos = prevPos;
+                        while (Board.isOnBoard(pos + 17))
                         {
-                            pos -= 1;
-                            Board.board_panels[pos].BackgroundImage = null;
+                            if (Main._board[pos + 17] == " ")
+                            {
+                                pos += 17;
+                                Board.board_panels[pos].BackgroundImage = null;
+                            }
+                            else break;
                         }
-                        else break;
+
+                        Board.board_panels[currentPos].BackgroundImage = Resources.wq;
+                        Board.board_panels[currentPos].BackgroundImage.Tag = "Q";
+                        Main._board[prevPos] = " ";
+                        Main._board[currentPos] = "Q";
                     }
-
-                    Board.board_panels[currentPos].BackgroundImage = Resources.wr;
-                    Board.board_panels[currentPos].BackgroundImage.Tag = "R";
-                    Main._board[prevPos] = " ";
-                    Main._board[currentPos] = "R";
-                }
-
-                if (prevPiece == "Q")
-                {
-                    Board.board_panels[prevPos].BackgroundImage = null;
-                    // NW
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 17))
-                    {
-                        if (Main._board[pos - 17] == " ")
-                        {
-                            pos -= 17;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    // N
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 16))
-                    {
-                        if (Main._board[pos - 16] == " ")
-                        {
-                            pos -= 16;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    // NE
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 15))
-                    {
-                        if (Main._board[pos - 15] == " ")
-                        {
-                            pos -= 15;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    // W
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos - 1))
-                    {
-                        if (Main._board[pos - 1] == " ")
-                        {
-                            pos -= 1;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    // E
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 1))
-                    {
-                        if (Main._board[pos + 1] == " ")
-                        {
-                            pos += 1;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    // SW
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 15))
-                    {
-                        if (Main._board[pos + 15] == " ")
-                        {
-                            pos += 15;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    // S
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 16))
-                    {
-                        if (Main._board[pos + 16] == " ")
-                        {
-                            pos += 16;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    // SE
-                    pos = prevPos;
-                    while (Board.isOnBoard(pos + 17))
-                    {
-                        if (Main._board[pos + 17] == " ")
-                        {
-                            pos += 17;
-                            Board.board_panels[pos].BackgroundImage = null;
-                        }
-                        else break;
-                    }
-
-                    Board.board_panels[currentPos].BackgroundImage = Resources.wq;
-                    Board.board_panels[currentPos].BackgroundImage.Tag = "Q";
-                    Main._board[prevPos] = " ";
-                    Main._board[currentPos] = "Q";
                 }
             }
             else
@@ -1225,7 +1229,7 @@ namespace DailyChessPuzzle
             }
         }
 
-        public static void Captured(Control c, string piece, int currentPos, int prevPos)
+        public static void Captured(string piece, int currentPos, int prevPos)
         {
             if (piece == "P")
             {

@@ -63,6 +63,16 @@ namespace DailyChessPuzzle.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap active_x {
+            get {
+                object obj = ResourceManager.GetObject("active_x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bb {
             get {
                 object obj = ResourceManager.GetObject("bb", resourceCulture);
@@ -176,6 +186,16 @@ namespace DailyChessPuzzle.Properties {
         internal static System.Drawing.Bitmap br_c {
             get {
                 object obj = ResourceManager.GetObject("br_c", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inactive_x {
+            get {
+                object obj = ResourceManager.GetObject("inactive_x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

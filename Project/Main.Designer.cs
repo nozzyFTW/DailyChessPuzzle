@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.pnlBoard = new System.Windows.Forms.Panel();
             this.E1 = new System.Windows.Forms.Panel();
@@ -96,7 +97,10 @@
             this.D5 = new System.Windows.Forms.Panel();
             this.C7 = new System.Windows.Forms.Panel();
             this.D7 = new System.Windows.Forms.Panel();
+            this.txtTask = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
             this.pnlBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,10 +108,18 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(714, 72);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(440, 498);
             this.panel1.TabIndex = 65;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(27, 148);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(390, 300);
+            this.panel3.TabIndex = 0;
             // 
             // button2
             // 
@@ -831,6 +843,24 @@
             this.D7.Tag = "19";
             this.D7.Click += new System.EventHandler(this.Square_Click);
             // 
+            // txtTask
+            // 
+            this.txtTask.Font = new System.Drawing.Font("Outfit", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTask.Location = new System.Drawing.Point(705, 32);
+            this.txtTask.Name = "txtTask";
+            this.txtTask.Size = new System.Drawing.Size(380, 34);
+            this.txtTask.TabIndex = 67;
+            this.txtTask.Text = "White to Move and Mate in 2";
+            this.txtTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightGray;
+            this.panel2.Location = new System.Drawing.Point(714, 85);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(440, 84);
+            this.panel2.TabIndex = 0;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -849,6 +879,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 657);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.txtTask);
             this.Controls.Add(this.pnlBoard);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
@@ -858,6 +890,7 @@
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
             this.pnlBoard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -933,6 +966,9 @@
         private System.Windows.Forms.Panel G6;
         private System.Windows.Forms.Panel E6;
         private System.Windows.Forms.Panel G8;
+        private System.Windows.Forms.Label txtTask;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
