@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblRating = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -45,14 +45,14 @@
             this.label4.Text = "PLAY AGAIN TOMORROW";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label3
+            // lblRating
             // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(83, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "1972";
+            this.lblRating.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRating.Location = new System.Drawing.Point(83, 73);
+            this.lblRating.Name = "lblRating";
+            this.lblRating.Size = new System.Drawing.Size(233, 20);
+            this.lblRating.TabIndex = 8;
+            this.lblRating.Text = "1972";
             // 
             // label2
             // 
@@ -89,12 +89,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 146);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblRating);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Win";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.Win_Load);
             this.ResumeLayout(false);
 
         }
@@ -102,7 +104,7 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblRating;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblTitle;

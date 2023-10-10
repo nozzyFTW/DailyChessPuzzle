@@ -26,9 +26,7 @@ namespace DailyChessPuzzle
         public static PictureBox imgStrike1, imgStrike2, imgStrike3;
         private static Main form = new Main();
 
-        public static string[] board = new string[64];
-
-        public static string[] _board = new string[128]
+        public static string[] board = new string[128]
         {
             " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
             " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
@@ -74,13 +72,6 @@ namespace DailyChessPuzzle
 
             Puzzle.ReadFEN();
             ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
-        }
-
-        private static Control GetControl(Form form, string control)
-        {
-            // Code from Stack Overflow
-            Control[] rtnControl = form.Controls.Find(control, true);
-            return rtnControl[0];
         }
 
         private void SetupStrikes()
@@ -217,6 +208,12 @@ namespace DailyChessPuzzle
             }
         }
 
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
+        }
+
         public static void ComputerMove(string move)
         {
             string piece = String.Empty;
@@ -235,7 +232,7 @@ namespace DailyChessPuzzle
                     if (pnl.Name == originalSquare.ToUpper())
                     {
                         originalPos = Convert.ToInt32(pnl.Tag.ToString());
-                        piece = _board[originalPos];
+                        piece = board[originalPos];
                     }
                     if (pnl.Name == newSquare.ToUpper())
                     {
@@ -249,43 +246,43 @@ namespace DailyChessPuzzle
             {
                 Board.board_panels[newPos].BackgroundImage = Resources.bp;
                 Board.board_panels[newPos].BackgroundImage.Tag = "p";
-                _board[originalPos] = " ";
-                _board[newPos] = "p";
+                board[originalPos] = " ";
+                board[newPos] = "p";
             }
             if (piece == "n")
             {
                 Board.board_panels[newPos].BackgroundImage = Resources.bn;
                 Board.board_panels[newPos].BackgroundImage.Tag = "n";
-                _board[originalPos] = " ";
-                _board[newPos] = "n";
+                board[originalPos] = " ";
+                board[newPos] = "n";
             }
             if (piece == "b")
             {
                 Board.board_panels[newPos].BackgroundImage = Resources.bb;
                 Board.board_panels[newPos].BackgroundImage.Tag = "b";
-                _board[originalPos] = " ";
-                _board[newPos] = "b";
+                board[originalPos] = " ";
+                board[newPos] = "b";
             }
             if (piece == "r")
             {
                 Board.board_panels[newPos].BackgroundImage = Resources.br;
                 Board.board_panels[newPos].BackgroundImage.Tag = "r";
-                _board[originalPos] = " ";
-                _board[newPos] = "r";
+                board[originalPos] = " ";
+                board[newPos] = "r";
             }
             if (piece == "q")
             {
                 Board.board_panels[newPos].BackgroundImage = Resources.bq;
                 Board.board_panels[newPos].BackgroundImage.Tag = "q";
-                _board[originalPos] = " ";
-                _board[newPos] = "q";
+                board[originalPos] = " ";
+                board[newPos] = "q";
             }
             if (piece == "k")
             {
                 Board.board_panels[newPos].BackgroundImage = Resources.bk;
                 Board.board_panels[newPos].BackgroundImage.Tag = "k";
-                _board[originalPos] = " ";
-                _board[newPos] = "k";
+                board[originalPos] = " ";
+                board[newPos] = "k";
             }
             Puzzle.moveCount++;
         }

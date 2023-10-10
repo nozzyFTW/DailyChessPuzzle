@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
+    <Compile Include="CSV.cs" />
     <Compile Include="GameOver.cs">
       <SubType>Form</SubType>
     </Compile>

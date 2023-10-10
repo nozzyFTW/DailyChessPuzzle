@@ -16,5 +16,11 @@ namespace DailyChessPuzzle
         {
             InitializeComponent();
         }
+
+        private void GameOver_Load(object sender, EventArgs e)
+        {
+            lblRating.Text = Puzzle.todaysPuzzle.Rating;
+            lblMoves.Text = Puzzle.todaysPuzzle.Moves;
+        }
     }
 }

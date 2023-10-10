@@ -99,10 +99,10 @@
             this.D7 = new System.Windows.Forms.Panel();
             this.txtTask = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSettings = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.pnlBoard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -861,18 +861,19 @@
             this.panel2.Size = new System.Drawing.Size(440, 84);
             this.panel2.TabIndex = 0;
             // 
-            // pictureBox1
+            // btnSettings
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = global::DailyChessPuzzle.Properties.Resources.settings;
-            this.pictureBox1.Location = new System.Drawing.Point(1114, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.btnSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
+            this.btnSettings.InitialImage = global::DailyChessPuzzle.Properties.Resources.settings;
+            this.btnSettings.Location = new System.Drawing.Point(1114, 26);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(40, 40);
+            this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnSettings.TabIndex = 3;
+            this.btnSettings.TabStop = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // Main
             // 
@@ -882,7 +883,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.txtTask);
             this.Controls.Add(this.pnlBoard);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Name = "Main";
@@ -892,7 +893,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.pnlBoard.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -900,7 +901,7 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnSettings;
         private System.Windows.Forms.Panel pnlBoard;
         private System.Windows.Forms.Panel E8;
         private System.Windows.Forms.Panel C8;

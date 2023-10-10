@@ -14,19 +14,7 @@ namespace DailyChessPuzzle
     {
         public static List<Panel> panels = new List<Panel>();
 
-        public static string[] startingPos = new string[64]
-        {
-            "r", "n", "b", "q", "k", "b", "n", "r",
-            "p", "p", "p", "p", "p", "p", "p", "p",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            " ", " ", " ", " ", " ", " ", " ", " ",
-            "P", "P", "P", "P", "P", "P", "P", "P",
-            "R", "N", "B", "Q", "K", "B", "N", "R"
-        };
-
-        public static string[] _startingPos = new string[128]
+        public static string[] startingPos = new string[128]
         {
             "r", "n", "b", "q", "k", "b", "n", "r", "x", "x", "x", "x", "x", "x", "x", "x",
             "p", "p", "p", "p", "p", "p", "p", "p", "x", "x", "x", "x", "x", "x", "x", "x",

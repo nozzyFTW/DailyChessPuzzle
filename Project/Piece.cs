@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using Panel = System.Windows.Forms.Panel;
 
 namespace DailyChessPuzzle
 {
@@ -48,7 +49,7 @@ namespace DailyChessPuzzle
                     {
                         for (int i = 0; i < Convert.ToInt32(item); i++)
                         {
-                            Main._board[offsetPos] = " ";
+                            Main.board[offsetPos] = " ";
                             //Main.board[pos] = " ";
                             pos++;
                             offsetPos++;
@@ -60,42 +61,42 @@ namespace DailyChessPuzzle
                         if (item == "P") // White Pawn
                         {
                             //Main.board[pos] = "P";
-                            Main._board[offsetPos] = "P";
+                            Main.board[offsetPos] = "P";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.wp;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "P";
                         }
                         if (item == "R") // White Rook
                         {
                             //Main.board[pos] = "R";
-                            Main._board[offsetPos] = "R";
+                            Main.board[offsetPos] = "R";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.wr;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "R";
                         }
                         if (item == "N") // White Knight
                         {
                             //Main.board[pos] = "N";
-                            Main._board[offsetPos] = "N";
+                            Main.board[offsetPos] = "N";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.wn;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "N";
                         }
                         if (item == "B") // White Bishop
                         {
                             //Main.board[pos] = "B";
-                            Main._board[offsetPos] = "B";
+                            Main.board[offsetPos] = "B";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.wb;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "B";
                         }
                         if (item == "Q") // White Queen
                         {
                             //Main.board[pos] = "Q";
-                            Main._board[offsetPos] = "Q";
+                            Main.board[offsetPos] = "Q";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.wq;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "Q";
                         }
                         if (item == "K") // White King
                         {
                             //Main.board[pos] = "K";
-                            Main._board[offsetPos] = "K";
+                            Main.board[offsetPos] = "K";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.wk;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "K";
                         }
@@ -108,42 +109,42 @@ namespace DailyChessPuzzle
                         if (item == "p") // Black Pawn
                         {
                             //Main.board[pos] = "p";
-                            Main._board[offsetPos] = "p";
+                            Main.board[offsetPos] = "p";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.bp;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "p";
                         }
                         if (item == "r") // Black Rook
                         {
                             //Main.board[pos] = "r";
-                            Main._board[offsetPos] = "r";
+                            Main.board[offsetPos] = "r";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.br;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "r";
                         }
                         if (item == "n") // Black Knight
                         {
                             //Main.board[pos] = "n";
-                            Main._board[offsetPos] = "n";
+                            Main.board[offsetPos] = "n";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.bn;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "n";
                         }
                         if (item == "b") // Black Bishop
                         {
                             //Main.board[pos] = "b";
-                            Main._board[offsetPos] = "b";
+                            Main.board[offsetPos] = "b";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.bb;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "b";
                         }
                         if (item == "q") // Black Queen
                         {
                             //Main.board[pos] = "q";
-                            Main._board[offsetPos] = "q";
+                            Main.board[offsetPos] = "q";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.bq;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "q";
                         }
                         if (item == "k") // Black King
                         {
                             //Main.board[pos] = "k";
-                            Main._board[offsetPos] = "k";
+                            Main.board[offsetPos] = "k";
                             Board.board_panels[offsetPos].BackgroundImage = Resources.bk;
                             Board.board_panels[offsetPos].BackgroundImage.Tag = "k";
                         }
@@ -173,16 +174,16 @@ namespace DailyChessPuzzle
                         if (prevPiece == "P")
                         {
                             Board.board_panels[prevPos].BackgroundImage = null;
-                            if (Main._board[prevPos - 16] == " " && Board.isOnBoard(prevPos - 16))
+                            if (Main.board[prevPos - 16] == " " && Board.isOnBoard(prevPos - 16))
                             {
                                 Board.board_panels[prevPos - 16].BackgroundImage = null;
-                                if (Main._board[prevPos - 32] == " " && Board.isOnBoard(prevPos - 32))
+                                if (Main.board[prevPos - 32] == " " && Board.isOnBoard(prevPos - 32))
                                 {
                                     Board.board_panels[prevPos - 32].BackgroundImage = null;
                                 }
                             }
 
-                            if (Main._board[prevPos - 17] != " " && !Char.IsUpper(Main._board[prevPos - 17], 0))
+                            if (Main.board[prevPos - 17] != " " && !Char.IsUpper(Main.board[prevPos - 17], 0))
                             {
                                 if (prevPos != currentPos)
                                 {
@@ -190,11 +191,11 @@ namespace DailyChessPuzzle
                                 }
                                 else
                                 {
-                                    targetedPiece = Main._board[currentPos - 17];
+                                    targetedPiece = Main.board[currentPos - 17];
                                     ResetPiece((prevPos - 17), targetedPiece);
                                 }
                             }
-                            if (Main._board[prevPos - 15] != " " && !Char.IsUpper(Main._board[prevPos - 15], 0))
+                            if (Main.board[prevPos - 15] != " " && !Char.IsUpper(Main.board[prevPos - 15], 0))
                             {
                                 if (prevPos != currentPos)
                                 {
@@ -202,57 +203,57 @@ namespace DailyChessPuzzle
                                 }
                                 else
                                 {
-                                    targetedPiece = Main._board[currentPos - 17];
+                                    targetedPiece = Main.board[currentPos - 17];
                                     ResetPiece((prevPos - 17), targetedPiece);
                                 }
                             }
 
                             Board.board_panels[currentPos].BackgroundImage = Resources.wp;
                             Board.board_panels[currentPos].BackgroundImage.Tag = "P";
-                            Main._board[prevPos] = " ";
-                            Main._board[currentPos] = "P";
+                            Main.board[prevPos] = " ";
+                            Main.board[currentPos] = "P";
                         }
 
                         if (prevPiece == "N")
                         {
                             Board.board_panels[prevPos].BackgroundImage = null;
-                            if (Main._board[prevPos - 15] == " ")
+                            if (Main.board[prevPos - 15] == " ")
                             {
                                 Board.board_panels[prevPos - 15].BackgroundImage = null;
                             }
-                            if (Main._board[prevPos - 17] == " ")
+                            if (Main.board[prevPos - 17] == " ")
                             {
                                 Board.board_panels[prevPos - 17].BackgroundImage = null;
                             }
-                            if (Main._board[prevPos - 6] == " ")
+                            if (Main.board[prevPos - 6] == " ")
                             {
                                 Board.board_panels[prevPos - 6].BackgroundImage = null;
                             }
-                            if (Main._board[prevPos + 10] == " ")
+                            if (Main.board[prevPos + 10] == " ")
                             {
                                 Board.board_panels[prevPos + 10].BackgroundImage = null;
                             }
-                            if (Main._board[prevPos + 17] == " ")
+                            if (Main.board[prevPos + 17] == " ")
                             {
                                 Board.board_panels[prevPos + 17].BackgroundImage = null;
                             }
-                            if (Main._board[prevPos + 15] == " ")
+                            if (Main.board[prevPos + 15] == " ")
                             {
                                 Board.board_panels[prevPos + 15].BackgroundImage = null;
                             }
-                            if (Main._board[prevPos - 10] == " ")
+                            if (Main.board[prevPos - 10] == " ")
                             {
                                 Board.board_panels[prevPos - 10].BackgroundImage = null;
                             }
-                            if (Main._board[prevPos + 6] == " ")
+                            if (Main.board[prevPos + 6] == " ")
                             {
                                 Board.board_panels[prevPos + 6].BackgroundImage = null;
                             }
 
                             Board.board_panels[currentPos].BackgroundImage = Resources.wn;
                             Board.board_panels[currentPos].BackgroundImage.Tag = "N";
-                            Main._board[prevPos] = " ";
-                            Main._board[currentPos] = "N";
+                            Main.board[prevPos] = " ";
+                            Main.board[currentPos] = "N";
                         }
 
                         if (prevPiece == "K")
@@ -260,7 +261,7 @@ namespace DailyChessPuzzle
                             Board.board_panels[prevPos].BackgroundImage = null;
                             try
                             {
-                                if (Main._board[currentPos - 9] == " ")
+                                if (Main.board[currentPos - 9] == " ")
                                 {
                                     Board.board_panels[prevPos - 9].BackgroundImage = null;
                                 }
@@ -269,7 +270,7 @@ namespace DailyChessPuzzle
 
                             try
                             {
-                                if (Main._board[currentPos - 8] == " ")
+                                if (Main.board[currentPos - 8] == " ")
                                 {
                                     Board.board_panels[prevPos - 8].BackgroundImage = null;
                                 }
@@ -278,7 +279,7 @@ namespace DailyChessPuzzle
 
                             try
                             {
-                                if (Main._board[currentPos - 7] == " ")
+                                if (Main.board[currentPos - 7] == " ")
                                 {
                                     Board.board_panels[prevPos - 7].BackgroundImage = null;
                                 }
@@ -287,7 +288,7 @@ namespace DailyChessPuzzle
 
                             try
                             {
-                                if (Main._board[currentPos - 1] == " ")
+                                if (Main.board[currentPos - 1] == " ")
                                 {
                                     Board.board_panels[prevPos - 1].BackgroundImage = null;
                                 }
@@ -296,7 +297,7 @@ namespace DailyChessPuzzle
 
                             try
                             {
-                                if (Main._board[currentPos + 1] == " ")
+                                if (Main.board[currentPos + 1] == " ")
                                 {
                                     Board.board_panels[prevPos + 1].BackgroundImage = null;
                                 }
@@ -305,7 +306,7 @@ namespace DailyChessPuzzle
 
                             try
                             {
-                                if (Main._board[currentPos + 9] == " ")
+                                if (Main.board[currentPos + 9] == " ")
                                 {
                                     Board.board_panels[prevPos + 9].BackgroundImage = null;
                                 }
@@ -314,7 +315,7 @@ namespace DailyChessPuzzle
 
                             try
                             {
-                                if (Main._board[currentPos + 8] == " ")
+                                if (Main.board[currentPos + 8] == " ")
                                 {
                                     Board.board_panels[prevPos + 8].BackgroundImage = null;
                                 }
@@ -323,7 +324,7 @@ namespace DailyChessPuzzle
 
                             try
                             {
-                                if (Main._board[currentPos + 7] == " ")
+                                if (Main.board[currentPos + 7] == " ")
                                 {
                                     Board.board_panels[prevPos + 7].BackgroundImage = null;
                                 }
@@ -332,8 +333,8 @@ namespace DailyChessPuzzle
 
                             Board.board_panels[currentPos].BackgroundImage = Resources.wk;
                             Board.board_panels[currentPos].BackgroundImage.Tag = "K";
-                            Main._board[prevPos] = " ";
-                            Main._board[currentPos] = "K";
+                            Main.board[prevPos] = " ";
+                            Main.board[currentPos] = "K";
                         }
                     }
 
@@ -345,7 +346,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 15))
                         {
-                            if (Main._board[pos - 15] == " ")
+                            if (Main.board[pos - 15] == " ")
                             {
                                 pos -= 15;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -357,7 +358,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 17))
                         {
-                            if (Main._board[pos - 17] == " ")
+                            if (Main.board[pos - 17] == " ")
                             {
                                 pos -= 17;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -369,7 +370,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 17))
                         {
-                            if (Main._board[pos + 17] == " ")
+                            if (Main.board[pos + 17] == " ")
                             {
                                 pos += 17;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -381,7 +382,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 15))
                         {
-                            if (Main._board[pos + 15] == " ")
+                            if (Main.board[pos + 15] == " ")
                             {
                                 pos += 15;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -391,8 +392,8 @@ namespace DailyChessPuzzle
 
                         Board.board_panels[currentPos].BackgroundImage = Resources.wb;
                         Board.board_panels[currentPos].BackgroundImage.Tag = "B";
-                        Main._board[prevPos] = " ";
-                        Main._board[currentPos] = "B";
+                        Main.board[prevPos] = " ";
+                        Main.board[currentPos] = "B";
                     }
 
                     if (prevPiece == "R")
@@ -403,7 +404,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 16))
                         {
-                            if (Main._board[pos - 16] == " ")
+                            if (Main.board[pos - 16] == " ")
                             {
                                 pos -= 16;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -415,7 +416,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 1))
                         {
-                            if (Main._board[pos + 1] == " ")
+                            if (Main.board[pos + 1] == " ")
                             {
                                 pos += 1;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -427,7 +428,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 16))
                         {
-                            if (Main._board[pos + 16] == " ")
+                            if (Main.board[pos + 16] == " ")
                             {
                                 pos += 16;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -439,7 +440,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 1))
                         {
-                            if (Main._board[pos - 1] == " ")
+                            if (Main.board[pos - 1] == " ")
                             {
                                 pos -= 1;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -449,8 +450,8 @@ namespace DailyChessPuzzle
 
                         Board.board_panels[currentPos].BackgroundImage = Resources.wr;
                         Board.board_panels[currentPos].BackgroundImage.Tag = "R";
-                        Main._board[prevPos] = " ";
-                        Main._board[currentPos] = "R";
+                        Main.board[prevPos] = " ";
+                        Main.board[currentPos] = "R";
                     }
 
                     if (prevPiece == "Q")
@@ -460,7 +461,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 17))
                         {
-                            if (Main._board[pos - 17] == " ")
+                            if (Main.board[pos - 17] == " ")
                             {
                                 pos -= 17;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -472,7 +473,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 16))
                         {
-                            if (Main._board[pos - 16] == " ")
+                            if (Main.board[pos - 16] == " ")
                             {
                                 pos -= 16;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -484,7 +485,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 15))
                         {
-                            if (Main._board[pos - 15] == " ")
+                            if (Main.board[pos - 15] == " ")
                             {
                                 pos -= 15;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -496,7 +497,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos - 1))
                         {
-                            if (Main._board[pos - 1] == " ")
+                            if (Main.board[pos - 1] == " ")
                             {
                                 pos -= 1;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -508,7 +509,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 1))
                         {
-                            if (Main._board[pos + 1] == " ")
+                            if (Main.board[pos + 1] == " ")
                             {
                                 pos += 1;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -520,7 +521,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 15))
                         {
-                            if (Main._board[pos + 15] == " ")
+                            if (Main.board[pos + 15] == " ")
                             {
                                 pos += 15;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -532,7 +533,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 16))
                         {
-                            if (Main._board[pos + 16] == " ")
+                            if (Main.board[pos + 16] == " ")
                             {
                                 pos += 16;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -544,7 +545,7 @@ namespace DailyChessPuzzle
                         pos = prevPos;
                         while (Board.isOnBoard(pos + 17))
                         {
-                            if (Main._board[pos + 17] == " ")
+                            if (Main.board[pos + 17] == " ")
                             {
                                 pos += 17;
                                 Board.board_panels[pos].BackgroundImage = null;
@@ -554,8 +555,8 @@ namespace DailyChessPuzzle
 
                         Board.board_panels[currentPos].BackgroundImage = Resources.wq;
                         Board.board_panels[currentPos].BackgroundImage.Tag = "Q";
-                        Main._board[prevPos] = " ";
-                        Main._board[currentPos] = "Q";
+                        Main.board[prevPos] = " ";
+                        Main.board[currentPos] = "Q";
                     }
                 }
             }
@@ -563,19 +564,19 @@ namespace DailyChessPuzzle
             {
                 if (piece == "P")
                 {
-                    if (Board._startingPos[currentPos] == piece)
+                    if (Board.startingPos[currentPos] == piece)
                     {
                         isPawnFirstMove = true;
                     }
 
                     // If first move for pawn, is pawn blocked from moving forward 2? No, allow piece to move forward 2 squares. Yes, Can piece be moved 1 square?
                     Console.WriteLine(Board.isOnBoard(prevPos - 16));
-                    if (Main._board[currentPos - 16] == " " && Board.isOnBoard(prevPos - 16))
+                    if (Main.board[currentPos - 16] == " " && Board.isOnBoard(prevPos - 16))
                     {
                         newPos = currentPos - 16;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        if (isPawnFirstMove && Main._board[currentPos - 32] == " " && Board.isOnBoard(prevPos - 32))
+                        if (isPawnFirstMove && Main.board[currentPos - 32] == " " && Board.isOnBoard(prevPos - 32))
                         {
                             newPos = currentPos - 32;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
@@ -584,14 +585,14 @@ namespace DailyChessPuzzle
 
                     }
                     // Capture L
-                    if (Main._board[currentPos - 17] != " " && !Char.IsUpper(Main._board[currentPos - 17], 0))
+                    if (Main.board[currentPos - 17] != " " && !Char.IsUpper(Main.board[currentPos - 17], 0))
                     {
                         newPos = currentPos - 17;
                         CanCapture(newPos);
                     }
                     
                     // Capture R
-                    if (Main._board[currentPos - 15] != " " && !Char.IsUpper(Main._board[currentPos - 15], 0))
+                    if (Main.board[currentPos - 15] != " " && !Char.IsUpper(Main.board[currentPos - 15], 0))
                     {
                         newPos = currentPos - 15;
                         CanCapture(newPos);
@@ -601,112 +602,112 @@ namespace DailyChessPuzzle
                 if (piece == "N")
                 {
                     // NNE - 2 UP, 1 RIGHT
-                    if (Main._board[currentPos - 31] == " ")
+                    if (Main.board[currentPos - 31] == " ")
                     {
                         newPos = currentPos - 31;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 31])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 31])))
                     {
                         newPos = currentPos - 31;
                         CanCapture(newPos);
                     }
 
                     // NNW - 2 UP, 1 LEFT
-                    if (Main._board[currentPos - 33] == " ")
+                    if (Main.board[currentPos - 33] == " ")
                     {
                         newPos = currentPos - 33;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 33])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 33])))
                     {
                         newPos = currentPos - 33;
                         CanCapture(newPos);
                     }
 
                     // EEN - 2 RIGHT, 1 UP
-                    if (Main._board[currentPos - 14] == " ")
+                    if (Main.board[currentPos - 14] == " ")
                     {
                         newPos = currentPos - 14;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 14])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 14])))
                     {
                         newPos = currentPos - 14;
                         CanCapture(newPos);
                     }
 
                     // EES - 2 RIGHT, 1 DOWN
-                    if (Main._board[currentPos + 18] == " ")
+                    if (Main.board[currentPos + 18] == " ")
                     {
                         newPos = currentPos + 18;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 18])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 18])))
                     {
                         newPos = currentPos + 18;
                         CanCapture(newPos);
                     }
 
                     // SSE - 2 DOWN, 1 RIGHT
-                    if (Main._board[currentPos + 31] == " ")
+                    if (Main.board[currentPos + 31] == " ")
                     {
                         newPos = currentPos + 31;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 31])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 31])))
                     {
                         newPos = currentPos + 31;
                         CanCapture(newPos);
                     }
 
                     // SSW - 2 DOWN, 1 LEFT
-                    if (Main._board[currentPos + 33] == " ")
+                    if (Main.board[currentPos + 33] == " ")
                     {
                         newPos = currentPos + 33;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 33])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 33])))
                     {
                         newPos = currentPos + 33;
                         CanCapture(newPos);
                     }
 
                     // WWN - 2 LEFT, 1 UP
-                    if (Main._board[currentPos - 18] == " ")
+                    if (Main.board[currentPos - 18] == " ")
                     {
                         newPos = currentPos - 18;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 18])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 18])))
                     {
                         newPos = currentPos - 18;
                         CanCapture(newPos);
                     }
 
                     // WWS - 2 LEFT, 1 DOWN 
-                    if (Main._board[currentPos + 14] == " ")
+                    if (Main.board[currentPos + 14] == " ")
                     {
                         newPos = currentPos + 14;
                         Board.board_panels[newPos].BackgroundImage = Resources.legal;
                         Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                         Main.legal_board[newPos] = "legal";
                     }
-                    else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 14])))
+                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 14])))
                     {
                         newPos = currentPos + 14;
                         CanCapture(newPos);
@@ -718,14 +719,14 @@ namespace DailyChessPuzzle
                     // NW
                     try
                     {
-                        if (Main._board[currentPos - 17] == " ")
+                        if (Main.board[currentPos - 17] == " ")
                         {
                             newPos = currentPos - 17;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 17])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 17])))
                         {
                             newPos = currentPos - 17;
                             CanCapture(newPos);
@@ -736,14 +737,14 @@ namespace DailyChessPuzzle
                     // N
                     try
                     {
-                        if (Main._board[currentPos - 16] == " ")
+                        if (Main.board[currentPos - 16] == " ")
                         {
                             newPos = currentPos - 16;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 16])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 16])))
                         {
                             newPos = currentPos - 16;
                             CanCapture(newPos);
@@ -754,14 +755,14 @@ namespace DailyChessPuzzle
                     // NE
                     try
                     {
-                        if (Main._board[currentPos - 15] == " ")
+                        if (Main.board[currentPos - 15] == " ")
                         {
                             newPos = currentPos - 15;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 15])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 15])))
                         {
                             newPos = currentPos - 15;
                             CanCapture(newPos);
@@ -772,14 +773,14 @@ namespace DailyChessPuzzle
                     // W
                     try
                     {
-                        if (Main._board[currentPos - 1] == " ")
+                        if (Main.board[currentPos - 1] == " ")
                         {
                             newPos = currentPos - 1;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos - 1])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 1])))
                         {
                             newPos = currentPos - 1;
                             CanCapture(newPos);
@@ -790,14 +791,14 @@ namespace DailyChessPuzzle
                     // E
                     try
                     {
-                        if (Main._board[currentPos + 1] == " ")
+                        if (Main.board[currentPos + 1] == " ")
                         {
                             newPos = currentPos + 1;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 1])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 1])))
                         {
                             newPos = currentPos + 1;
                             CanCapture(newPos);
@@ -808,14 +809,14 @@ namespace DailyChessPuzzle
                     // SW
                     try
                     {
-                        if (Main._board[currentPos + 17] == " ")
+                        if (Main.board[currentPos + 17] == " ")
                         {
                             newPos = currentPos + 17;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 17])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 17])))
                         {
                             newPos = currentPos + 17;
                             CanCapture(newPos);
@@ -826,14 +827,14 @@ namespace DailyChessPuzzle
                     // S
                     try
                     {
-                        if (Main._board[currentPos + 16] == " ")
+                        if (Main.board[currentPos + 16] == " ")
                         {
                             newPos = currentPos + 16;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 16])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 16])))
                         {
                             newPos = currentPos + 16;
                             CanCapture(newPos);
@@ -844,14 +845,14 @@ namespace DailyChessPuzzle
                     // SE
                     try
                     {
-                        if (Main._board[currentPos + 15] == " ")
+                        if (Main.board[currentPos + 15] == " ")
                         {
                             newPos = currentPos + 15;
                             Board.board_panels[newPos].BackgroundImage = Resources.legal;
                             Board.board_panels[newPos].BackgroundImage.Tag = "legal";
                             Main.legal_board[newPos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[currentPos + 15])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 15])))
                         {
                             newPos = currentPos + 15;
                             CanCapture(newPos);
@@ -865,14 +866,14 @@ namespace DailyChessPuzzle
                     // NE
                     while (Board.isOnBoard(pos - 15))
                     {
-                        if (Main._board[pos - 15] == " ")
+                        if (Main.board[pos - 15] == " ")
                         {
                             pos -= 15;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 15])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 15])))
                         {
                             pos += 15;
                             CanCapture(pos);
@@ -885,14 +886,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos - 17))
                     {
-                        if (Main._board[pos - 17] == " ")
+                        if (Main.board[pos - 17] == " ")
                         {
                             pos -= 17;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 17])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 17])))
                         {
                             pos += 17;
                             CanCapture(pos);
@@ -905,14 +906,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 17))
                     {
-                        if (Main._board[pos + 17] == " ")
+                        if (Main.board[pos + 17] == " ")
                         {
                             pos += 17;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 17])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos + 17])))
                         {
                             pos += 17;
                             CanCapture(pos);
@@ -925,14 +926,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 15))
                     {
-                        if (Main._board[pos + 15] == " ")
+                        if (Main.board[pos + 15] == " ")
                         {
                             pos += 15;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 15])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos + 15])))
                         {
                             pos += 15;
                             CanCapture(pos);
@@ -948,14 +949,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos - 16))
                     {
-                        if (Main._board[pos - 16] == " ")
+                        if (Main.board[pos - 16] == " ")
                         {
                             pos -= 16;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 16])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 16])))
                         {
                             pos -= 16;
                             CanCapture(pos);
@@ -968,14 +969,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 1))
                     {
-                        if (Main._board[pos + 1] == " ")
+                        if (Main.board[pos + 1] == " ")
                         {
                             pos += 1;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 1])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos + 1])))
                         {
                             pos += 1;
                             CanCapture(pos);
@@ -988,14 +989,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 16))
                     {
-                        if (Main._board[pos + 16] == " ")
+                        if (Main.board[pos + 16] == " ")
                         {
                             pos += 16;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 16])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos + 16])))
                         {
                             pos += 16;
                             CanCapture(pos);
@@ -1008,14 +1009,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos - 1))
                     {
-                        if (Main._board[pos - 1] == " ")
+                        if (Main.board[pos - 1] == " ")
                         {
                             pos -= 1;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 1])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 1])))
                         {
                             pos -= 1;
                             CanCapture(pos);
@@ -1031,14 +1032,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos - 17))
                     {
-                        if (Main._board[pos - 17] == " ")
+                        if (Main.board[pos - 17] == " ")
                         {
                             pos -= 17;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 17])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 17])))
                         {
                             pos -= 17;
                             CanCapture(pos);
@@ -1051,14 +1052,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos - 16))
                     {
-                        if (Main._board[pos - 16] == " ")
+                        if (Main.board[pos - 16] == " ")
                         {
                             pos -= 16;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 16])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 16])))
                         {
                             pos -= 16;
                             CanCapture(pos);
@@ -1071,14 +1072,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos - 15))
                     {
-                        if (Main._board[pos - 15] == " ")
+                        if (Main.board[pos - 15] == " ")
                         {
                             pos -= 15;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 15])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 15])))
                         {
                             pos -= 15;
                             CanCapture(pos);
@@ -1091,14 +1092,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos - 1))
                     {
-                        if (Main._board[pos - 1] == " ")
+                        if (Main.board[pos - 1] == " ")
                         {
                             pos -= 1;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 1])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 1])))
                         {
                             pos -= 1;
                             CanCapture(pos);
@@ -1111,14 +1112,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 1))
                     {
-                        if (Main._board[pos + 1] == " ")
+                        if (Main.board[pos + 1] == " ")
                         {
                             pos += 1;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 1])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos + 1])))
                         {
                             pos += 1;
                             CanCapture(pos);
@@ -1131,14 +1132,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 15))
                     {
-                        if (Main._board[pos + 15] == " ")
+                        if (Main.board[pos + 15] == " ")
                         {
                             pos += 15;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 15])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos + 15])))
                         {
                             pos += 15;
                             CanCapture(pos);
@@ -1151,14 +1152,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 16))
                     {
-                        if (Main._board[pos + 16] == " ")
+                        if (Main.board[pos + 16] == " ")
                         {
                             pos += 16;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos - 16])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos - 16])))
                         {
                             pos += 16;
                             CanCapture(pos);
@@ -1171,14 +1172,14 @@ namespace DailyChessPuzzle
                     pos = currentPos;
                     while (Board.isOnBoard(pos + 17))
                     {
-                        if (Main._board[pos + 17] == " ")
+                        if (Main.board[pos + 17] == " ")
                         {
                             pos += 17;
                             Board.board_panels[pos].BackgroundImage = Resources.legal;
                             Board.board_panels[pos].BackgroundImage.Tag = "legal";
                             Main.legal_board[pos] = "legal";
                         }
-                        else if (!Char.IsUpper(Convert.ToChar(Main._board[pos + 17])))
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[pos + 17])))
                         {
                             pos += 17;
                             CanCapture(pos);
@@ -1192,7 +1193,7 @@ namespace DailyChessPuzzle
 
         private static void CanCapture(int pos)
         {
-            string piece = Main._board[pos];
+            string piece = Main.board[pos];
             if (piece == "p")
             {
                 Board.board_panels[pos].BackgroundImage = Resources.bp_c;
@@ -1237,8 +1238,8 @@ namespace DailyChessPuzzle
                 Board.board_panels[currentPos].BackgroundImage.Tag = "P";
                 Board.board_panels[prevPos].BackgroundImage = null;
                 Main.legal_board[currentPos] = " ";
-                Main._board[currentPos] = "P";
-                Main._board[prevPos] = " ";
+                Main.board[currentPos] = "P";
+                Main.board[prevPos] = " ";
             }
             if (piece == "N")
             {
@@ -1246,8 +1247,8 @@ namespace DailyChessPuzzle
                 Board.board_panels[currentPos].BackgroundImage.Tag = "N";
                 Board.board_panels[prevPos].BackgroundImage = null;
                 Main.legal_board[currentPos] = " ";
-                Main._board[currentPos] = "N";
-                Main._board[prevPos] = " ";
+                Main.board[currentPos] = "N";
+                Main.board[prevPos] = " ";
             }
             if (piece == "B")
             {
@@ -1255,8 +1256,8 @@ namespace DailyChessPuzzle
                 Board.board_panels[currentPos].BackgroundImage.Tag = "B";
                 Board.board_panels[prevPos].BackgroundImage = null;
                 Main.legal_board[currentPos] = " ";
-                Main._board[currentPos] = "B";
-                Main._board[prevPos] = " ";
+                Main.board[currentPos] = "B";
+                Main.board[prevPos] = " ";
             }
             if (piece == "R")
             {
@@ -1264,8 +1265,8 @@ namespace DailyChessPuzzle
                 Board.board_panels[currentPos].BackgroundImage.Tag = "R";
                 Board.board_panels[prevPos].BackgroundImage = null;
                 Main.legal_board[currentPos] = " ";
-                Main._board[currentPos] = "R";
-                Main._board[prevPos] = " ";
+                Main.board[currentPos] = "R";
+                Main.board[prevPos] = " ";
             }
             if (piece == "Q")
             {
@@ -1273,8 +1274,8 @@ namespace DailyChessPuzzle
                 Board.board_panels[currentPos].BackgroundImage.Tag = "Q";
                 Board.board_panels[prevPos].BackgroundImage = null;
                 Main.legal_board[currentPos] = " ";
-                Main._board[currentPos] = "Q";
-                Main._board[prevPos] = " ";
+                Main.board[currentPos] = "Q";
+                Main.board[prevPos] = " ";
             }
             if (piece == "K")
             {
@@ -1282,8 +1283,8 @@ namespace DailyChessPuzzle
                 Board.board_panels[currentPos].BackgroundImage.Tag = "K";
                 Board.board_panels[prevPos].BackgroundImage = null;
                 Main.legal_board[currentPos] = " ";
-                Main._board[currentPos] = "K";
-                Main._board[prevPos] = " ";
+                Main.board[currentPos] = "K";
+                Main.board[prevPos] = " ";
             }
         }
 

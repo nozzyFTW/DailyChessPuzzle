@@ -16,5 +16,10 @@ namespace DailyChessPuzzle
         {
             InitializeComponent();
         }
+
+        private void Win_Load(object sender, EventArgs e)
+        {
+            lblRating.Text = Puzzle.todaysPuzzle.Rating;
+        }
     }
 }
