@@ -64,6 +64,15 @@ namespace DailyChessPuzzle
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            SQL sql = new SQL();
+
+            string username = Environment.UserName;
+            if (!SQL.UsernameExists(username))
+            {
+                Welcome welcome = new Welcome();
+                welcome.Show();
+            }
+
             Board clsBoard = new Board();
 
             GenerateBoardPanels();
@@ -72,6 +81,11 @@ namespace DailyChessPuzzle
 
             Puzzle.ReadFEN();
             ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
+        }
+
+        private void SqlConnect()
+        {
+
         }
 
         private void SetupStrikes()

@@ -74,3 +74,4 @@ F:\School\DailyChessPuzzle\Project\bin\Debug\System.Runtime.CompilerServices.Uns
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.CopyComplete
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.GameOver.resources
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Win.resources
+F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Welcome.resources
