@@ -15,8 +15,6 @@ namespace DailyChessPuzzle
             InitializeComponent();
         }
 
-        public static int points;
-
         private static bool isPieceMoved = false;
         private static bool isPiecedCapture = false;
         public static int prevPos;
@@ -67,25 +65,33 @@ namespace DailyChessPuzzle
             SQL sql = new SQL();
 
             string username = Environment.UserName;
-            if (!SQL.UsernameExists(username))
+            SQL.UserName = username;
+
+            if (SQL.AlreadyPlayed())
             {
-                Welcome welcome = new Welcome();
-                welcome.Show();
+                PlayAgain playAgain = new PlayAgain();
+                playAgain.ShowDialog();
             }
+            else
+            {
+                if (!SQL.UsernameExists(username))
+                {
+                    Welcome welcome = new Welcome();
+                    welcome.ShowDialog();
+                    SQL.NewUser();
+                }
 
-            Board clsBoard = new Board();
+                Board clsBoard = new Board();
 
-            GenerateBoardPanels();
-            SetupStrikes();
-            Puzzle clsPuzzle = new Puzzle(txtTask);
+                GenerateBoardPanels();
+                SetupStrikes();
+                Puzzle clsPuzzle = new Puzzle(txtTask);
+                lblCorrectMove.Text = String.Empty;
+                lblIncorrectMove.Text = String.Empty;
 
-            Puzzle.ReadFEN();
-            ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
-        }
-
-        private void SqlConnect()
-        {
-
+                Puzzle.ReadFEN();
+                ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
+            }
         }
 
         private void SetupStrikes()
@@ -310,10 +316,12 @@ namespace DailyChessPuzzle
                 {
                     case 1:
                         imgStrike1.Image = Resources.active_x;
+                        Puzzle.score--;
                         break;
 
                     case 2:
                         imgStrike2.Image = Resources.active_x;
+                        Puzzle.score--;
                         break;
 
                     case 3:
@@ -326,6 +334,16 @@ namespace DailyChessPuzzle
                 return Puzzle.isGameOver = false;
             }
             else return Puzzle.isGameOver = true;
+        }
+
+        public static void UpdateCorrect(string move)
+        {
+            form.lblCorrectMove.Text += $"{move}\n";
+        }
+
+        public static void UpdateIncorrect(string move)
+        {
+            form.lblIncorrectMove.Text += $"{move}\n";
         }
     }
 }

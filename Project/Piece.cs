@@ -602,115 +602,139 @@ namespace DailyChessPuzzle
                 if (piece == "N")
                 {
                     // NNE - 2 UP, 1 RIGHT
-                    if (Main.board[currentPos - 31] == " ")
+                    if (Board.isOnBoard(currentPos - 31))
                     {
-                        newPos = currentPos - 31;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 31])))
-                    {
-                        newPos = currentPos - 31;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos - 31] == " ")
+                        {
+                            newPos = currentPos - 31;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 31])))
+                        {
+                            newPos = currentPos - 31;
+                            CanCapture(newPos);
+                        }
                     }
 
                     // NNW - 2 UP, 1 LEFT
-                    if (Main.board[currentPos - 33] == " ")
+                    if (Board.isOnBoard(currentPos - 33))
                     {
-                        newPos = currentPos - 33;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 33])))
-                    {
-                        newPos = currentPos - 33;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos - 33] == " ")
+                        {
+                            newPos = currentPos - 33;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 33])))
+                        {
+                            newPos = currentPos - 33;
+                            CanCapture(newPos);
+                        }
                     }
 
                     // EEN - 2 RIGHT, 1 UP
-                    if (Main.board[currentPos - 14] == " ")
+                    if (Board.isOnBoard(currentPos - 14))
                     {
-                        newPos = currentPos - 14;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 14])))
-                    {
-                        newPos = currentPos - 14;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos - 14] == " ")
+                        {
+                            newPos = currentPos - 14;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 14])))
+                        {
+                            newPos = currentPos - 14;
+                            CanCapture(newPos);
+                        }
                     }
 
                     // EES - 2 RIGHT, 1 DOWN
-                    if (Main.board[currentPos + 18] == " ")
+                    if (Board.isOnBoard(currentPos + 18))
                     {
-                        newPos = currentPos + 18;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 18])))
-                    {
-                        newPos = currentPos + 18;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos + 18] == " ")
+                        {
+                            newPos = currentPos + 18;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 18])))
+                        {
+                            newPos = currentPos + 18;
+                            CanCapture(newPos);
+                        }
                     }
 
                     // SSE - 2 DOWN, 1 RIGHT
-                    if (Main.board[currentPos + 31] == " ")
+                    if (Board.isOnBoard(currentPos + 31))
                     {
-                        newPos = currentPos + 31;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 31])))
-                    {
-                        newPos = currentPos + 31;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos + 31] == " ")
+                        {
+                            newPos = currentPos + 31;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 31])))
+                        {
+                            newPos = currentPos + 31;
+                            CanCapture(newPos);
+                        }
                     }
 
                     // SSW - 2 DOWN, 1 LEFT
-                    if (Main.board[currentPos + 33] == " ")
+                    if (Board.isOnBoard(currentPos + 33))
                     {
-                        newPos = currentPos + 33;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 33])))
-                    {
-                        newPos = currentPos + 33;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos + 33] == " ")
+                        {
+                            newPos = currentPos + 33;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 33])))
+                        {
+                            newPos = currentPos + 33;
+                            CanCapture(newPos);
+                        }
                     }
 
                     // WWN - 2 LEFT, 1 UP
-                    if (Main.board[currentPos - 18] == " ")
+                    if (Board.isOnBoard(currentPos - 18))
                     {
-                        newPos = currentPos - 18;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 18])))
-                    {
-                        newPos = currentPos - 18;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos - 18] == " ")
+                        {
+                            newPos = currentPos - 18;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos - 18])))
+                        {
+                            newPos = currentPos - 18;
+                            CanCapture(newPos);
+                        }
                     }
 
                     // WWS - 2 LEFT, 1 DOWN 
-                    if (Main.board[currentPos + 14] == " ")
+                    if (Board.isOnBoard(currentPos + 14))
                     {
-                        newPos = currentPos + 14;
-                        Board.board_panels[newPos].BackgroundImage = Resources.legal;
-                        Board.board_panels[newPos].BackgroundImage.Tag = "legal";
-                        Main.legal_board[newPos] = "legal";
-                    }
-                    else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 14])))
-                    {
-                        newPos = currentPos + 14;
-                        CanCapture(newPos);
+                        if (Main.board[currentPos + 14] == " ")
+                        {
+                            newPos = currentPos + 14;
+                            Board.board_panels[newPos].BackgroundImage = Resources.legal;
+                            Board.board_panels[newPos].BackgroundImage.Tag = "legal";
+                            Main.legal_board[newPos] = "legal";
+                        }
+                        else if (!Char.IsUpper(Convert.ToChar(Main.board[currentPos + 14])))
+                        {
+                            newPos = currentPos + 14;
+                            CanCapture(newPos);
+                        }
                     }
                 }
 
@@ -1223,10 +1247,6 @@ namespace DailyChessPuzzle
                 Board.board_panels[pos].BackgroundImage = Resources.bq_c;
                 Board.board_panels[pos].BackgroundImage.Tag = "capture q";
                 Main.legal_board[pos] = "capture q";
-            }
-            if (piece == "k")
-            {
-                
             }
         }
 

@@ -21,6 +21,7 @@ namespace DailyChessPuzzle
 
         // 0 - EASY, 1 - INTERMEDIATE, 2 - HARD
         public static int difficulty = 0;
+        public static int score = 3;
 
         public static string startingSideToMove;
         public static int moveCount = 0;
@@ -93,7 +94,7 @@ namespace DailyChessPuzzle
         private static void Day()
         {
             DateTime currentDay = DateTime.Now.Date;
-            DateTime startDay = new DateTime(2023, 10, 10);
+            DateTime startDay = new DateTime(2023, 10, 13);
 
             int dayCount = (int)(currentDay - startDay).TotalDays;
 
@@ -215,6 +216,7 @@ namespace DailyChessPuzzle
                 if (moveMade == moveArr[moveCount])
                 {
                     moveCount++;
+                    Main.UpdateCorrect(moveMade);
                     Main.ComputerMove(moveArr[moveCount]);
                     return true;
                 }
@@ -286,20 +288,72 @@ namespace DailyChessPuzzle
             }
         }
 
+        public static void ScoreUpdate()
+        {
+            if (difficulty == 0)
+            {
+
+            }
+            if (difficulty == 1)
+            {
+                switch (score)
+                {
+                    case 3:
+                        score = 6;
+                        break;
+
+                    case 2:
+                        score = 5;
+                        break;
+
+                    case 1:
+                        score = 4;
+                        break;
+
+                    default:
+                        score = 0;
+                        break;
+                }
+
+            }
+            if (difficulty == 1)
+            {
+                switch (score)
+                {
+                    case 3:
+                        score = 9;
+                        break;
+
+                    case 2:
+                        score = 8;
+                        break;
+
+                    case 1:
+                        score = 7;
+                        break;
+
+                    default:
+                        score = 0;
+                        break;
+                }
+            }
+            SQL.Score += score;
+        }
+
         public static bool IsFinished()
         {
             if (isWon)
             {
                 isFinished = true;
                 Win win = new Win();
-                win.Show();
+                win.ShowDialog();
                 return true;
             }
             else if (isGameOver)
             {
                 isFinished = true;
                 GameOver gameOver = new GameOver();
-                gameOver.Show();
+                gameOver.ShowDialog();
                 return true;
             }
             else return false;

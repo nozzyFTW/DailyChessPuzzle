@@ -52,6 +52,7 @@ namespace DailyChessPuzzle
             if (radEasy.Checked)
             {
                 Puzzle.difficulty = 0;
+                SQL.Difficulty = 0;
                 Puzzle.isNewPuzzle = true;
                 Puzzle.moveCount = 0;
                 Puzzle.ReadCSV();
@@ -62,6 +63,7 @@ namespace DailyChessPuzzle
             if (radIntermediate.Checked)
             {
                 Puzzle.difficulty = 1;
+                SQL.Difficulty = 1;
                 Puzzle.isNewPuzzle = true;
                 Puzzle.moveCount = 0;
                 Puzzle.ReadCSV();
@@ -72,12 +74,16 @@ namespace DailyChessPuzzle
             if (radHard.Checked)
             {
                 Puzzle.difficulty = 2;
+                SQL.Difficulty = 2;
                 Puzzle.isNewPuzzle = true;
                 Puzzle.moveCount = 0;
                 Puzzle.ReadCSV();
                 Puzzle.ReadFEN();
                 Main.ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
             }
+
+            SQL.UpdateDifficultySetting();
+            this.Close();
         }
     }
 }

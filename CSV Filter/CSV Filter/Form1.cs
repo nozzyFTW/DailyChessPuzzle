@@ -34,7 +34,7 @@ namespace CSV_Filter
                 {
                     lineArr = line.Split(',');
 
-                    if (lineArr[1].Contains("b"))
+                    if (!lineArr[1].Contains("w"))
                     {
                         if (lineArr[7].Contains("mate"))
                         {

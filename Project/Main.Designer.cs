@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.pnlBoard = new System.Windows.Forms.Panel();
             this.E1 = new System.Windows.Forms.Panel();
             this.E2 = new System.Windows.Forms.Panel();
@@ -100,14 +99,32 @@
             this.txtTask = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblCorrectMove = new System.Windows.Forms.Label();
+            this.lblIncorrectMove = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.pnlBoard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Location = new System.Drawing.Point(714, 72);
             this.panel1.Name = "panel1";
@@ -116,19 +133,15 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lblIncorrectMove);
+            this.panel3.Controls.Add(this.lblCorrectMove);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(27, 148);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(390, 300);
+            this.panel3.Size = new System.Drawing.Size(390, 177);
             this.panel3.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(714, 587);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(440, 39);
-            this.button2.TabIndex = 66;
-            this.button2.Text = "Show Scores";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // pnlBoard
             // 
@@ -875,6 +888,167 @@
             this.btnSettings.TabStop = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Outfit", 13F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(384, 27);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "MOVES";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Outfit", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(7, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(182, 23);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Correct";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Outfit", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(204, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 23);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Incorrect";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCorrectMove
+            // 
+            this.lblCorrectMove.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.lblCorrectMove.Location = new System.Drawing.Point(7, 57);
+            this.lblCorrectMove.Name = "lblCorrectMove";
+            this.lblCorrectMove.Size = new System.Drawing.Size(182, 98);
+            this.lblCorrectMove.TabIndex = 3;
+            this.lblCorrectMove.Text = "Move 1\r\nMove 2";
+            // 
+            // lblIncorrectMove
+            // 
+            this.lblIncorrectMove.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.lblIncorrectMove.Location = new System.Drawing.Point(204, 57);
+            this.lblIncorrectMove.Name = "lblIncorrectMove";
+            this.lblIncorrectMove.Size = new System.Drawing.Size(180, 98);
+            this.lblIncorrectMove.TabIndex = 4;
+            this.lblIncorrectMove.Text = "Move 1\r\nMove 2";
+            this.lblIncorrectMove.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.label12);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.label14);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.label9);
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Location = new System.Drawing.Point(27, 331);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(390, 144);
+            this.panel4.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(204, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(180, 28);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "0";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.label7.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label7.Location = new System.Drawing.Point(7, 57);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(182, 28);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Outfit", 10F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(204, 34);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(180, 23);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Newton";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Outfit", 10F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.LimeGreen;
+            this.label9.Location = new System.Drawing.Point(7, 34);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(182, 23);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Kepler";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Outfit", 13F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(3, 7);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(384, 27);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "TEAM SCORES";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.label11.ForeColor = System.Drawing.Color.Blue;
+            this.label11.Location = new System.Drawing.Point(204, 108);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(180, 28);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "0";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.label12.ForeColor = System.Drawing.Color.Orange;
+            this.label12.Location = new System.Drawing.Point(7, 108);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(182, 28);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Outfit", 10F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.Blue;
+            this.label13.Location = new System.Drawing.Point(204, 85);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(180, 23);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Faraday";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Outfit", 10F, System.Drawing.FontStyle.Bold);
+            this.label14.ForeColor = System.Drawing.Color.Orange;
+            this.label14.Location = new System.Drawing.Point(7, 85);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(182, 23);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Kelvin";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -884,7 +1058,6 @@
             this.Controls.Add(this.txtTask);
             this.Controls.Add(this.pnlBoard);
             this.Controls.Add(this.btnSettings);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -892,15 +1065,16 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.pnlBoard.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox btnSettings;
         private System.Windows.Forms.Panel pnlBoard;
         private System.Windows.Forms.Panel E8;
@@ -970,6 +1144,21 @@
         private System.Windows.Forms.Label txtTask;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblIncorrectMove;
+        private System.Windows.Forms.Label lblCorrectMove;
+        private System.Windows.Forms.Label label3;
     }
 }
 

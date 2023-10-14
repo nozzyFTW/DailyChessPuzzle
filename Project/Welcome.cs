@@ -14,6 +14,8 @@ namespace DailyChessPuzzle
 {
     public partial class Welcome : Form
     {
+        string selectedTeam = String.Empty;
+        bool firstClick = true;
         public Welcome()
         {
             InitializeComponent();
@@ -22,19 +24,14 @@ namespace DailyChessPuzzle
         private void TeamSelect_MouseEnter(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
+            if (selectedTeam == String.Empty)
             btn.FlatStyle = FlatStyle.Flat;
         }
 
         private void TeamSelect_MouseLeave(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            btn.FlatStyle = FlatStyle.Standard;
-        }
-
-        private void TeamSelect_Click(object sender, EventArgs e)
-        {
-            Button btn = (Button)sender;
-            btn.FlatStyle = FlatStyle.Flat;
+            if (btn.Name != $"btn{selectedTeam}") btn.FlatStyle = FlatStyle.Standard;
         }
 
         private void CheckedChanged(object sender, EventArgs e)
@@ -85,7 +82,29 @@ namespace DailyChessPuzzle
                 SQL.Difficulty = 2;
             }
 
-            Environment.Exit(0);
+            SQL.HouseTeam = selectedTeam;
+            Close();
+        }
+
+        private void TeamSelect_Click(object sender, MouseEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (firstClick)
+            {
+                btn.FlatStyle = FlatStyle.Flat;
+                firstClick = false;
+                if (btn.Name == "btnKepler") selectedTeam = "Kepler";
+                if (btn.Name == "btnNewton") selectedTeam = "Newton";
+                if (btn.Name == "btnKelvin") selectedTeam = "Kelvin";
+                if (btn.Name == "btnFaraday") selectedTeam = "Faraday";
+            }
+            else
+            {
+                btn.FlatStyle = FlatStyle.Standard;
+                firstClick = true;
+                selectedTeam = String.Empty;
+            }
         }
     }
 }

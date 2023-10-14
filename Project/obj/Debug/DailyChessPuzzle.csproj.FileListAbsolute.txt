@@ -75,3 +75,7 @@ F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.CopyComplet
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.GameOver.resources
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Win.resources
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Welcome.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.GameOver.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Welcome.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Win.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.PlayAgain.resources

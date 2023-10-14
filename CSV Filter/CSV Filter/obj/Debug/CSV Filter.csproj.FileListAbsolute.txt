@@ -9,3 +9,14 @@ F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.Gen
 F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.CoreCompileInputs.cache
 F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.exe
 F:\School\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.pdb
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\bin\Debug\CSV Filter.exe.config
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\bin\Debug\CSV Filter.exe
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\bin\Debug\CSV Filter.pdb
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.AssemblyReference.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.SuggestedBindingRedirects.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV_Filter.Form1.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV_Filter.Properties.Resources.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.GenerateResource.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.csproj.CoreCompileInputs.cache
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.exe
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\CSV Filter\CSV Filter\obj\Debug\CSV Filter.pdb

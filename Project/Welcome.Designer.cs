@@ -31,9 +31,9 @@
             this.btnKepler = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnNewton = new System.Windows.Forms.Button();
+            this.btnFaraday = new System.Windows.Forms.Button();
+            this.btnKelvin = new System.Windows.Forms.Button();
             this.radHard = new System.Windows.Forms.RadioButton();
             this.radIntermediate = new System.Windows.Forms.RadioButton();
             this.radEasy = new System.Windows.Forms.RadioButton();
@@ -52,6 +52,7 @@
             this.btnKepler.TabIndex = 0;
             this.btnKepler.Text = "KEPLER";
             this.btnKepler.UseVisualStyleBackColor = true;
+            this.btnKepler.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TeamSelect_Click);
             this.btnKepler.MouseEnter += new System.EventHandler(this.TeamSelect_MouseEnter);
             this.btnKepler.MouseLeave += new System.EventHandler(this.TeamSelect_MouseLeave);
             // 
@@ -72,55 +73,58 @@
             this.label2.Font = new System.Drawing.Font("Outfit", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(460, 53);
+            this.label2.Size = new System.Drawing.Size(512, 53);
             this.label2.TabIndex = 2;
             this.label2.Text = "WELCOME";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // btnNewton
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button1.FlatAppearance.BorderSize = 10;
-            this.button1.Font = new System.Drawing.Font("Montserrat Black", 16F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(274, 102);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 66);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "NEWTON";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseEnter += new System.EventHandler(this.TeamSelect_MouseEnter);
-            this.button1.MouseLeave += new System.EventHandler(this.TeamSelect_MouseLeave);
+            this.btnNewton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnNewton.FlatAppearance.BorderSize = 10;
+            this.btnNewton.Font = new System.Drawing.Font("Montserrat Black", 16F, System.Drawing.FontStyle.Bold);
+            this.btnNewton.ForeColor = System.Drawing.Color.Red;
+            this.btnNewton.Location = new System.Drawing.Point(274, 102);
+            this.btnNewton.Name = "btnNewton";
+            this.btnNewton.Size = new System.Drawing.Size(250, 66);
+            this.btnNewton.TabIndex = 3;
+            this.btnNewton.Text = "NEWTON";
+            this.btnNewton.UseVisualStyleBackColor = true;
+            this.btnNewton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TeamSelect_Click);
+            this.btnNewton.MouseEnter += new System.EventHandler(this.TeamSelect_MouseEnter);
+            this.btnNewton.MouseLeave += new System.EventHandler(this.TeamSelect_MouseLeave);
             // 
-            // button2
+            // btnFaraday
             // 
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button2.FlatAppearance.BorderSize = 10;
-            this.button2.Font = new System.Drawing.Font("Montserrat Black", 16F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.Blue;
-            this.button2.Location = new System.Drawing.Point(274, 174);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(250, 66);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "FARADAY";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.MouseEnter += new System.EventHandler(this.TeamSelect_MouseEnter);
-            this.button2.MouseLeave += new System.EventHandler(this.TeamSelect_MouseLeave);
+            this.btnFaraday.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnFaraday.FlatAppearance.BorderSize = 10;
+            this.btnFaraday.Font = new System.Drawing.Font("Montserrat Black", 16F, System.Drawing.FontStyle.Bold);
+            this.btnFaraday.ForeColor = System.Drawing.Color.Blue;
+            this.btnFaraday.Location = new System.Drawing.Point(274, 174);
+            this.btnFaraday.Name = "btnFaraday";
+            this.btnFaraday.Size = new System.Drawing.Size(250, 66);
+            this.btnFaraday.TabIndex = 5;
+            this.btnFaraday.Text = "FARADAY";
+            this.btnFaraday.UseVisualStyleBackColor = true;
+            this.btnFaraday.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TeamSelect_Click);
+            this.btnFaraday.MouseEnter += new System.EventHandler(this.TeamSelect_MouseEnter);
+            this.btnFaraday.MouseLeave += new System.EventHandler(this.TeamSelect_MouseLeave);
             // 
-            // button3
+            // btnKelvin
             // 
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
-            this.button3.FlatAppearance.BorderSize = 10;
-            this.button3.Font = new System.Drawing.Font("Montserrat Black", 16F, System.Drawing.FontStyle.Bold);
-            this.button3.ForeColor = System.Drawing.Color.Gold;
-            this.button3.Location = new System.Drawing.Point(12, 174);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(250, 66);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "KELVIN";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.MouseEnter += new System.EventHandler(this.TeamSelect_MouseEnter);
-            this.button3.MouseLeave += new System.EventHandler(this.TeamSelect_MouseLeave);
+            this.btnKelvin.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.btnKelvin.FlatAppearance.BorderSize = 10;
+            this.btnKelvin.Font = new System.Drawing.Font("Montserrat Black", 16F, System.Drawing.FontStyle.Bold);
+            this.btnKelvin.ForeColor = System.Drawing.Color.Gold;
+            this.btnKelvin.Location = new System.Drawing.Point(12, 174);
+            this.btnKelvin.Name = "btnKelvin";
+            this.btnKelvin.Size = new System.Drawing.Size(250, 66);
+            this.btnKelvin.TabIndex = 4;
+            this.btnKelvin.Text = "KELVIN";
+            this.btnKelvin.UseVisualStyleBackColor = true;
+            this.btnKelvin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TeamSelect_Click);
+            this.btnKelvin.MouseEnter += new System.EventHandler(this.TeamSelect_MouseEnter);
+            this.btnKelvin.MouseLeave += new System.EventHandler(this.TeamSelect_MouseLeave);
             // 
             // radHard
             // 
@@ -179,9 +183,9 @@
             this.Controls.Add(this.radHard);
             this.Controls.Add(this.radIntermediate);
             this.Controls.Add(this.radEasy);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnFaraday);
+            this.Controls.Add(this.btnKelvin);
+            this.Controls.Add(this.btnNewton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnKepler);
@@ -197,9 +201,9 @@
         private System.Windows.Forms.Button btnKepler;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnNewton;
+        private System.Windows.Forms.Button btnFaraday;
+        private System.Windows.Forms.Button btnKelvin;
         private System.Windows.Forms.RadioButton radHard;
         private System.Windows.Forms.RadioButton radIntermediate;
         private System.Windows.Forms.RadioButton radEasy;

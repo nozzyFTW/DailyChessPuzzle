@@ -96,6 +96,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Win";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Win_FormClosed);
             this.Load += new System.EventHandler(this.Win_Load);
             this.ResumeLayout(false);
 
