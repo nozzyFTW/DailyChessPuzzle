@@ -7,13 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using System.Drawing;
+using Button = System.Windows.Forms.Button;
+using Label = System.Windows.Forms.Label;
 using Panel = System.Windows.Forms.Panel;
+using TextBox = System.Windows.Forms.TextBox;
 
 namespace DailyChessPuzzle
 {
     internal class Piece
     {
         public static string piece;
+        private static string dialogResult;
 
         public Piece(string fPiece)
         {
@@ -167,6 +172,7 @@ namespace DailyChessPuzzle
 
             if (isMoved)
             {
+                if (prevPiece == "P" && PawnPromote((prevPos - 16), prevPos)) currentSquareName += dialogResult;
                 if (Puzzle.IsMove(prevSquareName, prevPos, currentSquareName, currentPos, prevPiece))
                 {
                     if (Board.board_panels[currentPos].BackgroundImage.Tag.ToString() == "legal")
@@ -177,6 +183,7 @@ namespace DailyChessPuzzle
                             if (Main.board[prevPos - 16] == " " && Board.isOnBoard(prevPos - 16))
                             {
                                 Board.board_panels[prevPos - 16].BackgroundImage = null;
+                                PawnPromote((prevPos - 16), prevPos);
                                 if (Main.board[prevPos - 32] == " " && Board.isOnBoard(prevPos - 32))
                                 {
                                     Board.board_panels[prevPos - 32].BackgroundImage = null;
@@ -208,10 +215,13 @@ namespace DailyChessPuzzle
                                 }
                             }
 
-                            Board.board_panels[currentPos].BackgroundImage = Resources.wp;
-                            Board.board_panels[currentPos].BackgroundImage.Tag = "P";
-                            Main.board[prevPos] = " ";
-                            Main.board[currentPos] = "P";
+                            if (!PawnPromote((prevPos - 16), prevPos))
+                            {
+                                Board.board_panels[currentPos].BackgroundImage = Resources.wp;
+                                Board.board_panels[currentPos].BackgroundImage.Tag = "P";
+                                Main.board[prevPos] = " ";
+                                Main.board[currentPos] = "P";
+                            }
                         }
 
                         if (prevPiece == "N")
@@ -557,6 +567,18 @@ namespace DailyChessPuzzle
                         Board.board_panels[currentPos].BackgroundImage.Tag = "Q";
                         Main.board[prevPos] = " ";
                         Main.board[currentPos] = "Q";
+                    }
+
+
+                    try
+                    {
+                        Main.ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+
+                        Puzzle.isWon = true;
+                        Puzzle.IsFinished();
                     }
                 }
             }
@@ -1215,6 +1237,108 @@ namespace DailyChessPuzzle
             }
         }
 
+        private static bool PawnPromote(int newPos, int prevPos)
+        {
+            int[] topRank = new int[8] { 0, 1, 2, 3, 4, 5, 6, 7 };
+            if (topRank.Contains(newPos))
+            {
+                Dialog();
+                string newPiece = dialogResult;
+
+                Board.board_panels[prevPos].BackgroundImage = null;
+                if (newPiece == "Q")
+                {
+                    Board.board_panels[newPos].BackgroundImage = Resources.wq;
+                    Board.board_panels[newPos].BackgroundImage.Tag = "Q";
+                    Main.board[prevPos] = " ";
+                    Main.board[newPos] = "Q";
+                }
+                if (newPiece == "R")
+                {
+                    Board.board_panels[newPos].BackgroundImage = Resources.wr;
+                    Board.board_panels[newPos].BackgroundImage.Tag = "R";
+                    Main.board[prevPos] = " ";
+                    Main.board[newPos] = "R";
+                }
+                if (newPiece == "N")
+                {
+                    Board.board_panels[newPos].BackgroundImage = Resources.wn;
+                    Board.board_panels[newPos].BackgroundImage.Tag = "N";
+                    Main.board[prevPos] = " ";
+                    Main.board[newPos] = "N";
+                }
+                if (newPiece == "B")
+                {
+                    Board.board_panels[newPos].BackgroundImage = Resources.wb;
+                    Board.board_panels[newPos].BackgroundImage.Tag = "B";
+                    Main.board[prevPos] = " ";
+                    Main.board[newPos] = "B";
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private static void Dialog()
+        {
+            Form form = new Form();
+            Label lblTitle = new Label();
+            Label lblText = new Label();
+            TextBox tbx = new TextBox();
+            Button btnOk = new Button();
+            Button btnCancel = new Button();
+
+            form.Size = new Size(344, 200);
+            form.Text = "";
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+
+            lblTitle.Text = "PIECE PROMOTION";
+            lblTitle.AutoSize = false;
+            lblTitle.Size = new Size(304, 39);
+            lblTitle.Font = new Font("Outfit", 18, FontStyle.Bold);
+            lblTitle.Location = new Point(12, 9);
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+
+            lblText.Text = "Type one of the following to promote to that piece: Q - Queen, R - Rook, N - Knight, B - Bishop.";
+            lblText.AutoSize = false;
+            lblText.Size = new Size(304, 39);
+            lblText.Font = new Font("Outfit", (float)8.25, FontStyle.Regular);
+            lblText.Location = new Point(12, 59);
+
+            tbx.Size = new Size(50, 39);
+            tbx.Location = new Point(12, 99);
+
+            btnOk.Text = "OK";
+            btnOk.Size = new Size(50, 30);
+            btnOk.Location = new Point(65, 125);
+            btnOk.Click += (sender, EventArgs) =>
+            {
+                if (tbx.Text.ToUpper() == "Q") dialogResult = "Q";
+                if (tbx.Text.ToUpper() == "R") dialogResult = "R";
+                if (tbx.Text.ToUpper() == "N") dialogResult = "N";
+                if (tbx.Text.ToUpper() == "B") dialogResult = "B";
+                form.Close();
+            };
+
+            btnCancel.Text = "Cancel";
+            btnCancel.Size = new Size(50, 30);
+            btnCancel.Location = new Point(12, 125);
+            btnCancel.Click += (sender, EventArgs) =>
+            {
+                form.Close();
+            };
+
+            form.Controls.Add(lblTitle);
+            form.Controls.Add(lblText);
+            form.Controls.Add(tbx);
+            form.Controls.Add(btnCancel);
+            form.Controls.Add(btnOk);
+
+            form.ShowDialog();
+        }
+
         private static void CanCapture(int pos)
         {
             string piece = Main.board[pos];
@@ -1305,6 +1429,17 @@ namespace DailyChessPuzzle
                 Main.legal_board[currentPos] = " ";
                 Main.board[currentPos] = "K";
                 Main.board[prevPos] = " ";
+            }
+
+            try
+            {
+                Main.ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+                Puzzle.isWon = true;
+                Puzzle.IsFinished();
             }
         }
 

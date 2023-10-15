@@ -62,10 +62,10 @@
             this.label1.Font = new System.Drawing.Font("Outfit", 8.25F);
             this.label1.Location = new System.Drawing.Point(15, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(447, 28);
+            this.label1.Size = new System.Drawing.Size(477, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome to Daily Chess Puzzle. As we have detected that this is you first time pl" +
-    "aying, please\r\nselect what House Team you are from, and what Difficulty you woul" +
+    "aying, please select\r\nwhat House Team you are from, and what Difficulty you woul" +
     "d like to compete in.";
             // 
             // label2

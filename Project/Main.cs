@@ -20,8 +20,11 @@ namespace DailyChessPuzzle
         public static int prevPos;
         public static string prevPiece;
         public static string prevSquareName;
+        private static bool isFirstCorrectMove = true;
+        private static bool isFirstIncorrectMove = true;
 
         public static PictureBox imgStrike1, imgStrike2, imgStrike3;
+        public static Label lblCorrectMove, lblIncorrectMove;
         private static Main form = new Main();
 
         public static string[] board = new string[128]
@@ -84,43 +87,64 @@ namespace DailyChessPuzzle
                 Board clsBoard = new Board();
 
                 GenerateBoardPanels();
-                SetupStrikes();
+                SetupControls();
                 Puzzle clsPuzzle = new Puzzle(txtTask);
-                lblCorrectMove.Text = String.Empty;
-                lblIncorrectMove.Text = String.Empty;
 
                 Puzzle.ReadFEN();
                 ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
             }
         }
 
-        private void SetupStrikes()
+        private void SetupControls()
         {
+            SQL.GetCurrentScore();
+            SQL.GetTeamScores();
             // imgStrike1
             imgStrike1 = new PictureBox();
-            imgStrike1.Width = 75;
-            imgStrike1.Height = 75;
+            imgStrike1.Size = new Size(75, 75);
             imgStrike1.Location = new Point(96, 4);
             imgStrike1.Image = Resources.inactive_x;
 
             // imgStrike2
             imgStrike2 = new PictureBox();
-            imgStrike2.Width = 75;
-            imgStrike2.Height = 75;
+            imgStrike2.Size = new Size(75, 75);
             imgStrike2.Location = new Point(196, 4);
             imgStrike2.Image = Resources.inactive_x;
 
             // imgStrike3
             imgStrike3 = new PictureBox();
-            imgStrike3.Width = 75;
-            imgStrike3.Height = 75;
+            imgStrike3.Size = new Size(75, 75);
             imgStrike3.Location = new Point(296, 4);
             imgStrike3.Image = Resources.inactive_x;
+
+            // lblCorrectMove
+            lblCorrectMove = new Label();
+            lblCorrectMove.Size = new Size(182, 98);
+            lblCorrectMove.Location = new Point(7, 57);
+
+            // lblIncorrectMove
+            lblIncorrectMove = new Label();
+            lblIncorrectMove.Size = new Size(182, 98);
+            lblIncorrectMove.Location = new Point(204, 57);
+            lblIncorrectMove.TextAlign = ContentAlignment.TopRight;
+
+            // lblKeplerScore
+            lblKeplerScore.Text = Puzzle.teamScores[0].ToString();
+
+            // lblNewtonScore
+            lblNewtonScore.Text = Puzzle.teamScores[1].ToString();
+
+            // lblKelvinScore
+            lblKelvinScore.Text = Puzzle.teamScores[2].ToString();
+
+            // lblFaradayScore
+            lblFaradayScore.Text = Puzzle.teamScores[3].ToString();
 
             panel2.Controls.Add(imgStrike1);
             panel2.Controls.Add(imgStrike2);
             panel2.Controls.Add(imgStrike3);
-
+            panel3.Controls.Add(lblCorrectMove);
+            panel3.Controls.Add(lblIncorrectMove);
         }
 
         private void GenerateBoardPanels()
@@ -169,6 +193,127 @@ namespace DailyChessPuzzle
                 // Square clicked, check if piece or tile clicked, if tile - check if tag = legal, if piece - check if new piece - deactivate previous legal moves and generate new legal move markers
                 if (control.BackgroundImage != null)
                 {
+                    if (currentPos == prevPos)
+                    {
+                        isPieceMoved = false;
+                        prevPiece = piece;
+                        prevPos = currentPos;
+                        prevSquareName = squareName;
+
+                        legal_board = new string[128]
+                        {
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
+                        };
+
+                        foreach (var c in Board.board_panels)
+                        {
+                            if (c != null)
+                            {
+                                if (c.BackgroundImage != null)
+                                {
+                                    if (c.BackgroundImage.Tag.ToString() == "legal")
+                                    {
+                                        c.BackgroundImage = null;
+                                        continue;
+                                    }
+                                    if (c.BackgroundImage.Tag.ToString().Contains("capture"))
+                                    {
+                                        string[] subPiece = c.BackgroundImage.Tag.ToString().Split(' ');
+                                        string p = subPiece[1];
+
+                                        if (p == "p")
+                                        {
+                                            c.BackgroundImage = Resources.bp;
+                                            c.BackgroundImage.Tag = "p";
+                                        }
+                                        if (p == "n")
+                                        {
+                                            c.BackgroundImage = Resources.bn;
+                                            c.BackgroundImage.Tag = "n";
+                                        }
+                                        if (p == "b")
+                                        {
+                                            c.BackgroundImage = Resources.bb;
+                                            c.BackgroundImage.Tag = "b";
+                                        }
+                                        if (p == "r")
+                                        {
+                                            c.BackgroundImage = Resources.br;
+                                            c.BackgroundImage.Tag = "r";
+                                        }
+                                        if (p == "q")
+                                        {
+                                            c.BackgroundImage = Resources.bq;
+                                            c.BackgroundImage.Tag = "q";
+                                        }
+                                        if (p == "k")
+                                        {
+                                            c.BackgroundImage = Resources.br;
+                                            c.BackgroundImage.Tag = "k";
+                                        }
+                                    }
+                                }
+                            }                            
+                        }
+                        Console.WriteLine("test");
+                        foreach (var c in pnlBoard.Controls.OfType<Panel>())
+                        {
+                            if (c != null)
+                            {
+                                if (c.BackgroundImage != null)
+                                {
+                                    if (c.BackgroundImage.Tag.ToString() == "legal")
+                                    {
+                                        c.BackgroundImage = null;
+                                        continue;
+                                    }
+                                    if (c.BackgroundImage.Tag.ToString().Contains("capture"))
+                                    {
+                                        string[] subPiece = c.BackgroundImage.Tag.ToString().Split(' ');
+                                        string p = subPiece[1];
+
+                                        if (p == "p")
+                                        {
+                                            c.BackgroundImage = Resources.bp;
+                                            c.BackgroundImage.Tag = "p";
+                                        }
+                                        if (p == "n")
+                                        {
+                                            c.BackgroundImage = Resources.bn;
+                                            c.BackgroundImage.Tag = "n";
+                                        }
+                                        if (p == "b")
+                                        {
+                                            c.BackgroundImage = Resources.bb;
+                                            c.BackgroundImage.Tag = "b";
+                                        }
+                                        if (p == "r")
+                                        {
+                                            c.BackgroundImage = Resources.br;
+                                            c.BackgroundImage.Tag = "r";
+                                        }
+                                        if (p == "q")
+                                        {
+                                            c.BackgroundImage = Resources.bq;
+                                            c.BackgroundImage.Tag = "q";
+                                        }
+                                        if (p == "k")
+                                        {
+                                            c.BackgroundImage = Resources.br;
+                                            c.BackgroundImage.Tag = "k";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
                     {
                         // Clear Previous Legal Move Flags
@@ -262,6 +407,7 @@ namespace DailyChessPuzzle
             }
 
             Board.board_panels[originalPos].BackgroundImage = null;
+            Board.board_panels[newPos].BackgroundImage = null;
             if (piece == "p")
             {
                 Board.board_panels[newPos].BackgroundImage = Resources.bp;
@@ -337,13 +483,23 @@ namespace DailyChessPuzzle
         }
 
         public static void UpdateCorrect(string move)
-        {
-            form.lblCorrectMove.Text += $"{move}\n";
+         {
+            if (isFirstCorrectMove)
+            {
+                isFirstCorrectMove = false;
+                lblCorrectMove.Text = $"{move}\n";
+            }
+            else lblCorrectMove.Text += $"{move}\n";
         }
 
         public static void UpdateIncorrect(string move)
         {
-            form.lblIncorrectMove.Text += $"{move}\n";
+            if (isFirstIncorrectMove)
+            {
+                isFirstIncorrectMove = false;
+                lblIncorrectMove.Text = $"{move}\n";
+            }
+            else lblIncorrectMove.Text += $"{move}\n";
         }
     }
 }

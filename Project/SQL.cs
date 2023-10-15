@@ -27,7 +27,7 @@ namespace DailyChessPuzzle
 
         public static bool UsernameExists(string username)
         {
-            string query = @"SELECT * FROM Scores WHERE UserName = @UserName";
+            string query = @"SELECT * FROM IndividualScores WHERE UserName = @UserName";
             connect.Open();
             using (SqlCommand cmd = new SqlCommand(query, connect))
             {
@@ -48,7 +48,7 @@ namespace DailyChessPuzzle
 
         public static void NewUser()
         {
-            string query = @"INSERT INTO Scores (UserName, HouseTeam, Score, LastPlayed, Difficulty) VALUES (@UserName, @HouseTeam, @Score, @LastPlayed, @Difficulty)";
+            string query = @"INSERT INTO IndividualScores (UserName, HouseTeam, Score, LastPlayed, Difficulty) VALUES (@UserName, @HouseTeam, @Score, @LastPlayed, @Difficulty)";
             connect.Open();
             using (SqlCommand cmd = new SqlCommand(query, connect))
             {
@@ -62,9 +62,23 @@ namespace DailyChessPuzzle
             }
         }
 
+        public static void GetCurrentScore()
+        {
+            string query = $"SELECT Score FROM IndividualScores WHERE Username='{UserName}'";
+            connect.Open();
+            using (SqlCommand cmd = new SqlCommand(query, connect))
+            {
+                if (cmd.ExecuteScalar() != null)
+                {
+                    Score = (int)cmd.ExecuteScalar();
+                }
+                connect.Close();
+            }
+        }
+
         public static bool AlreadyPlayed()
         {
-            string query = $"SELECT LastPlayed FROM Scores WHERE UserName='{UserName}'";
+            string query = $"SELECT LastPlayed FROM IndividualScores WHERE UserName='{UserName}'";
             connect.Open();
             using (SqlCommand cmd = new SqlCommand(query, connect))
             {
@@ -94,7 +108,7 @@ namespace DailyChessPuzzle
 
         public static void UpdateLastPlayedSetting()
         {
-            string query = $"UPDATE Scores SET LastPlayed={LastPlayed} WHERE UserName='{UserName}'";
+            string query = $"UPDATE IndividualScores SET LastPlayed='{LastPlayed}' WHERE UserName='{UserName}'";
             using (SqlCommand cmd = new SqlCommand(query, connect))
             {
                 cmd.ExecuteNonQuery();
@@ -103,7 +117,7 @@ namespace DailyChessPuzzle
 
         public static void UpdateDifficultySetting()
         {
-            string query = $"UPDATE Scores SET Difficulty={Difficulty} WHERE UserName='{UserName}'";
+            string query = $"UPDATE IndividualScores SET Difficulty={Difficulty} WHERE UserName='{UserName}'";
             connect.Open();
             using (SqlCommand cmd = new SqlCommand(query, connect))
             {
@@ -114,7 +128,75 @@ namespace DailyChessPuzzle
 
         public static void UpdateScoreSetting()
         {
-            string query = $"UPDATE Scores SET Score={Score} WHERE UserName='{UserName}'";
+            string query = $"UPDATE IndividualScores SET Score={Score} WHERE UserName='{UserName}'";
+            connect.Open();
+            using (SqlCommand cmd = new SqlCommand(query, connect))
+            {
+                cmd.ExecuteNonQuery();
+                connect.Close();
+            }
+        }
+
+        public static void GetTeamScores()
+        {
+            string query;
+            connect.Open();
+
+            // Kepler
+            query = @"SELECT Score FROM TeamScores WHERE TeamName='Kepler'";
+            using (SqlCommand cmd = new SqlCommand(query, connect))
+            {
+                if (cmd.ExecuteScalar() != null)
+                {
+                    int KeplerScore = (int)cmd.ExecuteScalar();
+                    Puzzle.teamScores[0] = KeplerScore;
+                }
+            }
+
+            // Newton
+            query = @"SELECT Score FROM TeamScores WHERE TeamName='Newton'";
+            using (SqlCommand cmd = new SqlCommand(query, connect))
+            {
+                if (cmd.ExecuteScalar() != null)
+                {
+                    int NewtonScore = (int)cmd.ExecuteScalar();
+                    Puzzle.teamScores[1] = NewtonScore;
+                }
+            }
+
+            // Kelvin
+            query = @"SELECT Score FROM TeamScores WHERE TeamName='Kelvin'";
+            using (SqlCommand cmd = new SqlCommand(query, connect))
+            {
+                if (cmd.ExecuteScalar() != null)
+                {
+                    int KelvinScore = (int)cmd.ExecuteScalar();
+                    Puzzle.teamScores[2] = KelvinScore;
+                }
+            }
+
+            // Faraday
+            query = @"SELECT Score FROM TeamScores WHERE TeamName='Faraday'";
+            using (SqlCommand cmd = new SqlCommand(query, connect))
+            {
+                if (cmd.ExecuteScalar() != null)
+                {
+                    int FaradayScore = (int)cmd.ExecuteScalar();
+                    Puzzle.teamScores[3] = FaradayScore;
+                }
+            }
+            connect.Close();
+        }
+
+        public static void UpdateTeamScores()
+        {
+            int teamScore = 0;
+            if (HouseTeam == "Kepler") teamScore = Puzzle.teamScores[0] + Puzzle.score;
+            if (HouseTeam == "Newton") teamScore = Puzzle.teamScores[1] + Puzzle.score;
+            if (HouseTeam == "Kelvin") teamScore = Puzzle.teamScores[2] + Puzzle.score;
+            if (HouseTeam == "Faraday") teamScore = Puzzle.teamScores[3] + Puzzle.score;
+
+            string query = $"UPDATE TeamScores SET Score={teamScore} WHERE TeamName='{HouseTeam}'";
             connect.Open();
             using (SqlCommand cmd = new SqlCommand(query, connect))
             {

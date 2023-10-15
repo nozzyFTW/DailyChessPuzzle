@@ -25,7 +25,9 @@ namespace DailyChessPuzzle
             t.Tick += new EventHandler(t_Tick);
             TimeSpan ts = DateTime.Today.AddDays(1) - DateTime.Now;
             string s = ts.ToString();
-            lblTimeTill.Text = TimeSpan.ParseExact(s, @"hh\:mm\:ss", CultureInfo.InvariantCulture).ToString();
+            lblTimeTill.Text = ts.ToString(@"hh\:mm\:ss");
+            //lblTimeTill.Text = TimeSpan.Parse(ts.ToString("hh:mm:ss")).ToString();
+            //lblTimeTill.Text = TimeSpan.ParseExact(s, @"d\.hh\:mm\:ss", CultureInfo.InvariantCulture).ToString();
             //lblTimeTill.Text = $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
             t.Start();
         }
@@ -33,7 +35,7 @@ namespace DailyChessPuzzle
         private void t_Tick(object sender, EventArgs e)
         {
             TimeSpan ts = DateTime.Today.AddDays(1) - DateTime.Now;
-            lblTimeTill.Text = ts.ToString(@"hh\:mm\:ss}");
+            lblTimeTill.Text = ts.ToString(@"hh\:mm\:ss");
             //lblTimeTill.Text = $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
         }
     }

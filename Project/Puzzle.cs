@@ -23,12 +23,15 @@ namespace DailyChessPuzzle
         public static int difficulty = 0;
         public static int score = 3;
 
+        // Kepler, Newton, Kelvin, Faraday
+        public static int[] teamScores = new int[4];
+
         public static string startingSideToMove;
         public static int moveCount = 0;
         public static string[] moveArr;
         public static int strike = 0;
         public static bool isGameOver = false;
-        private static bool isWon = false;
+        public static bool isWon = false;
         public static bool isFinished = false;
         public static bool isNewPuzzle = false;
 
@@ -217,12 +220,12 @@ namespace DailyChessPuzzle
                 {
                     moveCount++;
                     Main.UpdateCorrect(moveMade);
-                    Main.ComputerMove(moveArr[moveCount]);
                     return true;
                 }
                 else
                 {
                     Main.Strike();
+                    Main.UpdateIncorrect(moveMade);
                     if (isGameOver == false)
                     {
                         if (prevPiece == "P")
@@ -290,10 +293,6 @@ namespace DailyChessPuzzle
 
         public static void ScoreUpdate()
         {
-            if (difficulty == 0)
-            {
-
-            }
             if (difficulty == 1)
             {
                 switch (score)
@@ -316,7 +315,7 @@ namespace DailyChessPuzzle
                 }
 
             }
-            if (difficulty == 1)
+            if (difficulty == 2)
             {
                 switch (score)
                 {
@@ -345,6 +344,9 @@ namespace DailyChessPuzzle
             if (isWon)
             {
                 isFinished = true;
+                ScoreUpdate();
+                SQL.UpdateScoreSetting();
+                SQL.UpdateTeamScores();
                 Win win = new Win();
                 win.ShowDialog();
                 return true;
