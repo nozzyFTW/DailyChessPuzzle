@@ -24,7 +24,7 @@ namespace DailyChessPuzzle
         private static bool isFirstIncorrectMove = true;
 
         public static PictureBox imgStrike1, imgStrike2, imgStrike3;
-        public static Label lblCorrectMove, lblIncorrectMove;
+        public static Label lblCorrectMove, lblIncorrectMove, lblKeplerScore, lblNewtonScore, lblKelvinScore, lblFaradayScore;
         private static Main form = new Main();
 
         public static string[] board = new string[128]
@@ -129,6 +129,9 @@ namespace DailyChessPuzzle
             lblIncorrectMove.TextAlign = ContentAlignment.TopRight;
 
             // lblKeplerScore
+            lblKeplerScore = new Label();
+            lblKeplerScore.Size = new Size(182, 28);
+            lblKeplerScore.
             lblKeplerScore.Text = Puzzle.teamScores[0].ToString();
 
             // lblNewtonScore
@@ -262,8 +265,7 @@ namespace DailyChessPuzzle
                                 }
                             }                            
                         }
-                        Console.WriteLine("test");
-                        foreach (var c in pnlBoard.Controls.OfType<Panel>())
+                        /*foreach (var c in pnlBoard.Controls.OfType<Panel>())
                         {
                             if (c != null)
                             {
@@ -312,7 +314,7 @@ namespace DailyChessPuzzle
                                     }
                                 }
                             }
-                        }
+                        }*/
                     }
                     if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
                     {
@@ -500,6 +502,11 @@ namespace DailyChessPuzzle
                 lblIncorrectMove.Text = $"{move}\n";
             }
             else lblIncorrectMove.Text += $"{move}\n";
+        }
+
+        public static void UpdateScoreLabel()
+        {
+            lblKeplerScore.Text 
         }
     }
 }

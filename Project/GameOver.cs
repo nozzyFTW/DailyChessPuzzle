@@ -22,5 +22,12 @@ namespace DailyChessPuzzle
             lblRating.Text = Puzzle.todaysPuzzle.Rating;
             lblMoves.Text = Puzzle.todaysPuzzle.Moves;
         }
+
+        private void GameOver_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Main main = new Main();
+            main.Close();
+            Environment.Exit(0);
+        }
     }
 }

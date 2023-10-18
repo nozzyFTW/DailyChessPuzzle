@@ -64,6 +64,7 @@
             this.MinimizeBox = false;
             this.Name = "PlayAgain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PlayAgain_FormClosed);
             this.Load += new System.EventHandler(this.PlayAgain_Load);
             this.ResumeLayout(false);
 

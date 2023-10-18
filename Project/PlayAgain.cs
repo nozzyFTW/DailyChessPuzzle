@@ -38,5 +38,12 @@ namespace DailyChessPuzzle
             lblTimeTill.Text = ts.ToString(@"hh\:mm\:ss");
             //lblTimeTill.Text = $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
         }
+
+        private void PlayAgain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Main main = new Main();
+            main.Close();
+            Environment.Exit(0);
+        }
     }
 }

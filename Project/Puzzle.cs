@@ -14,11 +14,6 @@ namespace DailyChessPuzzle
 {
     internal class Puzzle
     {
-        //public static string fen = "r6r/p2b1pp1/3k4/2bp4/2P5/6q1/P2Q3P/1R2R2K w - - 2 28";
-        //public static string moves = "d2d5 d6c7 b1b7 c7c8 d5d7";
-        //public static string fen = "4r1k1/5ppp/r1p5/p1n1RP2/8/2P2N1P/2P3P1/3R2K1 b - - 0 21";
-        //public static string moves = "e8e5 d1d8 e5e8 d8e8";
-
         // 0 - EASY, 1 - INTERMEDIATE, 2 - HARD
         public static int difficulty = 0;
         public static int score = 3;
@@ -50,9 +45,9 @@ namespace DailyChessPuzzle
 
             if (startingSideToMove.ToUpper() == "W")
             {
-                lbl.Text = $"White to Move and Mate in {Math.Round((double) moveArr.Length / 2, MidpointRounding.AwayFromZero)}";
+                lbl.Text = $"Black to Move and Mate in {Math.Round((double) moveArr.Length / 2, MidpointRounding.AwayFromZero)}";
             }
-            else lbl.Text = $"Black to Move and Mate in {Math.Round((double)moveArr.Length / 2, MidpointRounding.AwayFromZero)}";
+            else lbl.Text = $"White to Move and Mate in {Math.Round((double)moveArr.Length / 2, MidpointRounding.AwayFromZero)}";
 
         }
 
@@ -345,6 +340,7 @@ namespace DailyChessPuzzle
             {
                 isFinished = true;
                 ScoreUpdate();
+                Main.UpdateScoreLabel();
                 SQL.UpdateScoreSetting();
                 SQL.UpdateTeamScores();
                 Win win = new Win();

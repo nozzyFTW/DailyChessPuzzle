@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblFaradayScore = new System.Windows.Forms.Label();
-            this.lblKelvinScore = new System.Windows.Forms.Label();
+            this.lblFaradayScor = new System.Windows.Forms.Label();
+            this.lblKelvinScor = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lblNewtonScore = new System.Windows.Forms.Label();
-            this.lblKeplerScore = new System.Windows.Forms.Label();
+            this.lblNewtonScor = new System.Windows.Forms.Label();
+            this.lblKeplerScor = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -131,12 +131,12 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.lblFaradayScore);
-            this.panel4.Controls.Add(this.lblKelvinScore);
+            this.panel4.Controls.Add(this.lblFaradayScor);
+            this.panel4.Controls.Add(this.lblKelvinScor);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.label14);
-            this.panel4.Controls.Add(this.lblNewtonScore);
-            this.panel4.Controls.Add(this.lblKeplerScore);
+            this.panel4.Controls.Add(this.lblNewtonScor);
+            this.panel4.Controls.Add(this.lblKeplerScor);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label10);
@@ -147,24 +147,24 @@
             // 
             // lblFaradayScore
             // 
-            this.lblFaradayScore.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblFaradayScore.ForeColor = System.Drawing.Color.Blue;
-            this.lblFaradayScore.Location = new System.Drawing.Point(204, 108);
-            this.lblFaradayScore.Name = "lblFaradayScore";
-            this.lblFaradayScore.Size = new System.Drawing.Size(180, 28);
-            this.lblFaradayScore.TabIndex = 8;
-            this.lblFaradayScore.Text = "0";
-            this.lblFaradayScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblFaradayScor.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.lblFaradayScor.ForeColor = System.Drawing.Color.Blue;
+            this.lblFaradayScor.Location = new System.Drawing.Point(204, 108);
+            this.lblFaradayScor.Name = "lblFaradayScore";
+            this.lblFaradayScor.Size = new System.Drawing.Size(180, 28);
+            this.lblFaradayScor.TabIndex = 8;
+            this.lblFaradayScor.Text = "0";
+            this.lblFaradayScor.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblKelvinScore
             // 
-            this.lblKelvinScore.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblKelvinScore.ForeColor = System.Drawing.Color.Orange;
-            this.lblKelvinScore.Location = new System.Drawing.Point(7, 108);
-            this.lblKelvinScore.Name = "lblKelvinScore";
-            this.lblKelvinScore.Size = new System.Drawing.Size(182, 28);
-            this.lblKelvinScore.TabIndex = 7;
-            this.lblKelvinScore.Text = "0";
+            this.lblKelvinScor.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.lblKelvinScor.ForeColor = System.Drawing.Color.Orange;
+            this.lblKelvinScor.Location = new System.Drawing.Point(7, 108);
+            this.lblKelvinScor.Name = "lblKelvinScore";
+            this.lblKelvinScor.Size = new System.Drawing.Size(182, 28);
+            this.lblKelvinScor.TabIndex = 7;
+            this.lblKelvinScor.Text = "0";
             // 
             // label13
             // 
@@ -190,24 +190,24 @@
             // 
             // lblNewtonScore
             // 
-            this.lblNewtonScore.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblNewtonScore.ForeColor = System.Drawing.Color.Red;
-            this.lblNewtonScore.Location = new System.Drawing.Point(204, 57);
-            this.lblNewtonScore.Name = "lblNewtonScore";
-            this.lblNewtonScore.Size = new System.Drawing.Size(180, 28);
-            this.lblNewtonScore.TabIndex = 4;
-            this.lblNewtonScore.Text = "0";
-            this.lblNewtonScore.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblNewtonScor.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.lblNewtonScor.ForeColor = System.Drawing.Color.Red;
+            this.lblNewtonScor.Location = new System.Drawing.Point(204, 57);
+            this.lblNewtonScor.Name = "lblNewtonScore";
+            this.lblNewtonScor.Size = new System.Drawing.Size(180, 28);
+            this.lblNewtonScor.TabIndex = 4;
+            this.lblNewtonScor.Text = "0";
+            this.lblNewtonScor.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblKeplerScore
             // 
-            this.lblKeplerScore.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblKeplerScore.ForeColor = System.Drawing.Color.LimeGreen;
-            this.lblKeplerScore.Location = new System.Drawing.Point(7, 57);
-            this.lblKeplerScore.Name = "lblKeplerScore";
-            this.lblKeplerScore.Size = new System.Drawing.Size(182, 28);
-            this.lblKeplerScore.TabIndex = 3;
-            this.lblKeplerScore.Text = "0";
+            this.lblKeplerScor.Font = new System.Drawing.Font("Outfit", 8.25F);
+            this.lblKeplerScor.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lblKeplerScor.Location = new System.Drawing.Point(7, 57);
+            this.lblKeplerScor.Name = "lblKeplerScore";
+            this.lblKeplerScor.Size = new System.Drawing.Size(182, 28);
+            this.lblKeplerScor.TabIndex = 3;
+            this.lblKeplerScor.Text = "0";
             // 
             // label8
             // 
@@ -1124,12 +1124,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblFaradayScore;
-        private System.Windows.Forms.Label lblKelvinScore;
+        private System.Windows.Forms.Label lblFaradayScor;
+        private System.Windows.Forms.Label lblKelvinScor;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lblNewtonScore;
-        private System.Windows.Forms.Label lblKeplerScore;
+        private System.Windows.Forms.Label lblNewtonScor;
+        private System.Windows.Forms.Label lblKeplerScor;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
