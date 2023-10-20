@@ -70,6 +70,7 @@ namespace DailyChessPuzzle
             string username = Environment.UserName;
             SQL.UserName = username;
 
+            // Checks if Player has already played today
             if (SQL.AlreadyPlayed())
             {
                 PlayAgain playAgain = new PlayAgain();
@@ -77,6 +78,7 @@ namespace DailyChessPuzzle
             }
             else
             {
+                // Checks if it is the first time the user has played
                 if (!SQL.UsernameExists(username))
                 {
                     Welcome welcome = new Welcome();
@@ -97,56 +99,52 @@ namespace DailyChessPuzzle
 
         private void SetupControls()
         {
+            // After gathering current scores (both individual and team),
+            // each control is setup programmatically if required, (the strike
+            // images, move correct/incorrect labels, and team score labels)
+
             SQL.GetCurrentScore();
             SQL.GetTeamScores();
-            // imgStrike1
+
             imgStrike1 = new PictureBox();
             imgStrike1.Size = new Size(75, 75);
             imgStrike1.Location = new Point(96, 4);
             imgStrike1.Image = Resources.inactive_x;
 
-            // imgStrike2
             imgStrike2 = new PictureBox();
             imgStrike2.Size = new Size(75, 75);
             imgStrike2.Location = new Point(196, 4);
             imgStrike2.Image = Resources.inactive_x;
 
-            // imgStrike3
             imgStrike3 = new PictureBox();
             imgStrike3.Size = new Size(75, 75);
             imgStrike3.Location = new Point(296, 4);
             imgStrike3.Image = Resources.inactive_x;
 
-            // lblCorrectMove
             lblCorrectMove = new Label();
             lblCorrectMove.Size = new Size(182, 98);
             lblCorrectMove.Location = new Point(7, 57);
 
-            // lblIncorrectMove
             lblIncorrectMove = new Label();
             lblIncorrectMove.Size = new Size(182, 98);
             lblIncorrectMove.Location = new Point(204, 57);
             lblIncorrectMove.TextAlign = ContentAlignment.TopRight;
 
-            // lblKeplerScore
             lblKeplerScore = new Label();
             lblKeplerScore.Size = new Size(182, 28);
             lblKeplerScore.Location = new Point(7, 57);
             lblKeplerScore.Text = Puzzle.teamScores[0].ToString();
 
-            // lblNewtonScore
             lblNewtonScore = new Label();
             lblNewtonScore.Size = new Size(182, 28);
             lblNewtonScore.Location = new Point(204, 57);
             lblNewtonScore.Text = Puzzle.teamScores[1].ToString();
 
-            // lblKelvinScore
             lblKelvinScore = new Label();
             lblKelvinScore.Size = new Size(182, 28);
             lblKelvinScore.Location = new Point(7, 108  );
             lblKelvinScore.Text = Puzzle.teamScores[2].ToString();
 
-            // lblFaradayScore
             lblFaradayScore = new Label();
             lblFaradayScore.Size = new Size(182, 28);
             lblFaradayScore.Location = new Point(204, 108);
@@ -161,7 +159,9 @@ namespace DailyChessPuzzle
 
         private void GenerateBoardPanels()
         {
-            //Panel[] pnlArr = new Panel[64];
+            // Filters through all of the panels within the manually created board panel, and
+            // binds the panel to the board_panels array to be altered later on through piece
+            // movement and position generation.
 
             foreach (Panel pnl in pnlBoard.Controls)
             {
@@ -181,6 +181,7 @@ namespace DailyChessPuzzle
 
         private void Square_Click(object sender, EventArgs e)
         {
+
             string piece;
 
             Control control = (Control)sender;
@@ -202,7 +203,9 @@ namespace DailyChessPuzzle
                 Piece clsPiece = new Piece(piece);
 
 
-                // Square clicked, check if piece or tile clicked, if tile - check if tag = legal, if piece - check if new piece - deactivate previous legal moves and generate new legal move markers
+                // Square clicked, check if piece or tile clicked, if tile - check if tag = legal,
+                // if piece - check if new piece - deactivate previous legal moves and generate
+                // new legal move markers.
                 if (control.BackgroundImage != null)
                 {
                     if (currentPos == prevPos)
@@ -342,14 +345,15 @@ namespace DailyChessPuzzle
 
         public static void ComputerMove(string move)
         {
+            // Gets the original square, and combines it with the target square to move piece to
+            // the correct square based off set move from puzzle
+
             string piece = String.Empty;
             int originalPos = 0;
             int newPos = 0;
 
             string originalSquare = move.Substring(0, 2);
             string newSquare = move.Substring(2);
-
-            Console.WriteLine(originalSquare + " " + newSquare);
 
             foreach (Panel pnl in form.pnlBoard.Controls)
             {
@@ -416,6 +420,8 @@ namespace DailyChessPuzzle
 
         public static bool Strike()
         {
+            // Adds strike and checks if game is over
+
             Puzzle.strike++;
             if (Puzzle.strike <= 4)
             {
@@ -444,7 +450,9 @@ namespace DailyChessPuzzle
         }
 
         public static void UpdateCorrect(string move)
-         {
+        {
+            // Updates correctMove label
+
             if (isFirstCorrectMove)
             {
                 isFirstCorrectMove = false;
@@ -455,6 +463,8 @@ namespace DailyChessPuzzle
 
         public static void UpdateIncorrect(string move)
         {
+            // Updates incorrectMove label
+
             if (isFirstIncorrectMove)
             {
                 isFirstIncorrectMove = false;
@@ -465,6 +475,8 @@ namespace DailyChessPuzzle
 
         public static void UpdateScoreLabel()
         {
+            // Updates team score labels
+
             lblKeplerScore.Text = Puzzle.teamScores[0].ToString();
             lblNewtonScore.Text = Puzzle.teamScores[1].ToString();
             lblKelvinScore.Text = Puzzle.teamScores[2].ToString();

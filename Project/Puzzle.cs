@@ -53,6 +53,8 @@ namespace DailyChessPuzzle
 
         public static void ReadCSV()
         {
+            // Reads each puzzle difficulty CSV 
+
             easyPuzzleList.Clear();
             intermediatePuzzleList.Clear();
             hardPuzzleList.Clear();

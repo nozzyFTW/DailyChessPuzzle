@@ -22,6 +22,7 @@ namespace DailyChessPuzzle
 
         public static string ConnVal()
         {
+            // Gets Connection String from App.config
             return ConfigurationManager.ConnectionStrings["Application"].ConnectionString;
         }
 

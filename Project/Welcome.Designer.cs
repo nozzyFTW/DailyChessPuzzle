@@ -137,6 +137,7 @@
             this.radHard.TabStop = true;
             this.radHard.Text = "HARD (2000+ ELO)";
             this.radHard.UseVisualStyleBackColor = true;
+            this.radHard.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // radIntermediate
             // 
@@ -149,6 +150,7 @@
             this.radIntermediate.TabStop = true;
             this.radIntermediate.Text = "INTERMEDIATE (1400-2000 ELO)";
             this.radIntermediate.UseVisualStyleBackColor = true;
+            this.radIntermediate.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // radEasy
             // 
@@ -162,6 +164,7 @@
             this.radEasy.TabStop = true;
             this.radEasy.Text = "EASY (-1400 ELO)";
             this.radEasy.UseVisualStyleBackColor = true;
+            this.radEasy.CheckedChanged += new System.EventHandler(this.CheckedChanged);
             // 
             // btnSelect
             // 
