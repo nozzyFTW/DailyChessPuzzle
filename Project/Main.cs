@@ -131,16 +131,25 @@ namespace DailyChessPuzzle
             // lblKeplerScore
             lblKeplerScore = new Label();
             lblKeplerScore.Size = new Size(182, 28);
-            lblKeplerScore.
+            lblKeplerScore.Location = new Point(7, 57);
             lblKeplerScore.Text = Puzzle.teamScores[0].ToString();
 
             // lblNewtonScore
+            lblNewtonScore = new Label();
+            lblNewtonScore.Size = new Size(182, 28);
+            lblNewtonScore.Location = new Point(204, 57);
             lblNewtonScore.Text = Puzzle.teamScores[1].ToString();
 
             // lblKelvinScore
+            lblKelvinScore = new Label();
+            lblKelvinScore.Size = new Size(182, 28);
+            lblKelvinScore.Location = new Point(7, 108  );
             lblKelvinScore.Text = Puzzle.teamScores[2].ToString();
 
             // lblFaradayScore
+            lblFaradayScore = new Label();
+            lblFaradayScore.Size = new Size(182, 28);
+            lblFaradayScore.Location = new Point(204, 108);
             lblFaradayScore.Text = Puzzle.teamScores[3].ToString();
 
             panel2.Controls.Add(imgStrike1);
@@ -265,56 +274,6 @@ namespace DailyChessPuzzle
                                 }
                             }                            
                         }
-                        /*foreach (var c in pnlBoard.Controls.OfType<Panel>())
-                        {
-                            if (c != null)
-                            {
-                                if (c.BackgroundImage != null)
-                                {
-                                    if (c.BackgroundImage.Tag.ToString() == "legal")
-                                    {
-                                        c.BackgroundImage = null;
-                                        continue;
-                                    }
-                                    if (c.BackgroundImage.Tag.ToString().Contains("capture"))
-                                    {
-                                        string[] subPiece = c.BackgroundImage.Tag.ToString().Split(' ');
-                                        string p = subPiece[1];
-
-                                        if (p == "p")
-                                        {
-                                            c.BackgroundImage = Resources.bp;
-                                            c.BackgroundImage.Tag = "p";
-                                        }
-                                        if (p == "n")
-                                        {
-                                            c.BackgroundImage = Resources.bn;
-                                            c.BackgroundImage.Tag = "n";
-                                        }
-                                        if (p == "b")
-                                        {
-                                            c.BackgroundImage = Resources.bb;
-                                            c.BackgroundImage.Tag = "b";
-                                        }
-                                        if (p == "r")
-                                        {
-                                            c.BackgroundImage = Resources.br;
-                                            c.BackgroundImage.Tag = "r";
-                                        }
-                                        if (p == "q")
-                                        {
-                                            c.BackgroundImage = Resources.bq;
-                                            c.BackgroundImage.Tag = "q";
-                                        }
-                                        if (p == "k")
-                                        {
-                                            c.BackgroundImage = Resources.br;
-                                            c.BackgroundImage.Tag = "k";
-                                        }
-                                    }
-                                }
-                            }
-                        }*/
                     }
                     if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
                     {
@@ -506,7 +465,10 @@ namespace DailyChessPuzzle
 
         public static void UpdateScoreLabel()
         {
-            lblKeplerScore.Text 
+            lblKeplerScore.Text = Puzzle.teamScores[0].ToString();
+            lblNewtonScore.Text = Puzzle.teamScores[1].ToString();
+            lblKelvinScore.Text = Puzzle.teamScores[2].ToString();
+            lblFaradayScore.Text = Puzzle.teamScores[3].ToString();
         }
     }
 }
