@@ -79,3 +79,4 @@ C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\Dai
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Welcome.resources
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Win.resources
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.PlayAgain.resources
+C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Instructions.resources

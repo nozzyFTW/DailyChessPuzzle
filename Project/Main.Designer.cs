@@ -31,12 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lblFaradayScor = new System.Windows.Forms.Label();
-            this.lblKelvinScor = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.lblNewtonScor = new System.Windows.Forms.Label();
-            this.lblKeplerScor = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -109,7 +105,6 @@
             this.D5 = new System.Windows.Forms.Panel();
             this.C7 = new System.Windows.Forms.Panel();
             this.D7 = new System.Windows.Forms.Panel();
-            this.txtTask = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
@@ -131,12 +126,8 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.lblFaradayScor);
-            this.panel4.Controls.Add(this.lblKelvinScor);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.label14);
-            this.panel4.Controls.Add(this.lblNewtonScor);
-            this.panel4.Controls.Add(this.lblKeplerScor);
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.label10);
@@ -144,27 +135,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(390, 144);
             this.panel4.TabIndex = 5;
-            // 
-            // lblFaradayScore
-            // 
-            this.lblFaradayScor.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblFaradayScor.ForeColor = System.Drawing.Color.Blue;
-            this.lblFaradayScor.Location = new System.Drawing.Point(204, 108);
-            this.lblFaradayScor.Name = "lblFaradayScore";
-            this.lblFaradayScor.Size = new System.Drawing.Size(180, 28);
-            this.lblFaradayScor.TabIndex = 8;
-            this.lblFaradayScor.Text = "0";
-            this.lblFaradayScor.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lblKelvinScore
-            // 
-            this.lblKelvinScor.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblKelvinScor.ForeColor = System.Drawing.Color.Orange;
-            this.lblKelvinScor.Location = new System.Drawing.Point(7, 108);
-            this.lblKelvinScor.Name = "lblKelvinScore";
-            this.lblKelvinScor.Size = new System.Drawing.Size(182, 28);
-            this.lblKelvinScor.TabIndex = 7;
-            this.lblKelvinScor.Text = "0";
             // 
             // label13
             // 
@@ -187,27 +157,6 @@
             this.label14.TabIndex = 5;
             this.label14.Text = "Kelvin";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblNewtonScore
-            // 
-            this.lblNewtonScor.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblNewtonScor.ForeColor = System.Drawing.Color.Red;
-            this.lblNewtonScor.Location = new System.Drawing.Point(204, 57);
-            this.lblNewtonScor.Name = "lblNewtonScore";
-            this.lblNewtonScor.Size = new System.Drawing.Size(180, 28);
-            this.lblNewtonScor.TabIndex = 4;
-            this.lblNewtonScor.Text = "0";
-            this.lblNewtonScor.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lblKeplerScore
-            // 
-            this.lblKeplerScor.Font = new System.Drawing.Font("Outfit", 8.25F);
-            this.lblKeplerScor.ForeColor = System.Drawing.Color.LimeGreen;
-            this.lblKeplerScor.Location = new System.Drawing.Point(7, 57);
-            this.lblKeplerScor.Name = "lblKeplerScore";
-            this.lblKeplerScor.Size = new System.Drawing.Size(182, 28);
-            this.lblKeplerScor.TabIndex = 3;
-            this.lblKeplerScor.Text = "0";
             // 
             // label8
             // 
@@ -994,16 +943,6 @@
             this.D7.Tag = "19";
             this.D7.Click += new System.EventHandler(this.Square_Click);
             // 
-            // txtTask
-            // 
-            this.txtTask.Font = new System.Drawing.Font("Outfit", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTask.Location = new System.Drawing.Point(705, 32);
-            this.txtTask.Name = "txtTask";
-            this.txtTask.Size = new System.Drawing.Size(380, 34);
-            this.txtTask.TabIndex = 67;
-            this.txtTask.Text = "White to Move and Mate in 2";
-            this.txtTask.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
@@ -1032,13 +971,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1179, 657);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.txtTask);
             this.Controls.Add(this.pnlBoard);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Daily Chess Puzzle";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -1118,18 +1058,13 @@
         private System.Windows.Forms.Panel G6;
         private System.Windows.Forms.Panel E6;
         private System.Windows.Forms.Panel G8;
-        private System.Windows.Forms.Label txtTask;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lblFaradayScor;
-        private System.Windows.Forms.Label lblKelvinScor;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label lblNewtonScor;
-        private System.Windows.Forms.Label lblKeplerScor;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;

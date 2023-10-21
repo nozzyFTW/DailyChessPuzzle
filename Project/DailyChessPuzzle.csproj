@@ -235,5 +235,14 @@
   <ItemGroup>
     <None Include="Resources\inactive_x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white piece ss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legal ss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\capture ss.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

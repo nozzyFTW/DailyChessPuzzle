@@ -182,7 +182,7 @@ namespace DailyChessPuzzle
             {
                 if (cmd.ExecuteScalar() != null)
                 {
-                    int FaradayScore = (int)cmd.ExecuteScalar();
+                    int FaradayScore = (int)cmd.ExecuteScalar();A
                     Puzzle.teamScores[3] = FaradayScore;
                 }
             }
@@ -191,6 +191,8 @@ namespace DailyChessPuzzle
 
         public static void UpdateTeamScores()
         {
+            // Adds the score for this round to the User's House Team's total score
+
             int teamScore = 0;
             if (HouseTeam == "Kepler") teamScore = Puzzle.teamScores[0] + Puzzle.score;
             if (HouseTeam == "Newton") teamScore = Puzzle.teamScores[1] + Puzzle.score;

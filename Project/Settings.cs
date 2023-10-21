@@ -55,8 +55,7 @@ namespace DailyChessPuzzle
                 SQL.Difficulty = 0;
                 Puzzle.isNewPuzzle = true;
                 Puzzle.moveCount = 0;
-                Puzzle.ReadCSV();
-                Puzzle.ReadFEN();
+                Puzzle update = new Puzzle(Main.lblTask);
                 Main.ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
             }
             
@@ -66,8 +65,7 @@ namespace DailyChessPuzzle
                 SQL.Difficulty = 1;
                 Puzzle.isNewPuzzle = true;
                 Puzzle.moveCount = 0;
-                Puzzle.ReadCSV();
-                Puzzle.ReadFEN();
+                Puzzle update = new Puzzle(Main.lblTask);
                 Main.ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
             }
             
@@ -77,8 +75,7 @@ namespace DailyChessPuzzle
                 SQL.Difficulty = 2;
                 Puzzle.isNewPuzzle = true;
                 Puzzle.moveCount = 0;
-                Puzzle.ReadCSV();
-                Puzzle.ReadFEN();
+                Puzzle update = new Puzzle(Main.lblTask);
                 Main.ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
             }
 

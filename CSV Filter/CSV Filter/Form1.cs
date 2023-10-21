@@ -25,6 +25,11 @@ namespace CSV_Filter
 
         private void Read(object sender, EventArgs e)
         {
+            // Reads the CSV, removing all lines where the puzzle is "Black to Move" and do
+            // not result in checkmate. Then the the line is added to either the Easy List
+            // (less than 1400 ELO), Intermediate List (1400 - 2000 ELO), Hard List (2000+ ELO)
+            // to be written to the appropriate CSV file according to difficulty.
+
             using (StreamReader sr = new StreamReader(@"../../../CSVs/lichess_db_puzzle.csv"))
             {
                 string line;

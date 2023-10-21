@@ -151,6 +151,8 @@ namespace DailyChessPuzzle
             string targetedPiece;
             bool isPawnFirstMove = false;
 
+            // 
+
             if (isMoved)
             {
                 if (prevPiece == "P" && PawnPromote((prevPos - 16), prevPos)) currentSquareName += dialogResult;
@@ -158,6 +160,9 @@ namespace DailyChessPuzzle
                 {
                     if (Board.board_panels[currentPos].BackgroundImage.Tag.ToString() == "legal")
                     {
+                        // IF the selected piece is "P" (a white pawn) and is legal, then previous square (currently
+                        // containing the pawn's image) will be cleared, as well as all highlighted legal moves.
+                        // Then the pawn will be displayed in its new position on the board
                         if (prevPiece == "P")
                         {
                             Board.board_panels[prevPos].BackgroundImage = null;
@@ -567,12 +572,15 @@ namespace DailyChessPuzzle
             {
                 if (piece == "P")
                 {
+                    // IF the pawn is in it's starting square (2nd rank if white | 7th rank if black) then
+                    // pawn is able to move up two squares
                     if (Board.startingPos[currentPos] == piece)
                     {
                         isPawnFirstMove = true;
                     }
 
-                    // If first move for pawn, is pawn blocked from moving forward 2? No, allow piece to move forward 2 squares. Yes, Can piece be moved 1 square?
+                    // If first move for pawn, is pawn blocked from moving forward 2? No, allow piece to move
+                    // forward 2 squares. Yes, Can piece be moved 1 square?
                     Console.WriteLine(Board.isOnBoard(prevPos - 16));
                     if (Main.board[currentPos - 16] == " " && Board.isOnBoard(prevPos - 16))
                     {

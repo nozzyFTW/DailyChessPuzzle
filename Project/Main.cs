@@ -1,5 +1,6 @@
 ﻿using DailyChessPuzzle.Properties;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -24,7 +25,7 @@ namespace DailyChessPuzzle
         private static bool isFirstIncorrectMove = true;
 
         public static PictureBox imgStrike1, imgStrike2, imgStrike3;
-        public static Label lblCorrectMove, lblIncorrectMove, lblKeplerScore, lblNewtonScore, lblKelvinScore, lblFaradayScore;
+        public static Label lblTask, lblCorrectMove, lblIncorrectMove, lblKeplerScore, lblNewtonScore, lblKelvinScore, lblFaradayScore;
         private static Main form = new Main();
 
         public static string[] board = new string[128]
@@ -86,11 +87,14 @@ namespace DailyChessPuzzle
                     SQL.NewUser();
                 }
 
+                Instructions instructions = new Instructions();
+                instructions.ShowDialog();
+
                 Board clsBoard = new Board();
 
                 GenerateBoardPanels();
                 SetupControls();
-                Puzzle clsPuzzle = new Puzzle(txtTask);
+                Puzzle clsPuzzle = new Puzzle(lblTask);
 
                 Puzzle.ReadFEN();
                 ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
@@ -121,40 +125,63 @@ namespace DailyChessPuzzle
             imgStrike3.Location = new Point(296, 4);
             imgStrike3.Image = Resources.inactive_x;
 
+            lblTask = new Label();
+            lblTask.Size = new Size(380, 34);
+            lblTask.Location = new Point(705, 32);
+            lblTask.Font = new Font("Outfit", (float)14.25, FontStyle.Bold);
+            lblTask.TextAlign = ContentAlignment.MiddleLeft;
+
             lblCorrectMove = new Label();
             lblCorrectMove.Size = new Size(182, 98);
             lblCorrectMove.Location = new Point(7, 57);
+            lblCorrectMove.Font = new Font("Outfit", (float)8.25);
 
             lblIncorrectMove = new Label();
             lblIncorrectMove.Size = new Size(182, 98);
             lblIncorrectMove.Location = new Point(204, 57);
             lblIncorrectMove.TextAlign = ContentAlignment.TopRight;
+            lblIncorrectMove.Font = new Font("Outfit", (float)8.25);
 
             lblKeplerScore = new Label();
             lblKeplerScore.Size = new Size(182, 28);
             lblKeplerScore.Location = new Point(7, 57);
             lblKeplerScore.Text = Puzzle.teamScores[0].ToString();
+            lblKeplerScore.Font = new Font("Outfit", (float)8.25);
+            lblKeplerScore.ForeColor = Color.LimeGreen;
 
             lblNewtonScore = new Label();
             lblNewtonScore.Size = new Size(182, 28);
             lblNewtonScore.Location = new Point(204, 57);
+            lblNewtonScore.TextAlign = ContentAlignment.TopRight;
             lblNewtonScore.Text = Puzzle.teamScores[1].ToString();
+            lblNewtonScore.Font = new Font("Outfit", (float)8.25);
+            lblNewtonScore.ForeColor = Color.Red;
 
             lblKelvinScore = new Label();
             lblKelvinScore.Size = new Size(182, 28);
             lblKelvinScore.Location = new Point(7, 108  );
             lblKelvinScore.Text = Puzzle.teamScores[2].ToString();
+            lblKelvinScore.Font = new Font("Outfit", (float)8.25);
+            lblKelvinScore.ForeColor = Color.Orange;
 
             lblFaradayScore = new Label();
             lblFaradayScore.Size = new Size(182, 28);
             lblFaradayScore.Location = new Point(204, 108);
+            lblFaradayScore.TextAlign = ContentAlignment.TopRight;
             lblFaradayScore.Text = Puzzle.teamScores[3].ToString();
+            lblFaradayScore.Font = new Font("Outfit", (float)8.25);
+            lblFaradayScore.ForeColor = Color.Blue;
 
             panel2.Controls.Add(imgStrike1);
             panel2.Controls.Add(imgStrike2);
             panel2.Controls.Add(imgStrike3);
+            Controls.Add(lblTask);
             panel3.Controls.Add(lblCorrectMove);
             panel3.Controls.Add(lblIncorrectMove);
+            panel4.Controls.Add(lblKeplerScore);
+            panel4.Controls.Add(lblNewtonScore);
+            panel4.Controls.Add(lblKelvinScore);
+            panel4.Controls.Add(lblFaradayScore);
         }
 
         private void GenerateBoardPanels()
@@ -275,10 +302,10 @@ namespace DailyChessPuzzle
                                         }
                                     }
                                 }
-                            }                            
+                            }
                         }
                     }
-                    if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
+                    else if (control.BackgroundImage.Tag.ToString() != "legal" || control.BackgroundImage.Tag.ToString().Contains("capture"))
                     {
                         // Clear Previous Legal Move Flags
                         foreach (var c in pnlBoard.Controls.OfType<Panel>())
@@ -287,8 +314,11 @@ namespace DailyChessPuzzle
                             {
                                 if (c.BackgroundImage.Tag.ToString() == "legal")
                                 {
-                                    c.BackgroundImage = null;
-                                    isPiecedCapture = false;
+                                    if (!Char.IsUpper(piece, 0))
+                                    {
+                                        c.BackgroundImage = null;
+                                        isPiecedCapture = false;
+                                    }
                                 }
                                 else if (c.BackgroundImage.Tag.ToString().Contains("capture"))
                                 {
@@ -296,7 +326,7 @@ namespace DailyChessPuzzle
                                     Console.WriteLine("Capture");
                                     if (Puzzle.IsMove(prevSquareName, prevPos, squareName, currentPos, prevPiece))
                                     {
-                                        Piece.Captured(prevPiece, currentPos, prevPos);
+                                        if (!Char.IsUpper(piece, 0)) Piece.Captured(prevPiece, currentPos, prevPos);
                                     }
                                 }
                             }
@@ -304,14 +334,14 @@ namespace DailyChessPuzzle
 
                         legal_board = new string[128]
                         {
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
-                        " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x",
+                            " ", " ", " ", " ", " ", " ", " ", " ", "x", "x", "x", "x", "x", "x", "x", "x"
                         };
 
                         // Piece Clicked
@@ -331,7 +361,7 @@ namespace DailyChessPuzzle
                         isPieceMoved = true;
                         isPiecedCapture = false;
 
-                        Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved, prevSquareName, squareName);
+                        if (!Char.IsUpper(piece, 0)) Piece.Move(control, prevPiece, currentPos, prevPos, isPieceMoved, prevSquareName, squareName);
                     }
                 }
             }
@@ -418,35 +448,47 @@ namespace DailyChessPuzzle
             Puzzle.moveCount++;
         }
 
-        public static bool Strike()
+        public static bool Strike(string piece)
         {
             // Adds strike and checks if game is over
-
-            Puzzle.strike++;
-            if (Puzzle.strike <= 4)
+            if (!Char.IsUpper(piece, 0))
             {
-                switch (Puzzle.strike)
+                Puzzle.strike++;
+                if (Puzzle.strike <= 4)
                 {
-                    case 1:
-                        imgStrike1.Image = Resources.active_x;
-                        Puzzle.score--;
-                        break;
+                    switch (Puzzle.strike)
+                    {
+                        case 1:
+                            imgStrike1.Image = Resources.active_x;
+                            Puzzle.score--;
+                            break;
 
-                    case 2:
-                        imgStrike2.Image = Resources.active_x;
-                        Puzzle.score--;
-                        break;
+                        case 2:
+                            imgStrike2.Image = Resources.active_x;
+                            Puzzle.score--;
+                            break;
 
-                    case 3:
-                        imgStrike3.Image = Resources.active_x;
-                        Puzzle.isGameOver = true;
-                        Puzzle.IsFinished();
-                        return false;
-                        
+                        case 3:
+                            imgStrike3.Image = Resources.active_x;
+                            Puzzle.isGameOver = true;
+                            Puzzle.IsFinished();
+                            return true;
+
+                    }
+                    Puzzle.isGameOver = false;
+                    return true;
                 }
-                return Puzzle.isGameOver = false;
+                else
+                {
+                    Puzzle.isGameOver = true;
+                    return true;
+                }
             }
-            else return Puzzle.isGameOver = true;
+            else
+            {
+                Puzzle.isGameOver = false;
+                return false;
+            }
         }
 
         public static void UpdateCorrect(string move)

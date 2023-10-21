@@ -16,5 +16,10 @@ namespace DailyChessPuzzle
         {
             InitializeComponent();
         }
+
+        private void btnContinue_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

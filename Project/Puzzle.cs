@@ -53,7 +53,7 @@ namespace DailyChessPuzzle
 
         public static void ReadCSV()
         {
-            // Reads each puzzle difficulty CSV 
+            // Reads each puzzle difficulty CSV and appends each Puzzle into their associated List
 
             easyPuzzleList.Clear();
             intermediatePuzzleList.Clear();
@@ -93,8 +93,10 @@ namespace DailyChessPuzzle
 
         private static void Day()
         {
+            // Checks the start day against the current day to gather which puzzle the game is up to.
+
             DateTime currentDay = DateTime.Now.Date;
-            DateTime startDay = new DateTime(2023, 10, 13);
+            DateTime startDay = new DateTime(2023, 10, 14);
 
             int dayCount = (int)(currentDay - startDay).TotalDays;
 
@@ -107,6 +109,7 @@ namespace DailyChessPuzzle
         {
             string Rank1, Rank2, Rank3, Rank4, Rank5, Rank6, Rank7, Rank8;
 
+            // Clears the board if it is a new puzzle
             if (isNewPuzzle)
             {
                 Main.board = new string[128]
@@ -130,8 +133,14 @@ namespace DailyChessPuzzle
                 }
             }
 
-            // FEN = <Piece Placement> <Side to Move> <Castling Ability> <En Passsant Target Square> <Halfmove Clock> <Fullmove Counter>
+            // FEN = <Piece Placement> <Side to Move> <Castling Ability> <En Passsant Target Square>
+            //       <Halfmove Clock> <Fullmove Counter>
             string[] fenSections = todaysPuzzle.FEN.Split('/', ' ');
+
+            // The sections of the FEN are seperated into the seperate ranks, as well as the starting
+            // side to move variables to be filtered through when generating the board. the starting
+            // side to move variable is used to determine if the puzzle is "White to Move" or
+            // "Black to Move".
 
             Rank8 = fenSections[0];
             Rank7 = fenSections[1];
@@ -221,57 +230,59 @@ namespace DailyChessPuzzle
                 }
                 else
                 {
-                    Main.Strike();
-                    Main.UpdateIncorrect(moveMade);
-                    if (isGameOver == false)
+                    if (Main.Strike(Main.board[currentPos]))
                     {
-                        if (prevPiece == "P")
+                        Main.UpdateIncorrect(moveMade);
+                        if (isGameOver == false)
                         {
-                            Board.board_panels[prevPos].BackgroundImage = Resources.wp;
-                            Board.board_panels[prevPos].BackgroundImage.Tag = "P";
-                            Board.board_panels[currentPos].BackgroundImage = null;
-                            Main.board[currentPos] = " ";
-                            Main.board[prevPos] = "P";
-                        }
-                        if (prevPiece == "N")
-                        {
-                            Board.board_panels[prevPos].BackgroundImage = Resources.wn;
-                            Board.board_panels[prevPos].BackgroundImage.Tag = "N";
-                            Board.board_panels[currentPos].BackgroundImage = null;
-                            Main.board[currentPos] = " ";
-                            Main.board[prevPos] = "N";
-                        }
-                        if (prevPiece == "B")
-                        {
-                            Board.board_panels[prevPos].BackgroundImage = Resources.wb;
-                            Board.board_panels[prevPos].BackgroundImage.Tag = "B";
-                            Board.board_panels[currentPos].BackgroundImage = null;
-                            Main.board[currentPos] = " ";
-                            Main.board[prevPos] = "B";
-                        }
-                        if (prevPiece == "R")
-                        {
-                            Board.board_panels[prevPos].BackgroundImage = Resources.wr;
-                            Board.board_panels[prevPos].BackgroundImage.Tag = "R";
-                            Board.board_panels[currentPos].BackgroundImage = null;
-                            Main.board[currentPos] = " ";
-                            Main.board[prevPos] = "R";
-                        }
-                        if (prevPiece == "Q")
-                        {
-                            Board.board_panels[prevPos].BackgroundImage = Resources.wq;
-                            Board.board_panels[prevPos].BackgroundImage.Tag = "Q";
-                            Board.board_panels[currentPos].BackgroundImage = null;
-                            Main.board[currentPos] = " ";
-                            Main.board[prevPos] = "Q";
-                        }
-                        if (prevPiece == "K")
-                        {
-                            Board.board_panels[prevPos].BackgroundImage = Resources.wk;
-                            Board.board_panels[prevPos].BackgroundImage.Tag = "K";
-                            Board.board_panels[currentPos].BackgroundImage = null;
-                            Main.board[currentPos] = " ";
-                            Main.board[prevPos] = "K";
+                            if (prevPiece == "P")
+                            {
+                                Board.board_panels[prevPos].BackgroundImage = Resources.wp;
+                                Board.board_panels[prevPos].BackgroundImage.Tag = "P";
+                                Board.board_panels[currentPos].BackgroundImage = null;
+                                Main.board[currentPos] = " ";
+                                Main.board[prevPos] = "P";
+                            }
+                            if (prevPiece == "N")
+                            {
+                                Board.board_panels[prevPos].BackgroundImage = Resources.wn;
+                                Board.board_panels[prevPos].BackgroundImage.Tag = "N";
+                                Board.board_panels[currentPos].BackgroundImage = null;
+                                Main.board[currentPos] = " ";
+                                Main.board[prevPos] = "N";
+                            }
+                            if (prevPiece == "B")
+                            {
+                                Board.board_panels[prevPos].BackgroundImage = Resources.wb;
+                                Board.board_panels[prevPos].BackgroundImage.Tag = "B";
+                                Board.board_panels[currentPos].BackgroundImage = null;
+                                Main.board[currentPos] = " ";
+                                Main.board[prevPos] = "B";
+                            }
+                            if (prevPiece == "R")
+                            {
+                                Board.board_panels[prevPos].BackgroundImage = Resources.wr;
+                                Board.board_panels[prevPos].BackgroundImage.Tag = "R";
+                                Board.board_panels[currentPos].BackgroundImage = null;
+                                Main.board[currentPos] = " ";
+                                Main.board[prevPos] = "R";
+                            }
+                            if (prevPiece == "Q")
+                            {
+                                Board.board_panels[prevPos].BackgroundImage = Resources.wq;
+                                Board.board_panels[prevPos].BackgroundImage.Tag = "Q";
+                                Board.board_panels[currentPos].BackgroundImage = null;
+                                Main.board[currentPos] = " ";
+                                Main.board[prevPos] = "Q";
+                            }
+                            if (prevPiece == "K")
+                            {
+                                Board.board_panels[prevPos].BackgroundImage = Resources.wk;
+                                Board.board_panels[prevPos].BackgroundImage.Tag = "K";
+                                Board.board_panels[currentPos].BackgroundImage = null;
+                                Main.board[currentPos] = " ";
+                                Main.board[prevPos] = "K";
+                            }
                         }
                     }
                     return false;

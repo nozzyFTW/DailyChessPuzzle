@@ -35,6 +35,8 @@ namespace DailyChessPuzzle
         public static bool isOnBoard(int destination)
         {
             // Uses Bitwise AND Operation
+            // IF (Destination & 0x88) return off board.
+            // Reversed result to return true if on board rather than invalid.
             return !(Convert.ToBoolean(destination & 0x88));
         }
     }
