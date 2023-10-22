@@ -47,7 +47,6 @@ C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\Dai
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.pdb
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Settings.resources
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.AssemblyReference.cache
-F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.csproj.SuggestedBindingRedirects.cache
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Main.resources
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Properties.Resources.resources
 F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Settings.resources
@@ -80,3 +79,5 @@ C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\Dai
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Win.resources
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.PlayAgain.resources
 C:\Users\noahcasey\OneDrive - Tyndale Christian School\Year 12\IT\Assignment\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Instructions.resources
+F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.Instructions.resources
+F:\School\DailyChessPuzzle\Project\obj\Debug\DailyChessPuzzle.PlayAgain.resources

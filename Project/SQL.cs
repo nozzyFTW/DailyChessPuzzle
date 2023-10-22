@@ -49,6 +49,8 @@ namespace DailyChessPuzzle
 
         public static void NewUser()
         {
+            // Adds the users UserName, House Team, LastPlayed date, and Difficulty to the Individual Scores table, with Score being set to 0
+
             string query = @"INSERT INTO IndividualScores (UserName, HouseTeam, Score, LastPlayed, Difficulty) VALUES (@UserName, @HouseTeam, @Score, @LastPlayed, @Difficulty)";
             connect.Open();
             using (SqlCommand cmd = new SqlCommand(query, connect))
@@ -182,7 +184,7 @@ namespace DailyChessPuzzle
             {
                 if (cmd.ExecuteScalar() != null)
                 {
-                    int FaradayScore = (int)cmd.ExecuteScalar();A
+                    int FaradayScore = (int)cmd.ExecuteScalar();
                     Puzzle.teamScores[3] = FaradayScore;
                 }
             }

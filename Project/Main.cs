@@ -66,7 +66,7 @@ namespace DailyChessPuzzle
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SQL sql = new SQL();
+            //SQL sql = new SQL();
 
             string username = Environment.UserName;
             SQL.UserName = username;

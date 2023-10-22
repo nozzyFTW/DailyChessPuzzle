@@ -41,6 +41,9 @@ namespace DailyChessPuzzle
 
             foreach (string item in section)
             {
+                // Checks if Piece is uppercase (which means white) or lowercase
+                // (which means black). IF number, then that means blank square.
+
                 bool isWhite = Char.IsUpper(item, 0);
                 bool isBlack = (!Char.IsUpper(item, 0) && !Char.IsNumber(item, 0));
                 bool isBlankSquare = Char.IsNumber(item, 0);
