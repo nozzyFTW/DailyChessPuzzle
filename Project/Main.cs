@@ -1,10 +1,7 @@
 ﻿using DailyChessPuzzle.Properties;
 using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Web;
 using System.Windows.Forms;
 
 namespace DailyChessPuzzle
@@ -68,7 +65,7 @@ namespace DailyChessPuzzle
         {
             //SQL sql = new SQL();
 
-            string username = Environment.UserName;
+            /*string username = Environment.UserName;
             SQL.UserName = username;
 
             // Checks if Player has already played today
@@ -88,7 +85,7 @@ namespace DailyChessPuzzle
                 }
 
                 Instructions instructions = new Instructions();
-                instructions.ShowDialog();
+                instructions.ShowDialog();*/
 
                 Board clsBoard = new Board();
 
@@ -98,7 +95,7 @@ namespace DailyChessPuzzle
 
                 Puzzle.ReadFEN();
                 ComputerMove(Puzzle.moveArr[Puzzle.moveCount]);
-            }
+            //}
         }
 
         private void SetupControls()
@@ -107,8 +104,8 @@ namespace DailyChessPuzzle
             // each control is setup programmatically if required, (the strike
             // images, move correct/incorrect labels, and team score labels)
 
-            SQL.GetCurrentScore();
-            SQL.GetTeamScores();
+            //SQL.GetCurrentScore();
+            //SQL.GetTeamScores();
 
             imgStrike1 = new PictureBox();
             imgStrike1.Size = new Size(75, 75);

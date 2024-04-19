@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DailyChessPuzzle
@@ -26,9 +18,6 @@ namespace DailyChessPuzzle
             TimeSpan ts = DateTime.Today.AddDays(1) - DateTime.Now;
             string s = ts.ToString();
             lblTimeTill.Text = ts.ToString(@"hh\:mm\:ss");
-            //lblTimeTill.Text = TimeSpan.Parse(ts.ToString("hh:mm:ss")).ToString();
-            //lblTimeTill.Text = TimeSpan.ParseExact(s, @"d\.hh\:mm\:ss", CultureInfo.InvariantCulture).ToString();
-            //lblTimeTill.Text = $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
             t.Start();
         }
 
@@ -36,7 +25,6 @@ namespace DailyChessPuzzle
         {
             TimeSpan ts = DateTime.Today.AddDays(1) - DateTime.Now;
             lblTimeTill.Text = ts.ToString(@"hh\:mm\:ss");
-            //lblTimeTill.Text = $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
         }
 
         private void PlayAgain_FormClosed(object sender, FormClosedEventArgs e)

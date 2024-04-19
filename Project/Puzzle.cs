@@ -1,13 +1,8 @@
 ﻿using DailyChessPuzzle.Properties;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.UI;
 using System.Windows.Forms;
 
 namespace DailyChessPuzzle
@@ -48,7 +43,6 @@ namespace DailyChessPuzzle
                 lbl.Text = $"Black to Move and Mate in {Math.Round((double) moveArr.Length / 2, MidpointRounding.AwayFromZero)}";
             }
             else lbl.Text = $"White to Move and Mate in {Math.Round((double)moveArr.Length / 2, MidpointRounding.AwayFromZero)}";
-
         }
 
         public static void ReadCSV()
@@ -96,7 +90,7 @@ namespace DailyChessPuzzle
             // Checks the start day against the current day to gather which puzzle the game is up to.
 
             DateTime currentDay = DateTime.Now.Date;
-            DateTime startDay = new DateTime(2023, 10, 14);
+            DateTime startDay = new DateTime(2024, 4, 13);
 
             int dayCount = (int)(currentDay - startDay).TotalDays;
 
