@@ -33,5 +33,29 @@ namespace DailyChessPuzzle
             // Reversed result to return true if on board rather than invalid.
             return !(Convert.ToBoolean(destination & 0x88));
         }
+        public static void ResetBoard()
+        {
+            foreach (var square in Board.board_panels)
+            {
+                if (square != null)
+                {
+                    if (square.BackgroundImage != null)
+                    {
+                        if (square.BackgroundImage.Tag.ToString() == "legal")
+                        {
+                            square.BackgroundImage.Tag = null;
+                        }
+                        else if (square.BackgroundImage.Tag.ToString().Contains("capture"))
+                        {
+                            string piece = square.BackgroundImage.Tag.ToString();
+                            piece = piece.Split(' ')[0];
+
+                            Board.board_panels[pos].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject(piece);
+                            Board.board_panels[pos].BackgroundImage.Tag = pieceName;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

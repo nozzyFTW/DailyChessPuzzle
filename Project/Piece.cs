@@ -7,6 +7,7 @@ using System.Drawing;
 using Button = System.Windows.Forms.Button;
 using Label = System.Windows.Forms.Label;
 using TextBox = System.Windows.Forms.TextBox;
+using System.Web.SessionState;
 
 namespace DailyChessPuzzle
 {
@@ -26,7 +27,7 @@ namespace DailyChessPuzzle
         // Clear All Previous Legal Moves
         // Find All Legal Moves
 
-        private static void AssignPiece(string piece, string pieceName, int pos)
+        public static void AssignPiece(string piece, string pieceName, int pos)
         {
             Main.board[pos] = pieceName;
             Board.board_panels[pos].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject(piece);
@@ -68,63 +69,38 @@ namespace DailyChessPuzzle
             }
         }
         
-        public static void Move(string prevPiece, int currentPos, int prevPos, bool isMoved, string prevSquareName, string currentSquareNoah)
+        public static void Move(string prevPiece, int currentPos, int prevPos, bool isMoved, string prevSquareName, string currentSquareName)
         {
             Dictionary<string, int> knightMoveDirection = new Dictionary<string, int>()
             {
-                { "NNE", -15 },
-                { "NNW", -17 },
-                { "EEN", -6 },
-                { "EES", 10 },
-                { "SSE", 17 },
-                { "SSW", 15 },
-                { "WWN", -10 },
-                { "WWS", 6 }
+                { "NNE", -15 }, { "NNW", -17 }, { "EEN", -6 }, { "EES", 10 }, { "SSE", 17 }, { "SSW", 15 }, { "WWN", -10 }, { "WWS", 6 }
             };
 
             Dictionary<string, int> kingMoveDirection = new Dictionary<string, int>()
             {
-                { "NW", -9 },
-                { "N", -8 },
-                { "NE", -7 },
-                { "E", 1 },
-                { "SE", 9 },
-                { "S", 8 },
-                { "SW", 7 },
-                { "W", -1 }
+                { "NW", -9 }, { "N", -8 }, { "NE", -7 }, { "E", 1 }, { "SE", 9 }, { "S", 8 }, { "SW", 7 }, { "W", -1 }
             };
 
             Dictionary<string, int> bishopMoveDirection = new Dictionary<string, int>()
             {
-                { "NE", -15 },
-                { "NW", -17 },
-                { "SE", 17 },
-                { "SW", 15 }
+                { "NE", -15 }, { "NW", -17 }, { "SE", 17 }, { "SW", 15 }
             };
 
             Dictionary<string, int> rookMoveDirection = new Dictionary<string, int>()
             {
-                { "N", -16 },
-                { "E", 1 },
-                { "S", 16 },
-                { "W", -1 }
+                { "N", -16 }, { "E", 1 }, { "S", 16 }, { "W", -1 }
             };
 
             Dictionary<string, int> queenMoveDirection = new Dictionary<string, int>()
             {
-                { "NW", -17 },
-                { "N", -16 },
-                { "NE", -15 },
-                { "E", 1 },
-                { "SW", 15 },
-                { "S", 16 },
-                { "SE", 17 },
-                { "W", -1 }
+                { "NW", -17 }, { "N", -16 }, { "NE", -15 }, { "E", 1 }, { "SW", 15 }, { "S", 16 }, { "SE", 17 }, { "W", -1 }
+            };
+
+            Dictionary<string, int> pawnMoveDirection = new Dictionary<string, int>()
+            {
+                { "First", -16 }, { "Normal", -8 }, { "EPL", -9 }, { "EPR", -7 }
             };
         }
-        /*
-            
-        */
 
         public static void Move(Control control, string prevPiece, int currentPos, int prevPos, bool isMoved, string prevSquareName, string currentSquareName)
         {
